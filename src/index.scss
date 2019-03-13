@@ -1,0 +1,37 @@
+//@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@font-face {
+  font-family: 'Pacifico';
+  src: local('Pacifico'), url(fonts/Pacifico.ttf) format('truetype');
+}
+
+body, .mh-100 {
+  min-height:100vh;
+}
+
+body {
+  background-image: url(images/background/2.jpg);
+  //background-color: lightgray;
+  background-position: center;
+}
+
+//because overriding Bootstrap $input-btn-focus-color seems to have no effect
+button:focus {
+  outline: 5px auto #AAA;
+}
+
+.custom-control-input ~  .custom-control-label {
+  &:before, &:after {
+    transform: scale(1.5);
+  }
+}
+
+@keyframes blink {
+  50% { border-color: #ff0000; }
+}
+.invalid-blink {
+  animation-name: blink ;
+  animation-duration: .25s ;
+  animation-timing-function: step-end ;
+  animation-iteration-count: 6 ;
+  animation-direction: alternate ;
+}

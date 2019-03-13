@@ -1,0 +1,54 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+h1 {
+  size: 2rem;
+  font-family: 'Pacifico', monospace;
+}
+
+//header {
+//  height: 4.5rem;
+//}
+
+header, footer {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+footer {
+  bottom: 0;
+  height: 3.5rem;
+}
+
+.exclude-footer {
+  overflow: auto;
+  height: calc(100vh - 3.5rem);
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+@include media-breakpoint-between(lg, xl) {
+  .container {
+    max-width: 768px;
+  }
+
+}
+
+::placeholder {
+  font-style: italic;
+}
+
+
+
+
+
+//how to make it encapsulate?
+.list-group-item {
+  background-color: rgba(255, 255, 255, 0);
+  &:first-child {
+    background-color: rgba(255, 255, 255, .5);
+    font-weight: 100
+  }
+}
