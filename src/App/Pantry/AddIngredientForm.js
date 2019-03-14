@@ -35,24 +35,29 @@ export function AddIngredientFormUI({formProp, handleSubmit, handleAvailChange, 
       <div className="row">
         <div className="col-2">
           <div className="custom-control custom-checkbox text-center">
-            <input type="checkbox"
-                   className="custom-control-input"
-                   aria-label="availability of ingredient"
-                   defaultChecked={formProp.isAvailable}
-                   onChange={handleAvailChange}
-                   id="isAvailable"/>
+            <input
+              type="checkbox"
+              id="isAvailable"
+              className="custom-control-input"
+              aria-label="availability of ingredient"
+              defaultChecked={formProp.isAvailable}
+              onChange={handleAvailChange}/>
             <label className="custom-control-label mt-2" htmlFor="isAvailable"> </label>
           </div>
         </div>
         <div className="col-10">
           <div className="form-group">
-            <input placeholder={formProp.isAvailable ? 'available ingredients' : 'missing ingredients'}
-               className={classNames('form-control',
-                 { 'text-danger font-weight-bold': !formProp.isAvailable},
-                 { 'invalid-blink': isBlinking }
-                )}
-               aria-label="ingredient" autoComplete="off"
-               type="text" id="ingredient"/>
+            <input
+              aria-label="ingredient"
+              autoComplete="off"
+              type="text"
+              id="ingredient"
+              placeholder={formProp.isAvailable ? 'available ingredients' : 'missing ingredients'}
+              className={classNames(
+                'form-control',
+                { 'text-danger font-weight-bold': !formProp.isAvailable},
+                { 'invalid-blink': isBlinking }
+              )}/>
           </div>
         </div>
       </div>
@@ -63,13 +68,11 @@ export function AddIngredientFormUI({formProp, handleSubmit, handleAvailChange, 
             onChange={handleCategoryChange}
             value={formProp.category.id}
             className="form-control" id="category">
-            {FOOD_CATEGORIES.map(c => {
-              return <option key={c.id} value={c.id}>{c.name}</option>
-            })}
+            {FOOD_CATEGORIES.map(c => (
+              <option key={c.id} value={c.id}>{c.name}</option>
+            ))}
           </select>
-          <button type="submit"
-                  className="btn btn-primary ml-3 px-4">Add
-          </button>
+          <button type="submit" className="btn btn-primary ml-3 px-4">Add</button>
         </div>
       </div>
     </form>
@@ -93,4 +96,4 @@ const mapDispatchToProps = dispatch => ({
     type: Actions.ADD_INGREDIENT, payload })
 });
 
-export const AddIngredientForm = connect(mapStateToProps, mapDispatchToProps)(AddIngredientFormUI);
+export default connect(mapStateToProps, mapDispatchToProps)(AddIngredientFormUI);

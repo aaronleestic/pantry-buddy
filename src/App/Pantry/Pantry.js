@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {AddIngredientForm} from "./AddIngredientForm";
+import AddIngredientForm from "./AddIngredientForm";
 import FOOD_CATEGORIES from "../FoodCategories";
-import {IngredientRow} from "./IngredientRow";
+import IngredientRow from "./IngredientRow";
 
 export function PantryUI({ingredByCats}){
   return (
@@ -35,4 +35,4 @@ const mapStateToProps = (state) => ({
   ingredByCats: subDivideIngredients(state.ingredients, FOOD_CATEGORIES)
 });
 
-export const Pantry = connect(mapStateToProps)(PantryUI);
+export default connect(mapStateToProps)(PantryUI);

@@ -3,8 +3,8 @@ import { MemoryRouter } from 'react-router';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import App from './App';
-import { Pantry } from "./Pantry/Pantry";
-import { Recipes }  from "./Recipes/Recipes";
+import Pantry from "./Pantry/Pantry";
+import Recipes from "./Recipes/Recipes";
 
 describe('App', ()=>{
 

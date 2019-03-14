@@ -10,8 +10,7 @@ export const RecipesUI = () => (
     </p>
     Feature roadmap
     <ul>
-      {["Offline persistence for your pantry list (Progressive Web App)",
-      "Type ahead for popular ingredients",
+      {["Type ahead for popular ingredients",
       "Online persistence for usage across devices",
       "Import of common dishes",
       "Native mobile",
@@ -21,4 +20,4 @@ export const RecipesUI = () => (
   </div>
 );
 
-export const Recipes = connect()(RecipesUI);
+export default connect()(RecipesUI);

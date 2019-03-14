@@ -12,13 +12,18 @@ export function IngredientRowUI({ing, handleAvailChange, handleRemove}){
   return (
     <li className="list-group-item border-bottom-0 rounded-0 d-flex flex-row">
       <div className="custom-control custom-checkbox">
-        <input className="custom-control-input" type="checkbox"
+        <input className="custom-control-input"
                defaultChecked={ing.isAvailable}
                id={ing.name}
-               onChange={e => handleAvailChange(e, ing)}/>
-        <label htmlFor={ing.name}
-               className={classNames('custom-control-label pl-2', {'text-danger font-weight-bold': !ing.isAvailable})}>
-          {ing.name}
+               onChange={e => handleAvailChange(e, ing)}
+               type="checkbox"/>
+        <label
+          htmlFor={ing.name}
+          className={classNames(
+            'custom-control-label pl-2',
+            {'text-danger font-weight-bold': !ing.isAvailable}
+          )}>
+            {ing.name}
         </label>
       </div>
       <button type="button"
@@ -44,4 +49,4 @@ const mapDispatchToProps = dispatch => ({
   })
 });
 
-export const IngredientRow = connect(null, mapDispatchToProps)(IngredientRowUI);
+export default connect(null, mapDispatchToProps)(IngredientRowUI);

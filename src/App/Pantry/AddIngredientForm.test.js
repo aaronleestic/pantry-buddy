@@ -6,9 +6,10 @@ describe('AddIngredientForm component', ()=>{
   function getComponent(formProp){
     const handleSubmitMock = jest.fn();
     const c = mount(
-      <AddIngredientFormUI formProp={formProp}
-                           handleSubmit={handleSubmitMock}
-                           handleCategoryChange={jest.fn()}/>
+      <AddIngredientFormUI
+        formProp={formProp}
+        handleSubmit={handleSubmitMock}
+        handleCategoryChange={jest.fn()}/>
       );
     c.getTextInput = () => c.find('input#ingredient');
     c.setTextInput = (text) => c.getTextInput().instance().value = text;

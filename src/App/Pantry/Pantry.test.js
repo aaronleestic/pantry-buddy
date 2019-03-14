@@ -1,5 +1,5 @@
 import React from 'react';
-import {IngredientRow} from "./IngredientRow";
+import IngredientRow from "./IngredientRow";
 import {PantryUI, subDivideIngredients} from "./Pantry";
 import {ingredients} from "./Pantry.reducer";
 import Actions from "../actions";

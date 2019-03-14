@@ -1,8 +1,8 @@
 import './App.scss';
 import React from 'react';
 import { Route, NavLink, Switch, Redirect } from "react-router-dom";
-import { Pantry } from "./Pantry/Pantry";
-import { Recipes } from "./Recipes/Recipes";
+import Pantry from "./Pantry/Pantry";
+import Recipes from "./Recipes/Recipes";
 
 function App(){
   return (
