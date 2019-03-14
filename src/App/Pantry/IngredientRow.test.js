@@ -1,10 +1,10 @@
 import React from 'react';
-import {IngredientRowUI} from "./IngredientRow";
+import {IngredientRow} from "./IngredientRow";
 
 describe('IngredientRow component', ()=>{
 
-  function getComponent(ing){
-    const c = shallow(<IngredientRowUI ing={ing}/>);
+  function getComponent(ingredient){
+    const c = shallow(<IngredientRow ingredient={ingredient}/>);
     c.getCheckbox = () => c.find({type: 'checkbox'});
     c.getLabel = () => c.find('label');
     return c;

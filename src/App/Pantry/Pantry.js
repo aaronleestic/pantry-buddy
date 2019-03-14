@@ -1,18 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import AddIngredientForm from "./AddIngredientForm";
 import FOOD_CATEGORIES from "../FoodCategories";
 import IngredientRow from "./IngredientRow";
+import {ingredientShape} from "../models";
 
-export function PantryUI({ingredByCats}){
+export function Pantry({ingredientGroups}){
   return (
     <>
       <AddIngredientForm/>
-      {ingredByCats.map((ingredients, index) => (
-        <ul className="list-group border-bottom-0 rounded-0" key={ingredients.category}>
-          <li className="list-group-item py-1 border-bottom-0 rounded-0">{FOOD_CATEGORIES[index].name}</li>
-          {ingredients.map(ing => (
-            <IngredientRow ing={ing} key={ing.name}/>
+      {ingredientGroups.map(group => (
+        <ul className="list-group border-bottom-0 rounded-0" key={group.categoryName}>
+          <li className="list-group-item py-1 border-bottom-0 rounded-0">{group.categoryName}</li>
+          {group.ingredients.map(ingredient => (
+            <IngredientRow ingredient={ingredient} key={ingredient.name}/>
           ))}
         </ul>
       ))}
@@ -20,19 +22,32 @@ export function PantryUI({ingredByCats}){
   );
 }
 
-export const subDivideIngredients = (allIngredients, categories) => (
-  allIngredients.reduce((arrayOfarray, ing) => {
-    arrayOfarray[ing.category].push(ing);
-    return arrayOfarray;
+Pantry.propTypes = {
+  ingredientGroups: PropTypes.arrayOf(
+    PropTypes.shape({
+      categoryName: PropTypes.string,
+      ingredients: PropTypes.arrayOf(PropTypes.shape(ingredientShape))
+    })
+  ).isRequired
+};
+Pantry.defaultProps = {
+  ingredientGroups: []
+};
+
+export function subDivideIngredients(allIngredients, categories){
+  return allIngredients.reduce((groups, ing) => {
+    groups[ing.categoryId].ingredients.push(ing);
+    return groups;
   }, categories.map((c) => {
-    const subsetIngreds = [];
-    subsetIngreds.category = c.name;
-    return subsetIngreds;
+    return {
+      ingredients: [],
+      categoryName: c.name
+    };
   }))
-);
+}
 
 const mapStateToProps = (state) => ({
-  ingredByCats: subDivideIngredients(state.ingredients, FOOD_CATEGORIES)
+  ingredientGroups: subDivideIngredients(state.ingredients, FOOD_CATEGORIES)
 });
 
-export default connect(mapStateToProps)(PantryUI);
+export default connect(mapStateToProps)(Pantry);

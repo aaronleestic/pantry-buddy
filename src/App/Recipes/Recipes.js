@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-export const RecipesUI = () => (
+export const Recipes = () => (
   <div className="px-3">
     <p>
       Upcoming feature:
@@ -20,4 +20,4 @@ export const RecipesUI = () => (
   </div>
 );
 
-export default connect()(RecipesUI);
+export default connect()(Recipes);

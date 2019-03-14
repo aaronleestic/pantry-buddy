@@ -1,28 +1,15 @@
-import FOOD_CATEGORIES from "../FoodCategories";
 import Actions from "../actions";
-
-//global state schema
-//
-// ingredients: [{
-//   ingredient: string,
-//   category: number
-//   isAvailable: boolean
-// }...],
-// addIngredientForm: {
-//   isAvailable: boolean,
-//   category: number
-// },
 
 const initialAddFormState = {
   isAvailable: true,
-  category: FOOD_CATEGORIES[0],
+  categoryId: 0,
 };
 export const addIngredientForm = (state = initialAddFormState, action) => {
   switch(action.type){
     case Actions.CHANGE_ADDFORM_AVAIL:
       return { ...state, isAvailable: action.payload };
     case Actions.CHANGE_ADDFORM_CATEGORY:
-      return { ...state, category: action.payload };
+      return { ...state, categoryId: action.payload };
     default:
       return state;
   }
@@ -32,7 +19,7 @@ export const addIngredientForm = (state = initialAddFormState, action) => {
 //   return {
 //     isAvailable: index%2 === 0,
 //     name: letter+' food',
-//     category: Math.floor(index/2)
+//     categoryId: Math.floor(index/2)
 //   }
 // });
 const initialIngredientsState = [];

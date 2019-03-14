@@ -9,5 +9,9 @@
     <orderEntry type="library" name="@types/jest" level="application" />
     <orderEntry type="library" name="@types/enzyme" level="application" />
     <orderEntry type="library" name="@types/enzyme-adapter-react-16" level="application" />
+    <orderEntry type="library" name="@types/prop-types" level="application" />
+    <orderEntry type="library" name="@types/react" level="application" />
+    <orderEntry type="library" name="@types/react-dom" level="application" />
+    <orderEntry type="library" name="@types/react-redux" level="application" />
   </component>
 </module>

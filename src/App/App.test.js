@@ -12,7 +12,7 @@ describe('App', ()=>{
     ingredients: [],
     addIngredientForm: {
       isAvailable: true,
-      category: {id: 0, name: "category"},
+      categoryId: 0,
     }
   });
 
