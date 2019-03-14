@@ -4,11 +4,35 @@ import classNames from 'classnames/bind';
 import Actions from "../actions";
 import FOOD_CATEGORIES from "../foodCategories";
 
-class AddIngredientForm extends Component {
+export class AddIngredientFormUI extends Component {
+
+  //functional component not used in order to do a little form validation
+  constructor(props) {
+    super(props);
+    this.state = { blinkError: false };
+  }
+
+  prepSubmit = (e) => {
+    e.preventDefault();
+
+    //show potential validation error
+    const elements = e.target.elements;
+    if ( !elements.ingredient.value.trim() ){
+      this.setState({blinkError: true});
+      setTimeout(() => this.setState({blinkError: false}), 1500);
+      return;
+    }
+
+    //update global state
+    this.props.handleSubmit(elements);
+
+    //clears the text input
+    elements.ingredient.value = "";
+  };
 
   render(){
     return (
-      <form onSubmit={this.handleSubmit} autoComplete="off" className="px-3">
+      <form onSubmit={this.prepSubmit} autoComplete="off" className="px-3">
         <div className="row">
           <div className="col-2">
             <div className="custom-control custom-checkbox text-center">
@@ -16,7 +40,7 @@ class AddIngredientForm extends Component {
                      className="custom-control-input"
                      aria-label="availability of ingredient"
                      defaultChecked={this.props.form.isAvailable}
-                     onChange={this.handleAvailBox}
+                     onChange={e => {this.props.handleAvailChange(e)}}
                      id="isAvailable"/>
               <label className="custom-control-label mt-2" htmlFor="isAvailable"> </label>
             </div>
@@ -27,9 +51,7 @@ class AddIngredientForm extends Component {
                                   { 'invalid-blink': this.state.blinkError },
                                   { 'text-danger font-weight-bold': !this.props.form.isAvailable}
                                )}
-                     //due to framework bug, placeholder does not update when props change, so local state needed
-                     // placeholder={this.props.form.isAvailable ? 't' : 'f'}
-                     placeholder={this.state.inputTextHint}
+                     placeholder={this.props.form.isAvailable ? 'available ingredients' : 'missing ingredients'}
                      aria-label="ingredient" autoComplete="off"
                      type="text" id="ingredient"/>
             </div>
@@ -39,7 +61,7 @@ class AddIngredientForm extends Component {
           <label htmlFor="category" className="col-2 col-form-label">Type</label>
           <div className="col-10 d-inline-flex">
             <select
-              onChange={this.handleCategory}
+              onChange={this.props.handleCategoryChange}
               value={this.props.form.category.id}
               className="form-control" id="category">
               {FOOD_CATEGORIES.map(c => {
@@ -54,67 +76,29 @@ class AddIngredientForm extends Component {
       </form>
     )
   }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      blinkError: false,
-      inputTextHint: this.getTextHint(this.props.form.isAvailable)
-    };
-  }
-
-  getTextHint = bool => bool ? 'available ingredients' : 'missing ingredients';
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-    //potentially signal validation error
-    const textInput = e.target.elements.ingredient;
-    if ( !textInput.value.trim() )
-      return this.showTempValidationError();
-
-    //dispatch to update global app state & store
-    this.props.dispatch({
-      type: Actions.ADD_INGREDIENT,
-      payload: {
-        name: textInput.value.trim(),
-        category: e.target.elements.category.value,
-        isAvailable: e.target.elements.isAvailable.checked,
-      }
-    });
-
-    //clears the text input
-    textInput.value = "";
-  };
-
-  //text input css will have border blink for 1.5 seconds
-  showTempValidationError(){
-    this.setState({blinkError: true});
-    setTimeout(() => this.setState({blinkError: false}), 1500);
-  };
-
-  handleAvailBox = (e) => {
-    const bool = e.target.checked;
-    this.props.dispatch({
-      type: Actions.CHANGE_ADDFORM_AVAIL,
-      payload: bool
-    });
-
-    //local state is needed because input element will not update based on props
-    this.setState({inputTextHint: this.getTextHint(bool)});
-  };
-
-  handleCategory = (e) => {
-    this.props.dispatch({
-      type: Actions.CHANGE_ADDFORM_CATEGORY,
-      payload: e.target.value
-    });
-  };
-
 }
 
-const mapStateToProps = (state) => {
-  return { form: state.addIngredientForm }
-};
+const mapStateToProps = (state) => ({
+  form: state.addIngredientForm
+});
 
-export default connect(mapStateToProps)(AddIngredientForm);
+const mapDispatchToProps = dispatch => ({
+  handleAvailChange: e => dispatch({
+    type: Actions.CHANGE_ADDFORM_AVAIL,
+    payload: e.target.checked
+  }),
+  handleCategoryChange: e => dispatch({
+    type: Actions.CHANGE_ADDFORM_CATEGORY,
+    payload: e.target.value
+  }),
+  handleSubmit: elements => dispatch({
+    type: Actions.ADD_INGREDIENT,
+    payload: {
+      name: elements.ingredient.value.trim(),
+      category: elements.category.value,
+      isAvailable: elements.isAvailable.checked,
+    }
+  })
+});
+
+export const AddIngredientForm = connect(mapStateToProps, mapDispatchToProps)(AddIngredientFormUI);
