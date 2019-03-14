@@ -35,7 +35,8 @@ export const addIngredientForm = (state = initialAddFormState, action) => {
 //     category: Math.floor(index/2)
 //   }
 // });
-export const ingredients = (ingredients = [], action) => {
+const initialIngredientsState = [];
+export const ingredients = (ingredients = initialIngredientsState, action) => {
   const payload = action.payload;
   switch(action.type) {
 
@@ -43,12 +44,10 @@ export const ingredients = (ingredients = [], action) => {
       return [...ingredients, payload].sort((c1, c2) => c1.name.localeCompare(c2.name, undefined, {sensitivity: 'base'}));
 
     case Actions.UPDATE_INGREDIENT_AVAIL:
-      //update an item in the array
-      //https://redux.js.org/recipes/structuring-reducers/immutable-update-patterns
       return ingredients.map((ing) => {
         if ( ing !== payload.ingredient )
           return ing;
-        return {
+        else return {
           ...ing,
           isAvailable: payload.isAvailable,
         }

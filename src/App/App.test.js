@@ -1,12 +1,20 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
 import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import App from './App';
 import { Pantry } from "./Pantry/Pantry";
 import { Recipes }  from "./Recipes/Recipes";
-import store from "./store";
 
 describe('App', ()=>{
+
+  const store = configureStore()({
+    ingredients: [],
+    addIngredientForm: {
+      isAvailable: true,
+      category: {id: 0, name: "category"},
+    }
+  });
 
   //Page Object Model
   function getComponent(path){

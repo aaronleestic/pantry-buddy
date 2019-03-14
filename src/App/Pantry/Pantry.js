@@ -4,19 +4,21 @@ import {AddIngredientForm} from "./AddIngredientForm";
 import FOOD_CATEGORIES from "../FoodCategories";
 import {IngredientRow} from "./IngredientRow";
 
-export const PantryUI = ({ingredByCats}) => (
-  <>
-    <AddIngredientForm/>
-    {ingredByCats.map((ingredients, index) => (
-      <ul className="list-group border-bottom-0 rounded-0" key={ingredients.category}>
-        <li className="list-group-item py-1 border-bottom-0 rounded-0">{FOOD_CATEGORIES[index].name}</li>
-        {ingredients.map(ing => (
-          <IngredientRow ing={ing} key={ing.name}/>
-        ))}
-      </ul>
-    ))}
-  </>
-);
+export function PantryUI({ingredByCats}){
+  return (
+    <>
+      <AddIngredientForm/>
+      {ingredByCats.map((ingredients, index) => (
+        <ul className="list-group border-bottom-0 rounded-0" key={ingredients.category}>
+          <li className="list-group-item py-1 border-bottom-0 rounded-0">{FOOD_CATEGORIES[index].name}</li>
+          {ingredients.map(ing => (
+            <IngredientRow ing={ing} key={ing.name}/>
+          ))}
+        </ul>
+      ))}
+    </>
+  );
+}
 
 export const subDivideIngredients = (allIngredients, categories) => (
   allIngredients.reduce((arrayOfarray, ing) => {

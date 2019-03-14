@@ -11,7 +11,7 @@ describe('AddIngredientForm component', ()=>{
                            handleCategoryChange={jest.fn()}/>
       );
     c.getTextInput = () => c.find('input#ingredient');
-    c.setTextInput = (val) => c.getTextInput().instance().value = val;
+    c.setTextInput = (text) => c.getTextInput().instance().value = text;
     c.getCheckbox = () => c.find({type: 'checkbox'});
     c.getSelect = () => c.find('select');
     c.submitForm = () => c.find('form').simulate('submit', { preventDefault() {} });
@@ -24,7 +24,7 @@ describe('AddIngredientForm component', ()=>{
       isAvailable: true,
       category: { id: 0 }
     });
-    expect(c.getTextInput().props().className).not.toContain('text-danger');
+    expect(c.getTextInput().hasClass('text-danger')).not.toBeTruthy();
     expect(c.getCheckbox().props().defaultChecked).toEqual(true);
     expect(c.getSelect().props().value).toEqual(0);
 
@@ -32,7 +32,7 @@ describe('AddIngredientForm component', ()=>{
       isAvailable: false,
       category: { id: 1 }
     });
-    expect(c.getTextInput().props().className).toContain('text-danger');
+    expect(c.getTextInput().hasClass('text-danger')).toBeTruthy();
     expect(c.getCheckbox().props().defaultChecked).toEqual(false);
     expect(c.getSelect().props().value).toEqual(1);
   });

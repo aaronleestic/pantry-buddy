@@ -12,19 +12,22 @@ export function AddIngredientFormUI({formProp, handleSubmit, handleAvailChange, 
     e.preventDefault();
 
     //show potential validation error
-    const elements = e.target.elements;
-    if ( !elements.ingredient.value.trim() ){
+    const els = e.target.elements;
+    if ( !els.ingredient.value.trim() ){
       setInputWarning(true);
-      setTimeout(() => setInputWarning(false), 1500); //removes the css class after 1.5 second
-      return;
+      return setTimeout(() => setInputWarning(false), 1500); //removes the css class after 1.5 second
     }
 
     //update global state
-    handleSubmit(elements);
+    handleSubmit({
+      name: els.ingredient.value.trim(),
+      category: els.category.value,
+      isAvailable: els.isAvailable.checked,
+    });
 
     //clears the text input
     //TODO update when handleSubmit becomes async
-    elements.ingredient.value = "";
+    els.ingredient.value = "";
   }
 
   return (
@@ -71,7 +74,7 @@ export function AddIngredientFormUI({formProp, handleSubmit, handleAvailChange, 
       </div>
     </form>
   )
-};
+}
 
 const mapStateToProps = (state) => ({
   formProp: state.addIngredientForm
@@ -86,14 +89,8 @@ const mapDispatchToProps = dispatch => ({
     type: Actions.CHANGE_ADDFORM_CATEGORY,
     payload: e.target.value
   }),
-  handleSubmit: elements => dispatch({
-    type: Actions.ADD_INGREDIENT,
-    payload: {
-      name: elements.ingredient.value.trim(),
-      category: elements.category.value,
-      isAvailable: elements.isAvailable.checked,
-    }
-  })
+  handleSubmit: payload => dispatch({
+    type: Actions.ADD_INGREDIENT, payload })
 });
 
 export const AddIngredientForm = connect(mapStateToProps, mapDispatchToProps)(AddIngredientFormUI);
