@@ -2,9 +2,20 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
-h1 {
-  size: 2rem;
-  font-family: 'Pacifico', monospace;
+body, .mh-100 {
+  min-height:100vh;
+}
+
+body {
+  background-image: url(../images/background/2.jpg);
+  background-position: center;
+}
+
+header {
+  h1 {
+    size: 2rem;
+    font-family: 'Pacifico', monospace;
+  }
 }
 
 header, footer {
@@ -23,15 +34,12 @@ footer {
 
 .container {
   background-color: rgba(255, 255, 255, 0.9);
-}
-
-@include media-breakpoint-between(lg, xl) {
-  .container {
+  @include media-breakpoint-between(lg, xl) {
     max-width: 768px;
   }
 }
 
-::placeholder {
+input::placeholder {
   font-style: italic;
   font-weight: normal;
 }
@@ -42,4 +50,15 @@ footer {
     background-color: rgba(255, 255, 255, .5);
     font-weight: 100
   }
+}
+
+@keyframes blink {
+  50% { border-color: #dc3545; }
+}
+.invalid-blink {
+  animation-name: blink ;
+  animation-duration: .25s ;
+  animation-timing-function: step-end ;
+  animation-iteration-count: 6 ;
+  animation-direction: alternate ;
 }

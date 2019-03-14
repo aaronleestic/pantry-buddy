@@ -1,29 +1,24 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-function Recipes(){
-  return (
-    <div class="px-3">
+export const RecipesUI = () => (
+  <div className="px-3">
+    <p>
+      Upcoming feature:
+      <br></br>
+      Add recipes and automatically see which dishes you can make based on ingredients availability.
+    </p>
+    Feature roadmap
+    <ul>
+      {["Offline persistence for your pantry list (Progressive Web App)",
+      "Type ahead for popular ingredients",
+      "Online persistence for usage across devices",
+      "Import of common dishes",
+      "Native mobile",
+      "Share recipe with other users"
+      ].map((feature, i)=> <li key={i}>{feature}</li>)}
+    </ul>
+  </div>
+);
 
-      <p>
-        Upcoming feature:
-        <br></br>
-        Add recipes and automatically see which dishes you can make based on ingredients availability.
-      </p>
-
-      <p>
-        Feature roadmap:
-        <br/>
-        1. Offline persistence for your pantry list (Progressive Web App)
-        <br/>
-        2. Online persistence for usage across devices
-        <br/>
-        3. Native mobile
-        <br/>
-        4. Share recipe with other users
-      </p>
-
-    </div>
-  )
-}
-
-export default Recipes;
+export const Recipes = connect()(RecipesUI);

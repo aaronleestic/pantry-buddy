@@ -1,6 +1,5 @@
-import FOOD_CATEGORIES from "./foodCategories";
-import Actions from "./actions";
-import { createStore, combineReducers } from 'redux';
+import FOOD_CATEGORIES from "../FoodCategories";
+import Actions from "../actions";
 
 //global state schema
 //
@@ -18,7 +17,7 @@ const initialAddFormState = {
   isAvailable: true,
   category: FOOD_CATEGORIES[0],
 };
-const addIngredientForm = (state = initialAddFormState, action) => {
+export const addIngredientForm = (state = initialAddFormState, action) => {
   switch(action.type){
     case Actions.CHANGE_ADDFORM_AVAIL:
       return { ...state, isAvailable: action.payload };
@@ -29,14 +28,14 @@ const addIngredientForm = (state = initialAddFormState, action) => {
   }
 };
 
-const initialIngredientsState = "abcdefhijklm".split('').map((letter, index) => {
-  return {
-    isAvailable: index%2 === 0,
-    name: letter+' food',
-    category: Math.floor(index/2)
-  }
-});
-const ingredients = (ingredients = initialIngredientsState, action) => {
+// const initialIngredientsState = "abcdefhijklm".split('').map((letter, index) => {
+//   return {
+//     isAvailable: index%2 === 0,
+//     name: letter+' food',
+//     category: Math.floor(index/2)
+//   }
+// });
+export const ingredients = (ingredients = [], action) => {
   const payload = action.payload;
   switch(action.type) {
 
@@ -62,17 +61,3 @@ const ingredients = (ingredients = initialIngredientsState, action) => {
       return ingredients;
   }
 };
-
-const pantryBuddy = combineReducers({
-  ingredients,
-  addIngredientForm
-});
-
-const store = createStore(
-  pantryBuddy,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-store.subscribe(() => console.log('state', store.getState()));
-
-
-export default store;

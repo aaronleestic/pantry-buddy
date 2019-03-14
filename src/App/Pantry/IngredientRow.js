@@ -8,29 +8,25 @@ import Actions from "../actions";
 
 library.add(faTrashAlt);
 
-export const IngredientRowUI = ({ing, dispatch, handleAvailChange, handleRemove}) => {
-  return (
-    <div>
-      <li className="list-group-item border-bottom-0 rounded-0 d-flex flex-row">
-        <div className="custom-control custom-checkbox">
-          <input className="custom-control-input" type="checkbox"
-                 defaultChecked={ing.isAvailable}
-                 id={ing.name}
-                 onChange={e => handleAvailChange(e, ing)}/>
-          <label htmlFor={ing.name}
-                 className={classNames('custom-control-label pl-2', {'text-danger font-weight-bold': !ing.isAvailable})}>
-            {ing.name}
-          </label>
-        </div>
-        <button type="button"
-                onClick={() => handleRemove(ing)}
-                className="border-0 ml-auto bg-transparent">
-          <FontAwesomeIcon role="button" icon="trash-alt" className="text-muted"> </FontAwesomeIcon>
-        </button>
-      </li>
+export const IngredientRowUI = ({ing, handleAvailChange, handleRemove}) => (
+  <li className="list-group-item border-bottom-0 rounded-0 d-flex flex-row">
+    <div className="custom-control custom-checkbox">
+      <input className="custom-control-input" type="checkbox"
+             defaultChecked={ing.isAvailable}
+             id={ing.name}
+             onChange={e => handleAvailChange(e, ing)}/>
+      <label htmlFor={ing.name}
+             className={classNames('custom-control-label pl-2', {'text-danger font-weight-bold': !ing.isAvailable})}>
+        {ing.name}
+      </label>
     </div>
-  );
-};
+    <button type="button"
+            onClick={() => handleRemove(ing)}
+            className="border-0 ml-auto bg-transparent">
+      <FontAwesomeIcon role="button" icon="trash-alt" className="text-muted"> </FontAwesomeIcon>
+    </button>
+  </li>
+);
 
 const mapDispatchToProps = dispatch => ({
   handleAvailChange: (e, ing) => dispatch({
