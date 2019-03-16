@@ -6,7 +6,7 @@ import {library} from '@fortawesome/fontawesome-svg-core'
 import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {ingredientShape} from "../models";
-import {removeIngredient, updateIngredientAvail} from "./actions";
+import {removeIngredient, toggleIngredAvail} from "../actions/ingredient";
 library.add(faTrashAlt);
 
 export function IngredientRow({ingredient, handleAvailChange, handleRemove}){
@@ -50,7 +50,7 @@ IngredientRow.propTypes = {
 
 function mapDispatchToProps(dispatch){
   return {
-    handleAvailChange: (ing, isAvail) => dispatch(updateIngredientAvail(ing, isAvail)),
+    handleAvailChange: ing => dispatch(toggleIngredAvail(ing)),
     handleRemove: ing => dispatch(removeIngredient(ing))
   }
 }

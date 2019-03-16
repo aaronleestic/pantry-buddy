@@ -8,8 +8,9 @@ import { Collapse } from 'reactstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faCaretDown, faCaretLeft} from '@fortawesome/free-solid-svg-icons';
-import {toggleCategoryCollapse} from "./actions";
+
 import {subDivideIngredients} from "../helpers";
+import {toggleCategoryCollapse} from "../actions/category";
 library.add(faCaretDown, faCaretLeft);
 
 export function Pantry({ingredientGroups, handleCollapse}){

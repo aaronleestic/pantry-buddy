@@ -3,10 +3,10 @@ import { MemoryRouter } from 'react-router';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import App from './App';
-import Pantry from "./Pantry/Pantry";
-import Recipes from "./Recipes/Recipes";
-jest.mock('./Pantry/Pantry', () => () => <div/>);
-jest.mock('./Recipes/Recipes', () => () => <div/>);
+import Pantry from "./components/Pantry";
+import Recipes from "./components/Recipes";
+jest.mock('./components/Pantry', () => () => <div/>);
+jest.mock('./components/Recipes', () => () => <div/>);
 
 describe('App', ()=>{
 

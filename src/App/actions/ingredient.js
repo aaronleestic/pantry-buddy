@@ -1,28 +1,15 @@
-import axios from "axios";
 import Dexie from "dexie";
+import axios from "axios";
+import {CATEGORY_TABLE, DB_NAME, INGRED_TABLE} from "../database";
+import db from "../database";
 import {Action} from "../constants";
-import db, {DB_NAME, INGRED_TABLE, CATEGORY_TABLE} from '../database';
-import {defaultCategories} from "../reducers";
+import {defaultCategories} from "../reducers/categories";
 
-export function updateAddIngFormAvail(isAvailable){
-  return {
-    type: Action.CHANGE_ADDFORM_AVAIL,
-    payload: isAvailable
-  };
-}
-
-export function updateAddIngFormCat(categoryId){
-  return {
-    type: Action.CHANGE_ADDFORM_CATEGORY,
-    payload: Number(categoryId)
-  }
-}
-
+//loads from the DB if it exists, otherwise from backend to initialize
 export function loadIngredients(){
   return dispatch => {
     (async () => {
       try {
-        // Dexie.delete(DB_NAME);
         const exists = await Dexie.exists(DB_NAME);
         console.log(exists ? "database exists, loading from DB" : "no database available, load list from backend");
 
@@ -46,6 +33,7 @@ export function loadIngredients(){
   }
 }
 
+//fetches from the API adds additional values
 function fetchIngredients() {
   const makeAvailableTrue = ingredient => ({...ingredient, isAvailable: true});
   const provideId = (ingredient, index) => ({...ingredient, id: index});
@@ -76,23 +64,12 @@ export function removeIngredient(ing){
   )
 }
 
-export function updateIngredientAvail(ingredient){
+export function toggleIngredAvail(ingredient){
   return (dispatch) => (
     db.table(INGRED_TABLE).update(ingredient.id, {isAvailable: !ingredient.isAvailable}).then(() => {
       dispatch({
         type: Action.TOGGLE_INGREDIENT_AVAIL,
         payload: ingredient
-      })
-    })
-  )
-}
-
-export function toggleCategoryCollapse(category){
-  return (dispatch) => (
-    db.table(CATEGORY_TABLE).update(category.id, {isOpen: !category.isOpen}).then(() => {
-      dispatch({
-        type: Action.TOGGLE_CATEGORY_COLLAPSE,
-        payload: category
       })
     })
   )

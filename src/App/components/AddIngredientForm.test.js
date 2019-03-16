@@ -8,6 +8,7 @@ describe('AddIngredientForm', ()=>{
     const c = mount(
       <AddIngredientForm
         formProp={formProp}
+        categories={[]}
         handleSubmit={handleSubmitMock}
         handleCategoryChange={jest.fn()}/>
       );

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {withRouter} from "react-router";
 import App from "./App";
-import {loadIngredients} from "./Pantry/actions";
+import {loadIngredients} from "./actions/ingredient";
 
 function AppContainer({isLoading, dispatch}){
 

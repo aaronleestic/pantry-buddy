@@ -1,24 +1,14 @@
 import {Action} from "../constants";
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import {addIngredient, removeIngredient, updateAddIngFormAvail, updateAddIngFormCat, updateIngredientAvail } from "./actions";
+import {addIngredient, removeIngredient, toggleIngredAvail } from "./ingredient";
+import {updateAddIngFormAvail, updateAddIngFormCat} from "./addForm";
 import db from '../database';
 jest.mock('../database');
 
 describe('actions', ()=>{
 
   const mockStore = configureMockStore([thunk]);
-
-  it('add ingredient', ()=> {
-    db.table.mockImplementation(() => {
-      return { add: () => Promise.resolve(1) }
-    });
-    const store = mockStore({ ingredients: [] });
-    const action = addIngredient({ name: "apple" });
-    return store.dispatch(action).then(() => {
-      expect(store.getActions()[0]).toEqual({ type: Action.ADD_INGREDIENT, payload: { name: "apple", id: 1 } })
-    });
-  });
 
   it('update form checkbox', ()=> {
     const action = updateAddIngFormAvail(true);
@@ -32,15 +22,26 @@ describe('actions', ()=>{
     expect(action).toEqual(expected);
   });
 
+  it('add ingredient', ()=> {
+    db.table.mockImplementation(() => {
+      return { add: () => Promise.resolve(1) }
+    });
+    const store = mockStore({ ingredients: [] });
+    const action = addIngredient({ name: "apple" });
+    return store.dispatch(action).then(() => {
+      expect(store.getActions()[0]).toEqual({ type: Action.ADD_INGREDIENT, payload: { name: "apple", id: 1 } })
+    });
+  });
+
   it('updateIngredient', ()=>{
     db.table.mockImplementation(() => {
       return { update: () => Promise.resolve() }
     });
     const ingredient = { name: "apple", isAvailable: true, id: 2 };
     const store = mockStore({ ingredients: [ingredient] });
-    const action = updateIngredientAvail(ingredient, false);
+    const action = toggleIngredAvail(ingredient);
     return store.dispatch(action).then(() => {
-      expect(store.getActions()[0]).toEqual({ type: Action.TOGGLE_INGREDIENT_AVAIL, payload: { ingredient, isAvailable: false } });
+      expect(store.getActions()[0]).toEqual({ type: Action.TOGGLE_INGREDIENT_AVAIL, payload: ingredient });
     });
   });
 

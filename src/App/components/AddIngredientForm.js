@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
-import {ingredientShape} from "../models";
-import {addIngredient, updateAddIngFormAvail, updateAddIngFormCat} from "./actions";
+import {categoryShape, ingredientShape} from "../models";
+import {updateAddIngFormAvail, updateAddIngFormCat} from "../actions/addForm";
+import {addIngredient} from "../actions/ingredient";
 
 export function AddIngredientForm({formProp, categories, handleSubmit, handleAvailChange, handleCategoryChange}){
 
@@ -82,6 +83,7 @@ export function AddIngredientForm({formProp, categories, handleSubmit, handleAva
 
 AddIngredientForm.propTypes = {
   formProp: PropTypes.shape(ingredientShape).isRequired,
+  categories: PropTypes.shape(categoryShape).isRequired,
   handleSubmit: PropTypes.func,
   handleAvailChange: PropTypes.func,
   handleCategoryChange: PropTypes.func

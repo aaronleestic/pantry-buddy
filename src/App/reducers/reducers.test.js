@@ -1,5 +1,5 @@
-import {Action} from "./constants";
-import {ingredients} from "./reducers";
+import {Action} from "../constants";
+import ingredients from "./ingredients";
 
 describe("reducers", ()=>{
 
@@ -19,25 +19,24 @@ describe("reducers", ()=>{
 
   it('removes from the ingredients state list when dispatched', ()=>{
     const item = {};
+    const initialState = [item];
     const action = {
       type: Action.REMOVE_INGREDIENT,
       payload: item
     };
-    const list = ingredients([item], action);
+    const list = ingredients(initialState, action);
     expect(list).toHaveLength(0);
   });
 
   it("updates an ingredient's availability in state list when dispatched", ()=>{
     const ingredient = {isAvailable: false};
+    const initialState = [ingredient];
     const action = {
       type: Action.TOGGLE_INGREDIENT_AVAIL,
-      payload: {
-        ingredient,
-        isAvailable: true
-      }
+      payload: ingredient
     };
-    const list = ingredients([ingredient], action);
-    expect(list[0].isAvailable).toBeTruthy();
+    const newState = ingredients(initialState, action);
+    expect(newState[0].isAvailable).toBeTruthy();
   });
 
 });
