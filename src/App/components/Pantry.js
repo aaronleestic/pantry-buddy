@@ -14,7 +14,6 @@ import {toggleCategoryCollapse} from "../actions/category";
 library.add(faCaretDown, faCaretLeft);
 
 export function Pantry({ingredientGroups, handleCollapse}){
-
   return (
     <>
       <AddIngredientForm/>

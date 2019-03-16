@@ -8,6 +8,14 @@ import { Provider } from 'react-redux';
 import store from './App/store';
 import AppContainer from "./App/App.container";
 
+//forces https instead of configuring server-side on free hosting networks
+if ( window.location.protocol !== 'https:' && process.env.NODE_ENV !== 'development' ) {
+  window.location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+  serviceWorker.register();
+} else {
+  serviceWorker.unregister();
+}
+
 ReactDOM.render(
   <Provider store={store}>
     <Router>
@@ -16,10 +24,3 @@ ReactDOM.render(
   </Provider>
   ,document.getElementById('root')
 );
-
-// App works offline with browser's Index DB persistence
-serviceWorker.register();
-
-//forces https instead of configuring server-side on free hosting networks
-if ( window.location.protocol !== 'https:')
-  window.location.href = 'https:' + window.location.href.substring(window.location.protocol.length);

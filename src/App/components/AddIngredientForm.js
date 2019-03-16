@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import {categoryShape, ingredientShape} from "../models";
-import {updateAddIngFormAvail, updateAddIngFormCat} from "../actions/addForm";
+import {updateAddIngForm} from "../actions/addForm";
 import {addIngredient} from "../actions/ingredient";
 
 export function AddIngredientForm({formProp, categories, handleSubmit, handleAvailChange, handleCategoryChange}){
@@ -24,7 +24,7 @@ export function AddIngredientForm({formProp, categories, handleSubmit, handleAva
     //update global state
     handleSubmit({
       name: els['ingredient'].value.trim(),
-      categoryId: Number(els['category'].value),
+      categoryId: Number(els['categoryId'].value),
       isAvailable: els['isAvailable'].checked,
     });
 
@@ -64,12 +64,12 @@ export function AddIngredientForm({formProp, categories, handleSubmit, handleAva
         </div>
       </div>
       <div className="form-group row text-center">
-        <label htmlFor="category" className="col-2 col-form-label">Type</label>
+        <label htmlFor="categoryId" className="col-2 col-form-label">Type</label>
         <div className="col-10 d-inline-flex">
           <select
             onChange={handleCategoryChange}
             value={formProp.categoryId}
-            className="form-control" id="category">
+            className="form-control" id="categoryId">
             {categories.map(c => (
               <option key={c.id} value={c.id}>{c.name}</option>
             ))}
@@ -95,8 +95,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleAvailChange: e => dispatch(updateAddIngFormAvail(e.target.checked)),
-  handleCategoryChange: e => dispatch(updateAddIngFormCat(e.target.value)),
+  handleAvailChange: e => dispatch(updateAddIngForm({ isAvailable: e.target.checked })),
+  handleCategoryChange: e => dispatch(updateAddIngForm({ categoryId: Number(e.target.value) })),
   handleSubmit: ing => dispatch(addIngredient(ing))
 });
 

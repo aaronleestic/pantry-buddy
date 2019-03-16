@@ -15,12 +15,12 @@ export function loadIngredients(){
 
         //loads the list and puts it into the state store
         const ingredients = exists ? await db.table(INGRED_TABLE).toArray() : await fetchIngredients();
-        dispatch({ type: Action.LOAD_INCREDIENTS, payload: ingredients });
+        dispatch({ type: Action.LOAD_INCREDIENTS, ingredients });
 
         if ( exists ){
           //loads the existing category states
           const categories = await db.table(CATEGORY_TABLE).toArray();
-          dispatch({ type: Action.ADD_CATEGORIES, payload: categories})
+          dispatch({ type: Action.ADD_CATEGORIES, categories })
 
         } else {
           //saves the loaded data into DB
@@ -45,21 +45,15 @@ function fetchIngredients() {
 export function addIngredient(ingredient){
   return (dispatch) => (
     db.table(INGRED_TABLE).add(ingredient).then(id => {
-      dispatch({
-        type: Action.ADD_INGREDIENT,
-        payload: { ...ingredient, id }
-      });
+      dispatch({ type: Action.ADD_INGREDIENT, ingredient: { ...ingredient, id } });
     })
   )
 }
 
-export function removeIngredient(ing){
+export function removeIngredient(ingredient){
   return (dispatch) => (
-    db.table(INGRED_TABLE).delete(ing.id).then(() => {
-      dispatch({
-        type: Action.REMOVE_INGREDIENT,
-        payload: ing
-      })
+    db.table(INGRED_TABLE).delete(ingredient.id).then(() => {
+      dispatch({ type: Action.REMOVE_INGREDIENT, ingredient })
     })
   )
 }
@@ -67,10 +61,7 @@ export function removeIngredient(ing){
 export function toggleIngredAvail(ingredient){
   return (dispatch) => (
     db.table(INGRED_TABLE).update(ingredient.id, {isAvailable: !ingredient.isAvailable}).then(() => {
-      dispatch({
-        type: Action.TOGGLE_INGREDIENT_AVAIL,
-        payload: ingredient
-      })
+      dispatch({ type: Action.TOGGLE_INGREDIENT_AVAIL, ingredient })
     })
   )
 }

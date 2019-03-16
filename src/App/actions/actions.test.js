@@ -2,7 +2,7 @@ import {Action} from "../constants";
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import {addIngredient, removeIngredient, toggleIngredAvail } from "./ingredient";
-import {updateAddIngFormAvail, updateAddIngFormCat} from "./addForm";
+import {updateAddIngForm} from "./addForm";
 import db from '../database';
 jest.mock('../database');
 
@@ -11,15 +11,13 @@ describe('actions', ()=>{
   const mockStore = configureMockStore([thunk]);
 
   it('update form checkbox', ()=> {
-    const action = updateAddIngFormAvail(true);
-    const expected = { type: Action.CHANGE_ADDFORM_AVAIL, payload: true };
-    expect(action).toEqual(expected);
+    const action = updateAddIngForm({ isAvailable: true });
+    expect(action).toEqual({ type: Action.UPDATE_INGRED_FORM, form: { isAvailable: true } });
   });
 
   it('update form category', ()=> {
-    const action = updateAddIngFormCat("1");
-    const expected = { type: Action.CHANGE_ADDFORM_CATEGORY, payload: 1 };
-    expect(action).toEqual(expected);
+    const action = updateAddIngForm({ categoryId: 2 });
+    expect(action).toEqual({ type: Action.UPDATE_INGRED_FORM, form: { categoryId: 2 } });
   });
 
   it('add ingredient', ()=> {
@@ -29,7 +27,7 @@ describe('actions', ()=>{
     const store = mockStore({ ingredients: [] });
     const action = addIngredient({ name: "apple" });
     return store.dispatch(action).then(() => {
-      expect(store.getActions()[0]).toEqual({ type: Action.ADD_INGREDIENT, payload: { name: "apple", id: 1 } })
+      expect(store.getActions()[0]).toEqual({ type: Action.ADD_INGREDIENT, ingredient: { name: "apple", id: 1 } })
     });
   });
 
@@ -41,7 +39,7 @@ describe('actions', ()=>{
     const store = mockStore({ ingredients: [ingredient] });
     const action = toggleIngredAvail(ingredient);
     return store.dispatch(action).then(() => {
-      expect(store.getActions()[0]).toEqual({ type: Action.TOGGLE_INGREDIENT_AVAIL, payload: ingredient });
+      expect(store.getActions()[0]).toEqual({ type: Action.TOGGLE_INGREDIENT_AVAIL, ingredient });
     });
   });
 
@@ -53,7 +51,7 @@ describe('actions', ()=>{
     const store = mockStore({ ingredients: [ingredient] });
     const action = removeIngredient(ingredient);
     return store.dispatch(action).then(() => {
-      expect(store.getActions()[0]).toEqual({ type: Action.REMOVE_INGREDIENT, payload: ingredient });
+      expect(store.getActions()[0]).toEqual({ type: Action.REMOVE_INGREDIENT, ingredient });
     });
   });
 

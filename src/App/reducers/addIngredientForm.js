@@ -6,10 +6,8 @@ const initialAddFormState = {
 };
 export default function addIngredientForm(state = initialAddFormState, action){
   switch(action.type){
-    case Action.CHANGE_ADDFORM_AVAIL:
-      return { ...state, isAvailable: action.payload };
-    case Action.CHANGE_ADDFORM_CATEGORY:
-      return { ...state, categoryId: action.payload };
+    case Action.UPDATE_INGRED_FORM:
+      return { ...state, ...action.form };
     default:
       return state;
   }

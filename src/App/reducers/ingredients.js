@@ -1,24 +1,28 @@
 import {Action} from "../constants";
-import {updateElementInArray} from "../helpers";
+import {insensitiveAlphaSortBy, updateElementInArray} from "../helpers";
 
-export default function ingredients(ingredients = [], action){
-  const sortFn = (c1, c2) => c1.name.localeCompare(c2.name, undefined, {sensitivity: 'base'});
-  let payload = action.payload;
+const sortFn = insensitiveAlphaSortBy('name');
+
+export default function ingredients(state = [], action){
+
+  const ingredients = action.ingredients;
+  const ingredient = action.ingredient;
+
   switch(action.type) {
 
     case Action.ADD_INGREDIENT:
-      return [...ingredients, payload].sort(sortFn);
+      return [...state, ingredient].sort(sortFn);
 
     case Action.LOAD_INCREDIENTS:
-      return payload.sort(sortFn);
+      return ingredients.sort(sortFn);
 
     case Action.TOGGLE_INGREDIENT_AVAIL:
-      return updateElementInArray(ingredients, payload, 'isAvailable', !payload.isAvailable);
+      return updateElementInArray(state, ingredient, 'isAvailable', !ingredient.isAvailable);
 
     case Action.REMOVE_INGREDIENT:
-      return ingredients.filter(ing => ing !== payload);
+      return state.filter(ing => ing !== ingredient);
 
     default:
-      return ingredients;
+      return state;
   }
 }

@@ -20,3 +20,10 @@ export function subDivideIngredients(allIngredients, categories){
     };
   }))
 }
+
+//curried function
+export function insensitiveAlphaSortBy(key){
+  return (c1, c2) => {
+    return c1[key].localeCompare(c2[key], undefined, {sensitivity: 'base'});
+  };
+}
