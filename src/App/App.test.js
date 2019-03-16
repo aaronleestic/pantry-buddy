@@ -5,18 +5,14 @@ import configureStore from 'redux-mock-store';
 import App from './App';
 import Pantry from "./components/Pantry";
 import Recipes from "./components/Recipes";
+
+//mocks the child components so that are not fully mounted
 jest.mock('./components/Pantry', () => () => <div/>);
 jest.mock('./components/Recipes', () => () => <div/>);
 
 describe('App', ()=>{
 
-  const store = configureStore()({
-    ingredients: [],
-    addIngredientForm: {
-      isAvailable: true,
-      categoryId: 0,
-    }
-  });
+  const store = configureStore()({});
 
   //Page Object Model
   function getComponent(path){

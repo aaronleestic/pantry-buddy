@@ -83,7 +83,7 @@ export function AddIngredientForm({formProp, categories, handleSubmit, handleAva
 
 AddIngredientForm.propTypes = {
   formProp: PropTypes.shape(ingredientShape).isRequired,
-  categories: PropTypes.shape(categoryShape).isRequired,
+  categories: PropTypes.arrayOf(PropTypes.shape(categoryShape)).isRequired,
   handleSubmit: PropTypes.func,
   handleAvailChange: PropTypes.func,
   handleCategoryChange: PropTypes.func

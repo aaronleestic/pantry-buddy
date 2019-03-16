@@ -9,7 +9,11 @@ export const defaultCategories = [
   "Snacks",
   "Spices & Seasonings",
   "misc"
-].map((name, index) => ({ name, id: index, isOpen: true }));
+].map((name, index) => ({
+  name,
+  id: index,
+  isOpen: true
+}));
 
 export default function categories(categories = defaultCategories, action ){
   const payload = action.payload;

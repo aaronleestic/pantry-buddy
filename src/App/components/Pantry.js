@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import AddIngredientForm from "./AddIngredientForm";
 import IngredientRow from "./IngredientRow";
 import {categoryShape, ingredientShape} from "../models";
-import { Collapse } from 'reactstrap';
+import Collapse from 'reactstrap/lib/Collapse';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faCaretDown, faCaretLeft} from '@fortawesome/free-solid-svg-icons';
-
 import {subDivideIngredients} from "../helpers";
 import {toggleCategoryCollapse} from "../actions/category";
+
 library.add(faCaretDown, faCaretLeft);
 
 export function Pantry({ingredientGroups, handleCollapse}){
@@ -23,7 +23,7 @@ export function Pantry({ingredientGroups, handleCollapse}){
         return (
           <div key={group.category.id}>
             <div className="d-flex flex-row category-row border-top" onClick={onClick}>
-              <div className="px-3 py-2">{group.category.name}</div>
+              <div className="px-3 py-1">{group.category.name}</div>
               <button type="button"
                       key={group.category.id}
                       className="border-0 ml-auto bg-transparent px-3 mr-3">
