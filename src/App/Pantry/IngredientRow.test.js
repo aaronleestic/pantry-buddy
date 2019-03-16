@@ -1,7 +1,7 @@
 import React from 'react';
 import {IngredientRow} from "./IngredientRow";
 
-describe('IngredientRow component', ()=>{
+describe('IngredientRow', ()=>{
 
   function getComponent(ingredient){
     const c = shallow(<IngredientRow ingredient={ingredient}/>);

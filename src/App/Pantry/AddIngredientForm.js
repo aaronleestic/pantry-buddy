@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames/bind';
-import Actions from "../actions";
-import FOOD_CATEGORIES from "../FoodCategories";
 import PropTypes from 'prop-types';
 import {ingredientShape} from "../models";
+import {addIngredient, updateAddIngFormAvail, updateAddIngFormCat} from "./actions";
 
-export function AddIngredientForm({formProp, handleSubmit, handleAvailChange, handleCategoryChange}){
+export function AddIngredientForm({formProp, categories, handleSubmit, handleAvailChange, handleCategoryChange}){
 
   let [isBlinking, setInputWarning] = useState(false);
 
@@ -29,12 +28,11 @@ export function AddIngredientForm({formProp, handleSubmit, handleAvailChange, ha
     });
 
     //clears the text input
-    //TODO update when handleSubmit becomes async
     els['ingredient'].value = "";
   }
 
   return (
-    <form onSubmit={prepSubmit} autoComplete="off" className="px-3">
+    <form onSubmit={prepSubmit} autoComplete="off" className="px-3" data-testid="form-1">
       <div className="row">
         <div className="col-2">
           <div className="custom-control custom-checkbox text-center">
@@ -45,7 +43,7 @@ export function AddIngredientForm({formProp, handleSubmit, handleAvailChange, ha
               aria-label="availability of ingredient"
               defaultChecked={formProp.isAvailable}
               onChange={handleAvailChange}/>
-            <label className="custom-control-label mt-2" htmlFor="isAvailable"> </label>
+            <label className="custom-control-label mt-2" htmlFor="isAvailable"/>
           </div>
         </div>
         <div className="col-10">
@@ -71,7 +69,7 @@ export function AddIngredientForm({formProp, handleSubmit, handleAvailChange, ha
             onChange={handleCategoryChange}
             value={formProp.categoryId}
             className="form-control" id="category">
-            {FOOD_CATEGORIES.map(c => (
+            {categories.map(c => (
               <option key={c.id} value={c.id}>{c.name}</option>
             ))}
           </select>
@@ -90,20 +88,14 @@ AddIngredientForm.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  formProp: state.addIngredientForm
+  formProp: state.addIngredientForm,
+  categories: state.categories
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleAvailChange: e => dispatch({
-    type: Actions.CHANGE_ADDFORM_AVAIL,
-    payload: e.target.checked
-  }),
-  handleCategoryChange: e => dispatch({
-    type: Actions.CHANGE_ADDFORM_CATEGORY,
-    payload: Number(e.target.value)
-  }),
-  handleSubmit: payload => dispatch({
-    type: Actions.ADD_INGREDIENT, payload })
+  handleAvailChange: e => dispatch(updateAddIngFormAvail(e.target.checked)),
+  handleCategoryChange: e => dispatch(updateAddIngFormCat(e.target.value)),
+  handleSubmit: ing => dispatch(addIngredient(ing))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddIngredientForm);

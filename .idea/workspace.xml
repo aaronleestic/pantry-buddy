@@ -2,20 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eb5cb7a-cde7-4411-8bb9-537d1a836e3d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App/models/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pantry-buddy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pantry-buddy.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/ingredients.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/App.container.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pantry/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/Pantry/actions.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/database.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/helpers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App/reducers.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/App.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/FoodCategories.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pantry/AddIngredientForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pantry/AddIngredientForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pantry/AddIngredientForm.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pantry/AddIngredientForm.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pantry/IngredientRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pantry/IngredientRow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pantry/IngredientRow.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pantry/IngredientRow.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pantry/Pantry.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pantry/Pantry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App/Pantry/Pantry.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pantry/Pantry.reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Pantry/Pantry.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/reducers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Pantry/Pantry.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Pantry/Pantry.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/Recipes/Recipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Recipes/Recipes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.scss" afterDir="false" />
     </list>
     <ignored path="pantry-buddy.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,21 +45,90 @@
     <favorites_list name="pantry-buddy" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/App/Pantry/Pantry.reducer.js">
+        <entry file="file://$PROJECT_DIR$/src/App/App.container.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="3" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+            <state relative-caret-position="150">
+              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" column="14" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App/App.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="48" column="1" lean-forward="true" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App/App.test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App/database.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App/store.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#80#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App/reducers.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="867">
+              <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/App/Pantry/IngredientRow.js">
+        <entry file="file://$PROJECT_DIR$/src/App/Pantry/Pantry.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+            <state relative-caret-position="345">
+              <caret line="23" column="67" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -56,30 +138,15 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>button</find>
-      <find>btn-input</find>
-      <find>input</find>
-      <find>checkbox</find>
-      <find>checked</find>
-      <find>check</find>
-      <find>ref</find>
-      <find>hint</find>
-      <find>&lt;/option&gt;</find>
-      <find>Food</find>
-      <find>default</find>
-      <find>ADDFORM_AVAILABILITY_CHANGE: 'ADDFORM_AVAILABILITY_CHANGE',</find>
-      <find>addFo</find>
-      <find>addForm</find>
-      <find>.addIngredientForm</find>
-      <find>.addForm</find>
-      <find>contain</find>
-      <find>focus</find>
-      <find>trabsu</find>
-      <find>custom</find>
-      <find>classnam</find>
-      <find>state</find>
       <find>updateText</find>
       <find>textHint</find>
       <find>m</find>
@@ -88,6 +155,28 @@
       <find>click</find>
       <find>category</find>
       <find>category:</find>
+      <find>\s\d</find>
+      <find>$</find>
+      <find>spin</find>
+      <find>ADD_ingr</find>
+      <find>add</find>
+      <find>bool</find>
+      <find>dispat</find>
+      <find>actions</find>
+      <find>./act</find>
+      <find>Actions</find>
+      <find>Pantry/Pantry.reducer</find>
+      <find>dex</find>
+      <find>thunk</find>
+      <find>,\n\s+&quot;isAvailable&quot;:true</find>
+      <find>db.ingr</find>
+      <find>remove</find>
+      <find>i</find>
+      <find>isOpen</find>
+      <find>isO</find>
+      <find>UPDATE_INGREDIENT_AVAIL</find>
+      <find>fun</find>
+      <find>area</find>
     </findStrings>
     <replaceStrings>
       <replace>~</replace>
@@ -102,7 +191,14 @@
       <replace>.addForm</replace>
       <replace>.form</replace>
       <replace>categoryId:</replace>
+      <replace>\d</replace>
+      <replace>],</replace>
+      <replace>Action</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/App</dir>
+      <dir>$PROJECT_DIR$/src</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -117,34 +213,46 @@
         <option value="$PROJECT_DIR$/src/App.scss" />
         <option value="$PROJECT_DIR$/src/App.test.ts" />
         <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/setupTests.js" />
         <option value="$PROJECT_DIR$/src/App/foodCategories.js" />
         <option value="$PROJECT_DIR$/src/App/reducer.js" />
-        <option value="$PROJECT_DIR$/src/theme.scss" />
         <option value="$PROJECT_DIR$/src/App/Pantry/IngredientRow.container.js" />
-        <option value="$PROJECT_DIR$/src/App/actions.js" />
-        <option value="$PROJECT_DIR$/src/App/reducers.js" />
-        <option value="$PROJECT_DIR$/src/App/store.js" />
         <option value="$PROJECT_DIR$/src/App/Pantry/reducers.js" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/index.scss" />
         <option value="$PROJECT_DIR$/public/manifest.json" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/App/App.js" />
-        <option value="$PROJECT_DIR$/src/App/App.scss" />
-        <option value="$PROJECT_DIR$/src/App/Recipes/Recipes.js" />
-        <option value="$PROJECT_DIR$/src/App/Pantry/IngredientRow.test.js" />
-        <option value="$PROJECT_DIR$/src/App/Pantry/AddIngredientForm.test.js" />
-        <option value="$PROJECT_DIR$/src/App/Pantry/Pantry.test.js" />
         <option value="$PROJECT_DIR$/src/App/model.js" />
         <option value="$PROJECT_DIR$/src/App/models/ingredient.js" />
         <option value="$PROJECT_DIR$/src/App/models/index.js" />
-        <option value="$PROJECT_DIR$/src/App/App.test.js" />
-        <option value="$PROJECT_DIR$/src/App/Pantry/Pantry.js" />
-        <option value="$PROJECT_DIR$/src/App/Pantry/AddIngredientForm.js" />
+        <option value="$PROJECT_DIR$/public/initial-ingredients.json" />
+        <option value="$PROJECT_DIR$/src/theme.scss" />
+        <option value="$PROJECT_DIR$/src/App/keys.js" />
+        <option value="$PROJECT_DIR$/src/setupTests.js" />
+        <option value="$PROJECT_DIR$/src/App/actions.js" />
+        <option value="$PROJECT_DIR$/src/App/FoodCategories.js" />
         <option value="$PROJECT_DIR$/src/App/Pantry/Pantry.reducer.js" />
+        <option value="$PROJECT_DIR$/src/App/reducers.test.js" />
+        <option value="$PROJECT_DIR$/src/App/App.js" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/src/App/Recipes/Recipes.js" />
+        <option value="$PROJECT_DIR$/src/App/Pantry/Pantry.test.js" />
+        <option value="$PROJECT_DIR$/src/App/Pantry/AddIngredientForm.test.js" />
+        <option value="$PROJECT_DIR$/src/App/Pantry/IngredientRow.test.js" />
+        <option value="$PROJECT_DIR$/public/ingredients.json" />
+        <option value="$PROJECT_DIR$/src/App/__mocks__/database.js" />
+        <option value="$PROJECT_DIR$/src/App/Pantry/actions.test.js" />
+        <option value="$PROJECT_DIR$/src/App/App.test.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/App/App.scss" />
+        <option value="$PROJECT_DIR$/src/App/store.js" />
+        <option value="$PROJECT_DIR$/src/App/Pantry/AddIngredientForm.js" />
         <option value="$PROJECT_DIR$/src/App/Pantry/IngredientRow.js" />
+        <option value="$PROJECT_DIR$/src/App/helpers.js" />
+        <option value="$PROJECT_DIR$/src/App/database.js" />
+        <option value="$PROJECT_DIR$/src/App/constants.js" />
+        <option value="$PROJECT_DIR$/src/App/reducers.js" />
+        <option value="$PROJECT_DIR$/src/App/Pantry/actions.js" />
+        <option value="$PROJECT_DIR$/src/App/App.container.js" />
+        <option value="$PROJECT_DIR$/src/App/Pantry/Pantry.js" />
       </list>
     </option>
   </component>
@@ -160,9 +268,9 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="299" />
+    <option name="x" value="257" />
     <option name="y" value="23" />
-    <option name="width" value="1226" />
+    <option name="width" value="1375" />
     <option name="height" value="1053" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -173,7 +281,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -197,13 +304,6 @@
               <item name="pantry-buddy" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="App" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pantry-buddy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pantry-buddy" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
               <item name="Pantry" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -215,18 +315,13 @@
             </path>
             <path>
               <item name="pantry-buddy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pantry-buddy" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="fonts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pantry-buddy" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -248,11 +343,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/App" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/App/Pantry" />
       <recent name="$PROJECT_DIR$/src/app" />
       <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/assets" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
@@ -297,18 +392,21 @@
       <workItem from="1552382508696" duration="40957000" />
       <workItem from="1552499808063" duration="28342000" />
       <workItem from="1552531822850" duration="12675000" />
-      <workItem from="1552585493096" duration="11100000" />
+      <workItem from="1552585493096" duration="29355000" />
+      <workItem from="1552624168156" duration="40000" />
+      <workItem from="1552624534502" duration="4174000" />
+      <workItem from="1552673475845" duration="27415000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104366000" />
+    <option name="totallyTimeSpent" value="154250000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="299" y="23" width="1226" height="1053" extended-state="0" />
+    <frame x="257" y="23" width="1375" height="1053" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27302906" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24298376" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -319,11 +417,12 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3295099" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32882413" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.3295099" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
+      <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -352,6 +451,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -388,28 +497,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/theme.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App/Pantry/IngredientRow.container.js" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/setupTests.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -445,13 +537,6 @@
     <entry file="file://$PROJECT_DIR$/public/favicon.ico">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="35" lean-forward="true" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -459,59 +544,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/manifest.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App/Pantry/IngredientList.js" />
-    <entry file="file://$PROJECT_DIR$/src/App/store.js">
+    <entry file="file://$PROJECT_DIR$/src/App/model.js" />
+    <entry file="file://$PROJECT_DIR$/public/initial-ingredients.json" />
+    <entry file="file://$PROJECT_DIR$/src/theme.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="795">
+          <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/App.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/Recipes/Recipes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/App/keys.js" />
+    <entry file="file://$PROJECT_DIR$/src/setupTests.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App/FoodCategories.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+        <state relative-caret-position="150">
+          <caret line="10" column="3" lean-forward="true" selection-end-line="10" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -525,100 +575,224 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/App.js">
+    <entry file="file://$PROJECT_DIR$/public/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="17" lean-forward="true" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="15">
+          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="35" lean-forward="true" selection-start-line="30" selection-start-column="35" selection-end-line="30" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/Recipes/Recipes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26" selection-start-column="26" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App/Pantry/Pantry.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="30">
+          <caret line="2" column="54" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/model.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/redux-thunk/es/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/__mocks__/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/reducers.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="45" lean-forward="true" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/ingredients.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="222" column="24" lean-forward="true" selection-start-line="222" selection-start-column="24" selection-end-line="222" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/Pantry/actions.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App/Pantry/AddIngredientForm.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="7" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+        <state relative-caret-position="45">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/Pantry/IngredientRow.test.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/App.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App/models/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+        <state relative-caret-position="75">
+          <caret line="5" column="30" lean-forward="true" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/Pantry/IngredientRow.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App/Pantry/AddIngredientForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="104" column="37" lean-forward="true" selection-start-line="104" selection-start-column="37" selection-end-line="104" selection-end-column="37" />
+        <state relative-caret-position="749">
+          <caret line="95" column="76" lean-forward="true" selection-start-line="95" selection-start-column="21" selection-end-line="95" selection-end-column="76" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/Pantry/Pantry.js">
+    <entry file="file://$PROJECT_DIR$/src/App/helpers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="50" column="3" lean-forward="true" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App/Pantry/Pantry.reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="3" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+        <state relative-caret-position="255">
+          <caret line="17" column="22" lean-forward="true" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App/Pantry/IngredientRow.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="321">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+          <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="14" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/App.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="48" column="1" lean-forward="true" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/App.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/reducers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/Pantry/actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="824">
+          <caret line="98" column="1" lean-forward="true" selection-start-line="98" selection-start-column="1" selection-end-line="98" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/App.container.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App/Pantry/Pantry.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="67" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

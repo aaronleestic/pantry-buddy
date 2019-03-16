@@ -2,21 +2,25 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Actions from "../actions";
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {ingredientShape} from "../models";
+import {removeIngredient, updateIngredientAvail} from "./actions";
 library.add(faTrashAlt);
 
 export function IngredientRow({ingredient, handleAvailChange, handleRemove}){
+
+  const onChange = () => handleAvailChange(ingredient);
+  const onRemove = () => handleRemove(ingredient);
+
   return (
     <li className="list-group-item border-bottom-0 rounded-0 d-flex flex-row">
       <div className="custom-control custom-checkbox">
         <input className="custom-control-input"
                defaultChecked={ingredient.isAvailable}
                id={ingredient.name}
-               onChange={e => handleAvailChange(e, ingredient)}
+               onChange={onChange}
                type="checkbox"/>
         <label
           htmlFor={ingredient.name}
@@ -27,10 +31,12 @@ export function IngredientRow({ingredient, handleAvailChange, handleRemove}){
             {ingredient.name}
         </label>
       </div>
-      <button type="button"
-              onClick={() => handleRemove(ingredient)}
-              className="border-0 ml-auto bg-transparent">
-        <FontAwesomeIcon role="button" icon="trash-alt" className="text-muted"> </FontAwesomeIcon>
+      <button
+        type="button"
+        aria-label="remove"
+        onClick={onRemove}
+        className="border-0 ml-auto bg-transparent">
+        <FontAwesomeIcon role="button" icon="trash-alt" className="text-muted"/>
       </button>
     </li>
   )
@@ -42,18 +48,11 @@ IngredientRow.propTypes = {
   ingredient: PropTypes.shape(ingredientShape).isRequired
 };
 
-const mapDispatchToProps = dispatch => ({
-  handleAvailChange: (e, ingredient) => dispatch({
-    type: Actions.UPDATE_INGREDIENT_AVAIL,
-    payload: {
-      ingredient,
-      isAvailable: e.target.checked
-    }
-  }),
-  handleRemove: ingredient => dispatch({
-    type: Actions.REMOVE_INGREDIENT,
-    payload: ingredient
-  })
-});
+function mapDispatchToProps(dispatch){
+  return {
+    handleAvailChange: (ing, isAvail) => dispatch(updateIngredientAvail(ing, isAvail)),
+    handleRemove: ing => dispatch(removeIngredient(ing))
+  }
+}
 
 export default connect(null, mapDispatchToProps)(IngredientRow);

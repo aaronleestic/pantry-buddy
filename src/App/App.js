@@ -13,9 +13,9 @@ function App(){
         </header>
         <main className="flex-fill pt-3">
           <Switch>
-            <Route path="/pantry" component={Pantry} />
-            <Route path="/recipes" component={Recipes} />
-            <Redirect from="/" exact to="/pantry" />
+            <Route path="/pantry" component={Pantry}/>
+            <Route path="/recipes" component={Recipes}/>
+            <Redirect from="/" exact to="/pantry"/>
           </Switch>
         </main>
       </div>

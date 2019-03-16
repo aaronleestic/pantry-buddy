@@ -5,6 +5,8 @@ import configureStore from 'redux-mock-store';
 import App from './App';
 import Pantry from "./Pantry/Pantry";
 import Recipes from "./Recipes/Recipes";
+jest.mock('./Pantry/Pantry', () => () => <div/>);
+jest.mock('./Recipes/Recipes', () => () => <div/>);
 
 describe('App', ()=>{
 
@@ -20,7 +22,7 @@ describe('App', ()=>{
   function getComponent(path){
     const c = mount(
       <Provider store={store}>
-        <MemoryRouter initialEntries={[path || '/']}>
+        <MemoryRouter initialEntries={[path]}>
           <App/>
         </MemoryRouter>
       </Provider>

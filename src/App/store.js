@@ -1,15 +1,22 @@
-import { createStore, combineReducers } from 'redux';
-import { ingredients, addIngredientForm } from './Pantry/Pantry.reducer';
+import { createStore, combineReducers, applyMiddleware, compose  } from 'redux';
+import { ingredients, addIngredientForm, categories, isLoading } from './reducers';
+import thunk from 'redux-thunk';
 
 const pantryBuddy = combineReducers({
   ingredients,
-  addIngredientForm
+  addIngredientForm,
+  categories,
+  isLoading
 });
 
-const store = createStore(
+let args = [
   pantryBuddy,
-  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-// store.subscribe(() => console.log('state', store.getState()));
+  compose(
+    applyMiddleware(thunk)
+  )
+];
+if ( process.env.NODE_ENV === "development" )
+  args.push(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-export default store;
+export default createStore(...args);
+// store.subscribe(() => console.log('state', store.getState()));

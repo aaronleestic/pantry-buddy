@@ -1,7 +1,7 @@
 import React from 'react';
 import { AddIngredientForm } from './AddIngredientForm'
 
-describe('AddIngredientForm component', ()=>{
+describe('AddIngredientForm', ()=>{
 
   function getComponent(formProp){
     const handleSubmitMock = jest.fn();
@@ -75,4 +75,3 @@ describe('AddIngredientForm component', ()=>{
   });
 
 });
-
