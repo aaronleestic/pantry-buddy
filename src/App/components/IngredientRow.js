@@ -19,11 +19,11 @@ export function IngredientRow({ingredient, handleAvailChange, handleRemove}){
       <div className="custom-control custom-checkbox">
         <input className="custom-control-input"
                defaultChecked={ingredient.isAvailable}
-               id={ingredient.name}
+               id={ingredient.id}
                onChange={onChange}
                type="checkbox"/>
         <label
-          htmlFor={ingredient.name}
+          htmlFor={ingredient.id}
           className={classNames(
             'custom-control-label pl-2',
             {'text-danger font-weight-bold': !ingredient.isAvailable}

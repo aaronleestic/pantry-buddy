@@ -25,7 +25,6 @@ export function Pantry({ingredientGroups, handleCollapse}){
               <div className="px-3 py-1 font-weight-bold">{group.category.name}</div>
               <button type="button"
                       aria-label="toggle category accordion"
-                      key={group.category.id}
                       className="border-0 ml-auto bg-transparent px-3 mr-3">
                 <FontAwesomeIcon
                   role="button"
