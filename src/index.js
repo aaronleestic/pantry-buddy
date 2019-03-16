@@ -19,4 +19,7 @@ ReactDOM.render(
 
 // App works offline with browser's Index DB persistence
 serviceWorker.register();
-// serviceWorker.unregister();
+
+//forces https instead of configuring server-side on free hosting networks
+if ( location.protocol !== 'https:')
+  location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
