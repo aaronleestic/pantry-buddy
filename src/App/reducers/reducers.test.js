@@ -1,4 +1,4 @@
-import {Action} from "../constants";
+import Action from "../actions";
 import ingredients from "./ingredients";
 
 describe("reducers", ()=>{

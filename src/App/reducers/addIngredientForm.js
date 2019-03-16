@@ -1,4 +1,4 @@
-import {Action} from "../constants";
+import Action from "../actions";
 
 const initialAddFormState = {
   isAvailable: true,

@@ -1,4 +1,4 @@
-import {Action} from "../constants";
+import Action from "../actions";
 
 export default function isLoading (state = true, action){
   switch(action.type){

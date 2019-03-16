@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {categoryShape, ingredientShape} from "../models";
 import {updateAddIngForm} from "../actions/addForm";
 import {addIngredient} from "../actions/ingredient";
+import {closeAllButCategoryId} from "../actions/category";
 
 export function AddIngredientForm({formProp, categories, handleSubmit, handleAvailChange, handleCategoryChange}){
 
@@ -96,7 +97,11 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => ({
   handleAvailChange: e => dispatch(updateAddIngForm({ isAvailable: e.target.checked })),
-  handleCategoryChange: e => dispatch(updateAddIngForm({ categoryId: Number(e.target.value) })),
+  handleCategoryChange: e => {
+    const categoryId = Number(e.target.value);
+    dispatch(updateAddIngForm({ categoryId }));
+    dispatch(closeAllButCategoryId(categoryId));
+  },
   handleSubmit: ing => dispatch(addIngredient(ing))
 });
 

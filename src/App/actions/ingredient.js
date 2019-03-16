@@ -2,7 +2,7 @@ import Dexie from "dexie";
 import axios from "axios";
 import {CATEGORY_TABLE, DB_NAME, INGRED_TABLE} from "../database";
 import db from "../database";
-import {Action} from "../constants";
+import Action from "./";
 import {defaultCategories} from "../reducers/categories";
 
 //loads from the DB if it exists, otherwise from backend to initialize
@@ -20,7 +20,7 @@ export function loadIngredients(){
         if ( exists ){
           //loads the existing category states
           const categories = await db.table(CATEGORY_TABLE).toArray();
-          dispatch({ type: Action.ADD_CATEGORIES, categories })
+          dispatch({ type: Action.LOAD_CATEGORIES, categories })
 
         } else {
           //saves the loaded data into DB

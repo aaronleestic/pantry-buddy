@@ -10,15 +10,15 @@ Mobile optimized, Progressive Web App built for offline use
 - stateless functional components
 - hooks
 
-#### Indexed DB (Dexie.js)
-- offline persistence for the browser
-- API called once to populate list
-
-#### Redux / Redux-Thunk
+#### Redux-Thunk
 - one way data flow
 - async action dispatching
 
-#### Jest, Enzyme
+#### Indexed DB (Dexie.js)
+- offline persistence for the browser
+- API called once to populate initial list
+
+#### Jest & Enzyme
 - automated test suites
 - database mocking
 

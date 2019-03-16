@@ -21,8 +21,8 @@ export function Pantry({ingredientGroups, handleCollapse}){
         const onClick = () => handleCollapse(group.category);
         return (
           <div key={group.category.id}>
-            <div className="d-flex flex-row category-row border-top" onClick={onClick}>
-              <div className="px-3 py-1">{group.category.name}</div>
+            <div onClick={onClick} className="d-flex flex-row category-row border-top">
+              <div className="px-3 py-1 font-weight-bold">{group.category.name}</div>
               <button type="button"
                       aria-label="toggle category accordion"
                       key={group.category.id}
@@ -36,9 +36,7 @@ export function Pantry({ingredientGroups, handleCollapse}){
             <Collapse isOpen={group.category.isOpen}>
               <ul className="list-group border-bottom-0 rounded-0">
                 {group.ingredients.map(ingredient => (
-                  <IngredientRow
-                    ingredient={ingredient}
-                    key={ingredient.id}/>
+                  <IngredientRow ingredient={ingredient} key={ingredient.id}/>
                 ))}
               </ul>
             </Collapse>
