@@ -10,29 +10,39 @@ import {library} from '@fortawesome/fontawesome-svg-core'
 import {faCaretDown, faCaretLeft} from '@fortawesome/free-solid-svg-icons';
 import {subDivideIngredients} from "../helpers";
 import {toggleCategoryCollapse} from "../actions/category";
+import {updateAddIngForm} from "../actions/addForm";
 
 library.add(faCaretDown, faCaretLeft);
 
-export function Pantry({ingredientGroups, handleCollapse}){
+export function Pantry({ingredientGroups, handleToggle, handleOpen}){
   return (
     <>
       <AddIngredientForm/>
       {ingredientGroups.map(group => {
-        const onClick = () => handleCollapse(group.category);
+
+        const category = group.category;
+        const onToggle = () => {
+          handleToggle(category);
+
+          //if opening to view a section, update the form to that select option
+          if ( !category.isOpen )
+            handleOpen(category);
+        };
+
         return (
-          <div key={group.category.id}>
-            <div onClick={onClick} className="d-flex flex-row category-row border-top">
-              <div className="px-3 py-1 font-weight-bold">{group.category.name}</div>
+          <div key={category.id}>
+            <div onClick={onToggle} className="d-flex flex-row category-row border-top">
+              <div className="px-3 py-1 font-weight-bold">{category.name}</div>
               <button type="button"
                       aria-label="toggle category accordion"
                       className="border-0 ml-auto bg-transparent px-3 mr-3">
                 <FontAwesomeIcon
                   role="button"
-                  icon={group.category.isOpen ? "caret-down" : "caret-left"}
+                  icon={category.isOpen ? "caret-down" : "caret-left"}
                   className="text-muted fa-lg"/>
               </button>
             </div>
-            <Collapse isOpen={group.category.isOpen}>
+            <Collapse isOpen={category.isOpen}>
               <ul className="list-group border-bottom-0 rounded-0">
                 {group.ingredients.map(ingredient => (
                   <IngredientRow ingredient={ingredient} key={ingredient.id}/>
@@ -53,7 +63,7 @@ Pantry.propTypes = {
       ingredients: PropTypes.arrayOf(PropTypes.shape(ingredientShape))
     })
   ).isRequired,
-  handleCollapse: PropTypes.func
+  handleToggle: PropTypes.func
 };
 Pantry.defaultProps = {
   ingredientGroups: []
@@ -67,7 +77,8 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    handleCollapse: group => dispatch(toggleCategoryCollapse(group)),
+    handleToggle: group => dispatch(toggleCategoryCollapse(group)),
+    handleOpen: category => dispatch(updateAddIngForm({ categoryId: category.id }))
   }
 }
 
