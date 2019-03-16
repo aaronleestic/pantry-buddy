@@ -2,7 +2,7 @@
 
 This app helps you manage your pantry. You can customize which items should be in there, and see which dishes you can make based on available ingredients.
 
-Progressive Web App built for offline use
+Mobile optimized, Progressive Web App built for offline use
 
 ### Tech stack
 
