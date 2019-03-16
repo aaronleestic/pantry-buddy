@@ -1,25 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### [Pantry Buddy](https://pantrybuddy.herokuapp.com)
 
-## Available Scripts
+This app helps you manage your pantry. You can customize which items should be in there, and see which dishes you can make based on available ingredients.
 
-...
+Progressive Web App built for offline use
 
-### Analyzing the Bundle Size
+### Tech stack
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+#### React 16.8
+- stateless functional components
+- hooks
 
-### Making a Progressive Web App
+#### Indexed DB (Dexie.js)
+- offline persistence for the browser
+- API called once to populate list
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+#### Redux / Redux-Thunk
+- one way data flow
+- async action dispatching
 
-### Advanced Configuration
+#### Jest, Enzyme
+- automated test suites
+- database mocking
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+#### Bootstrap / Reactstrap / Font Awesome
+- customized by theme variables
+- only importing used styles, component, and fonts
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### Heroku, Github, and create-react-app
+- easy automated deployments

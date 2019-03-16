@@ -18,5 +18,5 @@ ReactDOM.render(
 );
 
 // App works offline with browser's Index DB persistence
-// serviceWorker.register();
-serviceWorker.unregister();
+serviceWorker.register();
+// serviceWorker.unregister();
