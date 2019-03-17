@@ -6,21 +6,17 @@ import {library} from '@fortawesome/fontawesome-svg-core'
 import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {ingredientShape} from "../models";
-import {removeIngredient, toggleIngredAvail} from "../actions/ingredient";
+import {deleteIngredient, toggleIngredAvail} from "../actions/ingredient";
 library.add(faTrashAlt);
 
-export function IngredientRow({ingredient, handleAvailChange, handleRemove}){
-
-  const onChange = () => handleAvailChange(ingredient);
-  const onRemove = () => handleRemove(ingredient);
-
+export function IngredientRow({ingredient, toggleIngredAvail, deleteIngredient}){
   return (
     <li className="list-group-item border-bottom-0 rounded-0 d-flex flex-row">
       <div className="custom-control custom-checkbox">
         <input className="custom-control-input"
                defaultChecked={ingredient.isAvailable}
                id={ingredient.id}
-               onChange={onChange}
+               onChange={() => toggleIngredAvail(ingredient)}
                type="checkbox"/>
         <label
           htmlFor={ingredient.id}
@@ -33,8 +29,8 @@ export function IngredientRow({ingredient, handleAvailChange, handleRemove}){
       </div>
       <button
         type="button"
-        aria-label="remove"
-        onClick={onRemove}
+        aria-label="delete"
+        onClick={() => deleteIngredient(ingredient)}
         className="border-0 ml-auto bg-transparent">
         <FontAwesomeIcon role="button" icon="trash-alt" className="text-muted"/>
       </button>
@@ -44,14 +40,14 @@ export function IngredientRow({ingredient, handleAvailChange, handleRemove}){
 
 IngredientRow.propTypes = {
   handleAvailChange: PropTypes.func,
-  handleRemove: PropTypes.func,
+  deleteIngredient: PropTypes.func,
   ingredient: PropTypes.shape(ingredientShape).isRequired
 };
 
 function mapDispatchToProps(dispatch){
   return {
-    handleAvailChange: ing => dispatch(toggleIngredAvail(ing)),
-    handleRemove: ing => dispatch(removeIngredient(ing))
+    toggleIngredAvail: ing => dispatch(toggleIngredAvail(ing)),
+    deleteIngredient: ing => dispatch(deleteIngredient(ing))
   }
 }
 

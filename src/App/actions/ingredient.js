@@ -50,10 +50,10 @@ export function addIngredient(ingredient){
   )
 }
 
-export function removeIngredient(ingredient){
+export function deleteIngredient(ingredient){
   return (dispatch) => (
     db.table(INGRED_TABLE).delete(ingredient.id).then(() => {
-      dispatch({ type: Action.REMOVE_INGREDIENT, ingredient })
+      dispatch({ type: Action.DELETE_INGREDIENT, ingredient })
     })
   )
 }

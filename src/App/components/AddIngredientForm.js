@@ -7,7 +7,7 @@ import {updateAddIngForm} from "../actions/addForm";
 import {addIngredient} from "../actions/ingredient";
 import {closeAllButCategoryId} from "../actions/category";
 
-export function AddIngredientForm({formProp, categories, handleSubmit, handleAvailChange, handleCategoryChange}){
+export function AddIngredientForm({formProp, categories, addIngredient, updateAddIngForm, handleCategoryChange}){
 
   let [isBlinking, setInputWarning] = useState(false);
 
@@ -16,15 +16,15 @@ export function AddIngredientForm({formProp, categories, handleSubmit, handleAva
 
     //show potential validation error
     const els = e.target.elements;
-    const text = els['ingredient'].value.trim();
-    if ( !text ){
+    const name = els['ingredient'].value.trim();
+    if ( !name ){
       setInputWarning(true);
       return setTimeout(() => setInputWarning(false), 1500); //removes the css class after 1.5 second
     }
 
     //update global state
-    handleSubmit({
-      name: els['ingredient'].value.trim(),
+    addIngredient({
+      name,
       categoryId: Number(els['categoryId'].value),
       isAvailable: els['isAvailable'].checked,
     });
@@ -44,7 +44,7 @@ export function AddIngredientForm({formProp, categories, handleSubmit, handleAva
               className="custom-control-input"
               aria-label="availability of ingredient"
               defaultChecked={formProp.isAvailable}
-              onChange={handleAvailChange}/>
+              onChange={updateAddIngForm}/>
             <label className="custom-control-label mt-2" htmlFor="isAvailable"/>
           </div>
         </div>
@@ -85,8 +85,8 @@ export function AddIngredientForm({formProp, categories, handleSubmit, handleAva
 AddIngredientForm.propTypes = {
   formProp: PropTypes.shape(ingredientShape).isRequired,
   categories: PropTypes.arrayOf(PropTypes.shape(categoryShape)).isRequired,
-  handleSubmit: PropTypes.func,
-  handleAvailChange: PropTypes.func,
+  addIngredient: PropTypes.func,
+  updateAddIngForm: PropTypes.func,
   handleCategoryChange: PropTypes.func
 };
 
@@ -96,13 +96,13 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleAvailChange: e => dispatch(updateAddIngForm({ isAvailable: e.target.checked })),
+  updateAddIngForm: e => dispatch(updateAddIngForm({ isAvailable: e.target.checked })),
   handleCategoryChange: e => {
     const categoryId = Number(e.target.value);
     dispatch(updateAddIngForm({ categoryId }));
     dispatch(closeAllButCategoryId(categoryId));
   },
-  handleSubmit: ing => dispatch(addIngredient(ing))
+  addIngredient: ing => dispatch(addIngredient(ing))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddIngredientForm);

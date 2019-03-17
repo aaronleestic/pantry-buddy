@@ -19,7 +19,7 @@ export default function ingredients(state = [], action){
     case Action.TOGGLE_INGREDIENT_AVAIL:
       return updateElementInArray(state, ingredient, 'isAvailable', !ingredient.isAvailable);
 
-    case Action.REMOVE_INGREDIENT:
+    case Action.DELETE_INGREDIENT:
       return state.filter(ing => ing.id !== ingredient.id);
 
     default:

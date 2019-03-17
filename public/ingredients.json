@@ -212,10 +212,6 @@
     "categoryId":5
   },
   {
-    "name":"allspice",
-    "categoryId":5
-  },
-  {
     "name":"basil",
     "categoryId":5
   },
@@ -262,5 +258,9 @@
   {
     "name":"hot sauce",
     "categoryId":5
+  },
+  {
+    "name":"napkins",
+    "categoryId":6
   }
 ]

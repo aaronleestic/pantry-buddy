@@ -9,7 +9,7 @@ describe('AddIngredientForm', ()=>{
       <AddIngredientForm
         formProp={formProp}
         categories={[]}
-        handleSubmit={handleSubmitMock}
+        addIngredient={handleSubmitMock}
         handleCategoryChange={jest.fn()}/>
       );
     c.getTextInput = () => c.find('input#ingredient');

@@ -14,24 +14,24 @@ import {updateAddIngForm} from "../actions/addForm";
 
 library.add(faCaretDown, faCaretLeft);
 
-export function Pantry({ingredientGroups, handleToggle, handleOpen}){
+export function Pantry({ingredients, ingredientGroups, toggleCategoryCollapse, updateAddIngForm}){
+
+  function onToggle(category){
+    toggleCategoryCollapse(category);
+
+    //if opening to view a section, update the form to that select option
+    if ( !category.isOpen )
+      updateAddIngForm(category);
+  }
+
   return (
     <>
       <AddIngredientForm/>
       {ingredientGroups.map(group => {
-
         const category = group.category;
-        const onToggle = () => {
-          handleToggle(category);
-
-          //if opening to view a section, update the form to that select option
-          if ( !category.isOpen )
-            handleOpen(category);
-        };
-
         return (
           <div key={category.id}>
-            <div onClick={onToggle} className="d-flex flex-row category-row border-top">
+            <div onClick={() => onToggle(category)} className="d-flex flex-row category-row border-top">
               <div className="px-3 py-1 font-weight-bold">{category.name}</div>
               <button type="button"
                       aria-label="toggle category accordion"
@@ -63,7 +63,7 @@ Pantry.propTypes = {
       ingredients: PropTypes.arrayOf(PropTypes.shape(ingredientShape))
     })
   ).isRequired,
-  handleToggle: PropTypes.func
+  toggleCategoryCollapse: PropTypes.func
 };
 Pantry.defaultProps = {
   ingredientGroups: []
@@ -72,13 +72,14 @@ Pantry.defaultProps = {
 function mapStateToProps(state){
   return {
     ingredientGroups: subDivideIngredients(state.ingredients, state.categories),
+    ingredients: state.ingredients
   }
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    handleToggle: group => dispatch(toggleCategoryCollapse(group)),
-    handleOpen: category => dispatch(updateAddIngForm({ categoryId: category.id }))
+    toggleCategoryCollapse: group => dispatch(toggleCategoryCollapse(group)),
+    updateAddIngForm: category => dispatch(updateAddIngForm({ categoryId: category.id }))
   }
 }
 

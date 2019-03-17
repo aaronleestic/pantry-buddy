@@ -20,7 +20,7 @@ describe("reducers", ()=>{
   it('removes from the ingredients state list when dispatched', ()=>{
     const ingredient = {};
     const initialState = [ingredient];
-    const action = { type: Action.REMOVE_INGREDIENT, ingredient };
+    const action = { type: Action.DELETE_INGREDIENT, ingredient };
     const list = ingredients(initialState, action);
     expect(list).toHaveLength(0);
   });
