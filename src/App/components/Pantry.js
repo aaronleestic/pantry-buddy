@@ -2,56 +2,21 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import AddIngredientForm from "./AddIngredientForm";
-import IngredientRow from "./IngredientRow";
 import {categoryShape, ingredientShape} from "../models";
-import Collapse from 'reactstrap/lib/Collapse';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {library} from '@fortawesome/fontawesome-svg-core'
-import {faCaretDown, faCaretLeft} from '@fortawesome/free-solid-svg-icons';
 import {subDivideIngredients} from "../helpers";
-import {toggleCategoryCollapse} from "../actions/category";
-import {updateAddIngForm} from "../actions/addForm";
+import CategoryCollapse from "./CategoryCollapse";
 
-library.add(faCaretDown, faCaretLeft);
-
-export function Pantry({ingredients, ingredientGroups, toggleCategoryCollapse, updateAddIngForm}){
-
-  function onToggle(category){
-    toggleCategoryCollapse(category);
-
-    //if opening to view a section, update the form to that select option
-    if ( !category.isOpen )
-      updateAddIngForm(category);
-  }
-
+export function Pantry({ingredientGroups}){
   return (
     <>
       <AddIngredientForm/>
-      {ingredientGroups.map(group => {
-        const category = group.category;
-        return (
-          <div key={category.id}>
-            <div onClick={() => onToggle(category)} className="d-flex flex-row category-row border-top">
-              <div className="px-3 py-1 font-weight-bold">{category.name}</div>
-              <button type="button"
-                      aria-label="toggle category accordion"
-                      className="border-0 ml-auto bg-transparent px-3 mr-3">
-                <FontAwesomeIcon
-                  role="button"
-                  icon={category.isOpen ? "caret-down" : "caret-left"}
-                  className="text-muted fa-lg"/>
-              </button>
-            </div>
-            <Collapse isOpen={category.isOpen}>
-              <ul className="list-group border-bottom-0 rounded-0">
-                {group.ingredients.map(ingredient => (
-                  <IngredientRow ingredient={ingredient} key={ingredient.id}/>
-                ))}
-              </ul>
-            </Collapse>
-          </div>
-        )
-      })}
+      {ingredientGroups.map(group =>
+        <CategoryCollapse
+          key={group.category.id}
+          category={group.category}
+          ingredients={group.ingredients}
+        />
+      )}
     </>
   )
 }
@@ -62,8 +27,7 @@ Pantry.propTypes = {
       category: PropTypes.shape(categoryShape),
       ingredients: PropTypes.arrayOf(PropTypes.shape(ingredientShape))
     })
-  ).isRequired,
-  toggleCategoryCollapse: PropTypes.func
+  ).isRequired
 };
 Pantry.defaultProps = {
   ingredientGroups: []
@@ -71,16 +35,8 @@ Pantry.defaultProps = {
 
 function mapStateToProps(state){
   return {
-    ingredientGroups: subDivideIngredients(state.ingredients, state.categories),
-    ingredients: state.ingredients
+    ingredientGroups: subDivideIngredients(state.ingredients, state.categories)
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return {
-    toggleCategoryCollapse: group => dispatch(toggleCategoryCollapse(group)),
-    updateAddIngForm: category => dispatch(updateAddIngForm({ categoryId: category.id }))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Pantry);
+export default connect(mapStateToProps)(Pantry);

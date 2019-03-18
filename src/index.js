@@ -26,6 +26,6 @@ if ( process.env.NODE_ENV === 'production' ) {
     serviceWorker.register();
   }
 } else {
-  console.log('service worker not registered', process.env.NODE_ENV);
+  console.log('service worker not registered:', process.env.NODE_ENV);
   serviceWorker.unregister();
 }
