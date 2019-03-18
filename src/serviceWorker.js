@@ -49,6 +49,8 @@ export function register(config) {
         registerValidSW(swUrl, config);
       }
     });
+  } else {
+    console.warn('serviceWorker registration bypassed', process.env.NODE_ENV);
   }
 }
 
@@ -59,9 +61,9 @@ function registerValidSW(swUrl, config) {
     .then(registration => {
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
-        if (installingWorker == null) {
-          return;
-        }
+        if (installingWorker == null)
+          return console.log('installingWorker null', registration);
+
         installingWorker.onstatechange = () => {
           if (installingWorker.state === 'installed') {
             if (navigator.serviceWorker.controller) {
@@ -88,6 +90,8 @@ function registerValidSW(swUrl, config) {
                 config.onSuccess(registration);
               }
             }
+          } else {
+            console.warn('serviceWorker registration state', installingWorker.state);
           }
         };
       };
