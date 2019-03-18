@@ -6,7 +6,7 @@ import Recipes from "./components/Recipes";
 
 function App(){
   return (
-    <div className="container px-0 d-flex flex-column mh-100">
+    <div className="container px-0 d-flex flex-column vh-100">
       <div className="exclude-footer">
         <header className="text-center border-bottom border-dark p-2">
           <h1>Pantry Buddy</h1>
