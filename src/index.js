@@ -11,6 +11,7 @@ import AppContainer from "./App/App.container";
 //forces https instead of configuring server-side on free hosting networks
 if ( window.location.protocol !== 'https:' && process.env.NODE_ENV !== 'development' ) {
   window.location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+  console.log('registering service worker');
   serviceWorker.register();
 } else {
   serviceWorker.unregister();
