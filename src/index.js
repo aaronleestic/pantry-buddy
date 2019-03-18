@@ -14,6 +14,7 @@ if ( window.location.protocol !== 'https:' && process.env.NODE_ENV !== 'developm
   console.log('registering service worker');
   serviceWorker.register();
 } else {
+  console.log('service worker not registered', process.env.NODE_ENV);
   serviceWorker.unregister();
 }
 
