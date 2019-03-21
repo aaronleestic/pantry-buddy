@@ -28,3 +28,14 @@ Mobile optimized, Progressive Web App built for offline use
 
 #### Heroku, Github, and create-react-app
 - easy automated deployments
+
+### Next Steps
+
+Completing the Recipes management feature, plus...
+
+#### User management
+- social login backed by a GraphQL-based API on Heroku
+- online persistence of your pantry, for usage across devices
+
+#### Native App
+- code sharing with React Native
