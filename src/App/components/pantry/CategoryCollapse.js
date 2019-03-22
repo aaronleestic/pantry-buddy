@@ -6,9 +6,9 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faCaretDown, faCaretLeft} from '@fortawesome/free-solid-svg-icons';
 import IngredientRow from "./IngredientRow";
-import {toggleCategoryCollapse} from "../actions/category";
-import {updateAddIngForm} from "../actions/addForm";
-import {categoryShape, ingredientShape} from "../models";
+import {toggleCategoryCollapse} from "../../actions/category";
+import {updateAddIngForm} from "../../actions/addForm";
+import {categoryShape, ingredientShape} from "../../models";
 library.add(faCaretDown, faCaretLeft);
 
 export function CategoryCollapse({category, ingredients, toggleCategoryCollapse, updateAddIngForm}){

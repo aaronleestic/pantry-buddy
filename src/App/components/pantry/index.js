@@ -2,8 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import AddIngredientForm from "./AddIngredientForm";
-import {categoryShape, ingredientShape} from "../models";
-import {subDivideIngredients} from "../helpers";
+import {categoryShape, ingredientShape} from "../../models";
+import {subDivideIngredients} from "../../helpers";
 import CategoryCollapse from "./CategoryCollapse";
 
 export function Pantry({ingredientGroups}){

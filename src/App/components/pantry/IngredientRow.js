@@ -5,8 +5,8 @@ import classNames from 'classnames/bind';
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {ingredientShape} from "../models";
-import {deleteIngredient, toggleIngredAvail} from "../actions/ingredient";
+import {ingredientShape} from "../../models";
+import {deleteIngredient, toggleIngredAvail} from "../../actions/ingredient";
 library.add(faTrashAlt);
 
 export function IngredientRow({ingredient, toggleIngredAvail, deleteIngredient}){

@@ -1,4 +1,4 @@
-### [Pantry Buddy](https://pantrybuddy.herokuapp.com)
+### [Index Buddy](https://pantrybuddy.herokuapp.com)
 
 This app helps you manage your pantry. You can customize which items should be in there, and see which dishes you can make based on available ingredients.
 

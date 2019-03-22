@@ -1,31 +1,67 @@
 import './App.scss';
 import React from 'react';
 import { Route, NavLink, Switch, Redirect } from "react-router-dom";
-import Pantry from "./components/Pantry";
-import Recipes from "./components/Recipes";
+import Pantry from "./components/pantry";
+import Recipes from "./components/recipes";
 
 function App(){
   return (
-    <div className="container px-0 d-flex flex-column mh-100">
+    <Switch>
+      <Redirect from="/" exact to="/pantry"/>
+      <Route path="/pantry" component={MainWithNav}/>
+      <Route path="/recipes" component={MainWithNav} exact/>
+      <Route path="/recipes/:id" component={MainWithoutNav}/>
+    </Switch>
+  )
+}
+
+function MainWithNav(){
+  return (
+    <Container>
       <div className="exclude-footer">
-        <header className="text-center border-bottom border-dark p-2">
-          <h1>Pantry Buddy</h1>
-        </header>
         <main className="flex-fill pt-3">
-          <Switch>
-            <Route path="/pantry" component={Pantry}/>
-            <Route path="/recipes" component={Recipes}/>
-            <Redirect from="/" exact to="/pantry"/>
-          </Switch>
+          <Route path="/pantry" component={Pantry}/>
+          <Route path="/recipes" component={Recipes}/>
         </main>
       </div>
-      <footer className="p-2 border-top border-dark position-sticky">
-        <nav className="nav nav-pills nav-justified justify-content-between">
-          <NavLink className="nav-link" activeClassName="active" to="/pantry">Pantry</NavLink>
-          <NavLink className="nav-link" activeClassName="active" to="/recipes">Recipes</NavLink>
-        </nav>
-      </footer>
+      <FooterNav/>
+    </Container>
+  )
+}
+
+function MainWithoutNav(){
+  return (
+    <Container>
+      Hello Dish
+    </Container>
+  )
+}
+
+function Container(props){
+  return (
+    <div className="container px-0 d-flex flex-column vh-100">
+      <Header/>
+      {props.children}
     </div>
+  )
+}
+
+function Header(){
+  return (
+    <header className="text-center border-bottom border-dark p-2">
+      <h1>Pantry Buddy</h1>
+    </header>
+  )
+}
+
+function FooterNav(){
+  return (
+    <footer className="p-2 border-top border-dark position-sticky">
+      <nav className="nav nav-pills nav-justified justify-content-between">
+        <NavLink className="nav-link" activeClassName="active" to="/pantry">Pantry</NavLink>
+        <NavLink className="nav-link" activeClassName="active" to="/recipes">Recipes</NavLink>
+      </nav>
+    </footer>
   )
 }
 

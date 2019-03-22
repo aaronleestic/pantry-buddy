@@ -2,10 +2,6 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
-body, .mh-100 {
-  min-height:100vh;
-}
-
 body {
   background-image: url(../images/background/2.jpg);
   background-position: center;

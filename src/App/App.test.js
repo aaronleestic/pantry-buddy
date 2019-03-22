@@ -3,12 +3,12 @@ import { MemoryRouter } from 'react-router';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import App from './App';
-import Pantry from "./components/Pantry";
-import Recipes from "./components/Recipes";
+import Pantry from "./components/pantry";
+import Recipes from "./components/recipes";
 
 //mocks the child components so that are not fully mounted
-jest.mock('./components/Pantry', () => () => <div/>);
-jest.mock('./components/Recipes', () => () => <div/>);
+jest.mock('./components/pantry', () => () => <div/>);
+jest.mock('./components/recipes', () => () => <div/>);
 
 describe('App', ()=>{
 
