@@ -12,26 +12,27 @@ describe('actions', ()=>{
 
   it('update form checkbox', ()=> {
     const action = updateAddIngForm({ isAvailable: true });
-    expect(action).toEqual({ type: Action.UPDATE_INGRED_FORM, form: { isAvailable: true } });
+    expect(action).toEqual({ type: Action.INGRED_FORM_UPDATE, form: { isAvailable: true } });
   });
 
   it('update form category', ()=> {
     const action = updateAddIngForm({ categoryId: 2 });
-    expect(action).toEqual({ type: Action.UPDATE_INGRED_FORM, form: { categoryId: 2 } });
+    expect(action).toEqual({ type: Action.INGRED_FORM_UPDATE, form: { categoryId: 2 } });
   });
 
-  it('add ingredient', ()=> {
+  /* tests below are from Redux-Thunk implementation, but now switched to Redux-Saga */
+  xit('add ingredient', ()=> {
     db.table.mockImplementation(() => {
       return { add: () => Promise.resolve(1) }
     });
     const store = mockStore({ ingredients: [] });
     const action = addIngredient({ name: "apple" });
     return store.dispatch(action).then(() => {
-      expect(store.getActions()[0]).toEqual({ type: Action.ADD_INGREDIENT, ingredient: { name: "apple", id: 1 } })
+      expect(store.getActions()[0]).toEqual({ type: Action.INGREDIENT_ADD, ingredient: { name: "apple", id: 1 } })
     });
   });
 
-  it('updateIngredient', ()=>{
+  xit('updateIngredient', ()=>{
     db.table.mockImplementation(() => {
       return { update: () => Promise.resolve() }
     });
@@ -39,11 +40,11 @@ describe('actions', ()=>{
     const store = mockStore({ ingredients: [ingredient] });
     const action = toggleIngredAvail(ingredient);
     return store.dispatch(action).then(() => {
-      expect(store.getActions()[0]).toEqual({ type: Action.TOGGLE_INGREDIENT_AVAIL, ingredient });
+      expect(store.getActions()[0]).toEqual({ type: Action.INGRED_AVAIL_TOGGLE, ingredient });
     });
   });
 
-  it('deleteIngredient', ()=>{
+  xit('deleteIngredient', ()=>{
     db.table.mockImplementation(() => {
       return { delete: () => Promise.resolve() }
     });
@@ -51,7 +52,7 @@ describe('actions', ()=>{
     const store = mockStore({ ingredients: [ingredient] });
     const action = deleteIngredient(ingredient);
     return store.dispatch(action).then(() => {
-      expect(store.getActions()[0]).toEqual({ type: Action.DELETE_INGREDIENT, ingredient });
+      expect(store.getActions()[0]).toEqual({ type: Action.INGREDIENT_DELETE, ingredient });
     });
   });
 

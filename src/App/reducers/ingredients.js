@@ -3,23 +3,20 @@ import {insensitiveAlphaSortBy, updateElementInArray} from "../helpers";
 
 const sortFn = insensitiveAlphaSortBy('name');
 
-export default function ingredients(state = [], action){
+export default function ingredients(state = [], { type, ingredient, ingredients }){
 
-  const ingredients = action.ingredients;
-  const ingredient = action.ingredient;
+  switch(type) {
 
-  switch(action.type) {
-
-    case Action.ADD_INGREDIENT:
+    case Action.INGREDIENT_ADD:
       return [...state, ingredient].sort(sortFn);
 
-    case Action.LOAD_INCREDIENTS:
+    case Action.INGREDIENTS_LOAD:
       return ingredients.sort(sortFn);
 
-    case Action.TOGGLE_INGREDIENT_AVAIL:
+    case Action.INGRED_AVAIL_TOGGLE:
       return updateElementInArray(state, ingredient, 'isAvailable', !ingredient.isAvailable);
 
-    case Action.DELETE_INGREDIENT:
+    case Action.INGREDIENT_DELETE:
       return state.filter(ing => ing.id !== ingredient.id);
 
     default:
