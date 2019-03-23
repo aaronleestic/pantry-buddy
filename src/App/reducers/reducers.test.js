@@ -5,7 +5,7 @@ describe("reducers", ()=>{
 
   it('adds to the ingredients state list when dispatched', ()=>{
     const action = {
-      type: Action.INGREDIENT_ADD,
+      type: Action.ADD_INGREDIENT,
       ingredient: {
         isAvailable: true,
         name: 'apple',
@@ -20,7 +20,7 @@ describe("reducers", ()=>{
   it('removes from the ingredients state list when dispatched', ()=>{
     const ingredient = {};
     const initialState = [ingredient];
-    const action = { type: Action.INGREDIENT_DELETE, ingredient };
+    const action = { type: Action.DELETE_INGREDIENT, ingredient };
     const list = ingredients(initialState, action);
     expect(list).toHaveLength(0);
   });
@@ -28,7 +28,7 @@ describe("reducers", ()=>{
   it("updates an ingredient's availability in state list when dispatched", ()=>{
     const ingredient = { isAvailable: false };
     const initialState = [ingredient];
-    const action = { type: Action.INGRED_AVAIL_TOGGLE, ingredient };
+    const action = { type: Action.TOGGLE_INGREDIENT_AVAIL, ingredient };
     const newState = ingredients(initialState, action);
     expect(newState[0].isAvailable).toBeTruthy();
   });

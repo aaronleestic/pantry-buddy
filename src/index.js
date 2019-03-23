@@ -6,12 +6,12 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from './App/store';
-import AppLoader from "./App/App.loader";
+import AppContainer from "./App/App.container";
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <AppLoader/>
+      <AppContainer/>
     </Router>
   </Provider>
   ,document.getElementById('root')

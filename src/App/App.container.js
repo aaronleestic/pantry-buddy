@@ -3,18 +3,17 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {withRouter} from "react-router";
 import App from "./App";
-import {fetchData} from "./actions/ingredient";
-import Action from "./actions";
+import {loadIngredients} from "./actions/ingredient";
 
-function AppLoader({isLoading, dispatch}){
+function AppContainer({isLoading, dispatch}){
 
   useEffect(() => {
-    dispatch(fetchData());
+    dispatch(loadIngredients());
   }, []);
 
   if ( isLoading ) {
     return (
-      <div className="container d-flex vh-100">
+      <div className="container d-flex mh-100">
         <div className="w-100  align-self-center text-center">
           <div className="spinner-border mt-3" role="status">
             <span className="sr-only">Loading...</span>
@@ -27,7 +26,7 @@ function AppLoader({isLoading, dispatch}){
   }
 }
 
-AppLoader.propTypes = {
+AppContainer.propTypes = {
   isLoading: PropTypes.bool
 };
 
@@ -37,4 +36,4 @@ function mapStateToProp(state){
   }
 }
 
-export default withRouter(connect(mapStateToProp)(AppLoader));
+export default withRouter(connect(mapStateToProp)(AppContainer));
