@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import AddIngredientForm from "./AddIngredientForm";
 import {categoryShape, ingredientShape} from "../../models";
-import {subDivideIngredients} from "../../helpers";
 import CategoryCollapse from "./CategoryCollapse";
+import {getIngredByCat} from "../../selectors/getIngredGroups";
 
 export function Pantry({ingredientGroups}){
   return (
@@ -34,9 +34,7 @@ Pantry.defaultProps = {
 };
 
 function mapStateToProps(state){
-  return {
-    ingredientGroups: subDivideIngredients(state.ingredients, state.categories)
-  }
+  return { ingredientGroups: getIngredByCat(state) }
 }
 
 export default connect(mapStateToProps)(Pantry);

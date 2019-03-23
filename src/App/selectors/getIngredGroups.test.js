@@ -1,6 +1,6 @@
-import {subDivideIngredients} from "./helpers";
+import {divideIngredByCat} from "./getIngredGroups";
 
-describe('helpers', () => {
+describe('selectors', () => {
 
   it('subdivides ingredients by category', ()=>{
     const ingredients = [{
@@ -16,8 +16,9 @@ describe('helpers', () => {
       name: 'salad',
       categoryId: 2
     }];
+    const categories = [{name: 'fruit'},{name: 'meat'}, {name: 'vegetable'}];
 
-    const output = subDivideIngredients(ingredients, [{name: 'fruit'},{name: 'meat'}, {name: 'vegetable'}]);
+    const output = divideIngredByCat(ingredients, categories);
     expect(output).toHaveLength(3);
     expect(output[0].ingredients).toHaveLength(2);
     expect(output[0].ingredients[0].name).toEqual('apple');
