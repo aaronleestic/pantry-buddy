@@ -37,7 +37,7 @@ function MainWithoutNav(){
   )
 }
 
-function Container(props){
+export function Container(props){
   return (
     <div className="container px-0 d-flex flex-column vh-100">
       <Header/>

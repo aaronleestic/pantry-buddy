@@ -46,8 +46,8 @@ IngredientRow.propTypes = {
 
 function mapDispatchToProps(dispatch){
   return {
-    toggleIngredAvail: ing => dispatch(toggleIngredAvail(ing)),
-    deleteIngredient: ing => dispatch(deleteIngredient(ing))
+    toggleIngredAvail: (ing) => dispatch(toggleIngredAvail(ing)),
+    deleteIngredient: (ing) => dispatch(deleteIngredient(ing))
   }
 }
 

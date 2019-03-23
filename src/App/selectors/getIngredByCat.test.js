@@ -1,4 +1,4 @@
-import {divideIngredByCat} from "./getIngredGroups";
+import {divideIngredByCat} from "./getIngredByCat";
 
 describe('selectors', () => {
 
@@ -16,9 +16,8 @@ describe('selectors', () => {
       name: 'salad',
       categoryId: 2
     }];
-    const categories = [{name: 'fruit'},{name: 'meat'}, {name: 'vegetable'}];
 
-    const output = divideIngredByCat(ingredients, categories);
+    const output = divideIngredByCat(ingredients, [{name: 'fruit'},{name: 'meat'}, {name: 'vegetable'}]);
     expect(output).toHaveLength(3);
     expect(output[0].ingredients).toHaveLength(2);
     expect(output[0].ingredients[0].name).toEqual('apple');

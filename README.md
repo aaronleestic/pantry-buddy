@@ -7,14 +7,16 @@ Mobile optimized, Progressive Web App built for offline use
 ### Tech stack
 
 #### React 16.8
-- stateless functional components & hooks
+- stateless functional components
+- hooks
 
-#### Redux-Saga
+#### Redux-Thunk
 - one way data flow
 - async action dispatching
 
 #### Indexed DB (Dexie.js)
 - offline persistence for the browser
+- API called once to populate initial list
 
 #### Jest & Enzyme
 - automated test suites

@@ -68,7 +68,7 @@ export function AddIngredientForm({formProp, categories, addIngredient, updateAd
         <label htmlFor="categoryId" className="col-2 col-form-label">Type</label>
         <div className="col-10 d-inline-flex">
           <select
-            onChange={handleCategoryChange}
+            onChange={e => handleCategoryChange(categories, Number(e.target.value))}
             value={formProp.categoryId}
             className="form-control" id="categoryId">
             {categories.map(c => (
@@ -96,11 +96,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateAddIngForm: e => dispatch(updateAddIngForm({ isAvailable: e.target.checked })),
-  handleCategoryChange: e => {
-    const categoryId = Number(e.target.value);
+  updateAddIngForm: (e) => dispatch(updateAddIngForm({ isAvailable: e.target.checked })),
+  handleCategoryChange: (categories, categoryId) => {
     dispatch(updateAddIngForm({ categoryId }));
-    dispatch(closeAllButCategoryId(categoryId));
+    dispatch(closeAllButCategoryId(categories, categoryId));
   },
   addIngredient: ing => dispatch(addIngredient(ing))
 });

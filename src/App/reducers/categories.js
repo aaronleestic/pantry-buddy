@@ -1,32 +1,17 @@
 import Action from "../actions";
 import {updateElementInArray} from "../helpers";
 
-export const defaultCategories = [
-  "Grains & Staples",
-  "Protein & Diary",
-  "Vegetables",
-  "Fruits",
-  "Snacks",
-  "Spices & Seasonings",
-  "misc"
-].map((name, index) => ({
-  name,
-  id: index,
-  isOpen: true
-}));
+export default function categories(state = [], { type, category, categories }){
 
-export default function categories(state = defaultCategories, action ){
+  switch(type){
 
-  switch(action.type){
-
-    case Action.TOGGLE_CATEGORY_COLLAPSE:
-      const category = action.category;
+    case Action.CAT_OPEN_TOGGLE:
       return updateElementInArray(state, category, 'isOpen', !category.isOpen);
 
-    case Action.UPDATE_ALL_CATEGORIES:
-      return action.categories;
-
+    case Action.CATS_UPDATE_ALL:
     case Action.LOAD_CATEGORIES:
+      return categories;
+
     default:
       return state;
   }

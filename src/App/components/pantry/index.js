@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import AddIngredientForm from "./AddIngredientForm";
 import {categoryShape, ingredientShape} from "../../models";
 import CategoryCollapse from "./CategoryCollapse";
-import {getIngredByCat} from "../../selectors/getIngredGroups";
+import {getIngredByCat} from "../../selectors/getIngredByCat";
 
 export function Pantry({ingredientGroups}){
   return (
@@ -34,7 +34,9 @@ Pantry.defaultProps = {
 };
 
 function mapStateToProps(state){
-  return { ingredientGroups: getIngredByCat(state) }
+  return {
+    ingredientGroups: getIngredByCat(state)
+  }
 }
 
 export default connect(mapStateToProps)(Pantry);

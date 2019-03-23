@@ -1,22 +1,27 @@
-import { createStore, combineReducers, applyMiddleware, compose  } from 'redux';
+import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
-
+import createSagaMiddleware from 'redux-saga'
+import {all} from 'redux-saga/effects';
 import ingredients from "./reducers/ingredients";
 import addIngredientForm from "./reducers/addIngredientForm";
 import categories from "./reducers/categories";
 import isLoading from "./reducers/isLoading";
+import {ingredientSagas} from "./actions/ingredient";
 
-const pantryBuddy = combineReducers({
+const reducers = combineReducers({
   ingredients,
   addIngredientForm,
   categories,
   isLoading
 });
 
+const sagaMiddleware = createSagaMiddleware();
+
 let args = [
-  pantryBuddy,
+  reducers,
   compose(
-    applyMiddleware(thunk)
+    applyMiddleware(thunk),
+    applyMiddleware(sagaMiddleware)
   )
 ];
 
@@ -26,3 +31,10 @@ if ( process.env.NODE_ENV === "development" )
 
 export default createStore(...args);
 
+function* rootSaga() {
+  yield all([
+    ...ingredientSagas,
+  ])
+}
+
+sagaMiddleware.run(rootSaga);
