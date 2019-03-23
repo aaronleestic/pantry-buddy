@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, NavLink, Switch, Redirect } from "react-router-dom";
 import Pantry from "./components/pantry";
 import Recipes from "./components/recipes";
+import EditRecipe from "./components/recipes/edit";
 
 function App(){
   return (
@@ -19,6 +20,7 @@ function MainWithNav(){
   return (
     <Container>
       <div className="exclude-footer">
+        <Header/>
         <main className="flex-fill pt-3">
           <Route path="/pantry" component={Pantry}/>
           <Route path="/recipes" component={Recipes}/>
@@ -32,7 +34,10 @@ function MainWithNav(){
 function MainWithoutNav(){
   return (
     <Container>
-      Hello Dish
+      <Header/>
+      <Switch>
+        <Route path="/recipes/new" component={EditRecipe}/>
+      </Switch>
     </Container>
   )
 }
@@ -40,7 +45,6 @@ function MainWithoutNav(){
 export function Container(props){
   return (
     <div className="container px-0 d-flex flex-column vh-100">
-      <Header/>
       {props.children}
     </div>
   )

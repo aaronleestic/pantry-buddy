@@ -6,6 +6,7 @@ import {categoryShape, ingredientShape} from "../../models";
 import {updateAddIngForm} from "../../actions/addForm";
 import {addIngredient} from "../../actions/ingredient";
 import {closeAllButCategoryId} from "../../actions/category";
+import './AddIngredientForm.scss';
 
 export function AddIngredientForm({formProp, categories, addIngredient, updateAddIngForm, handleCategoryChange}){
 
@@ -34,9 +35,9 @@ export function AddIngredientForm({formProp, categories, addIngredient, updateAd
   }
 
   return (
-    <form onSubmit={prepSubmit} autoComplete="off" className="px-3" data-testid="form-1">
+    <form onSubmit={prepSubmit} autoComplete="off" className="px-3">
       <div className="row">
-        <div className="col-2">
+        <div className="flex-1">
           <div className="custom-control custom-checkbox text-center">
             <input
               type="checkbox"
@@ -48,7 +49,7 @@ export function AddIngredientForm({formProp, categories, addIngredient, updateAd
             <label className="custom-control-label mt-2" htmlFor="isAvailable"/>
           </div>
         </div>
-        <div className="col-10">
+        <div className="flex-9 px-3">
           <div className="form-group">
             <input
               aria-label="ingredient"
@@ -65,8 +66,8 @@ export function AddIngredientForm({formProp, categories, addIngredient, updateAd
         </div>
       </div>
       <div className="form-group row text-center">
-        <label htmlFor="categoryId" className="col-2 col-form-label">Type</label>
-        <div className="col-10 d-inline-flex">
+        <label className="flex-1 col-form-label" htmlFor="categoryId">Type</label>
+        <div className="flex-9 px-3 d-inline-flex">
           <select
             onChange={e => handleCategoryChange(categories, Number(e.target.value))}
             value={formProp.categoryId}

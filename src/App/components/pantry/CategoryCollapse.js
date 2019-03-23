@@ -9,6 +9,8 @@ import IngredientRow from "./IngredientRow";
 import {toggleCategoryCollapse} from "../../actions/category";
 import {updateAddIngForm} from "../../actions/addForm";
 import {categoryShape, ingredientShape} from "../../models";
+import './CategoryCollapse.scss';
+
 library.add(faCaretDown, faCaretLeft);
 
 export function CategoryCollapse({category, ingredients, toggleCategoryCollapse, updateAddIngForm}){

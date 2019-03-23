@@ -26,8 +26,16 @@ footer {
 }
 
 .exclude-footer {
-  overflow: auto;
   height: calc(100vh - 3.5rem);
+
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+
+  &::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+  }
 }
 
 .container {
@@ -44,10 +52,6 @@ input::placeholder {
 
 .list-group-item {
   background-color: rgba(255, 255, 255, 0);
-}
-.category-row {
-  background-color: rgba(255, 255, 255, .5);
-  font-weight: 100
 }
 
 @keyframes blink {
