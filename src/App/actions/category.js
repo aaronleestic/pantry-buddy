@@ -1,6 +1,7 @@
 import db, {CATEGORY_TABLE} from "../database";
 import Action from "./";
 
+//TODO migrate to Redux-Saga instead of Thunk
 export function toggleCategoryCollapse(category){
   return (dispatch) => (
     db.table(CATEGORY_TABLE)
