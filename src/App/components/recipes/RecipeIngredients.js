@@ -17,7 +17,7 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
 
   function removeIngredient(e){
     const name = extractHanlderIdFromEvent(e);
-    removeIngNameHandler(name);
+    removeIngNameHandler(String(name));
   }
 
   function onToggle(e){
