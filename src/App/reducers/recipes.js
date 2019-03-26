@@ -1,12 +1,6 @@
 import Action from "../actions";
 import {nameSortFn, updateElementInArray} from "../helpers";
 
-// const defaultState = [{
-//   name: "",
-//   id: 'new',
-//   required: ['meatballs', 'tomato sauce', 'saffron', 'pasta']//.concat(['','','','','','','','','','','','',''])
-// }];
-
 export default function recipes(state = [], action){
 
   const { type, recipes, recipe, name, required } = { ...action };
@@ -19,8 +13,11 @@ export default function recipes(state = [], action){
     case Action.RECIPE_ADD_NEW:
       return [...state, recipe].sort(nameSortFn);
 
+    case Action.RECIPE_DELETE:
+      return state.filter(r => r.id !== recipe.id);
+
     case Action.RECIPE_UPDATE_NAME:
-      return updateElementInArray(state, recipe, 'name', name);
+      return updateElementInArray(state, recipe, 'name', name).sort(nameSortFn);
 
     case Action.RECIPE_UPDATE_REQ:
       return updateElementInArray(state, recipe, 'required', required);

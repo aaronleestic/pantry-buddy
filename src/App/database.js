@@ -14,12 +14,12 @@ db.version(1).stores({
 
 export default db;
 
-export function saveToDb(table, data){
+export function addToDb(table, data){
   return db.table(table).add(data)
 }
 
-export function dbUpdate(table, id, data){
-  db.table(table).update(id, data);
+export function updateDb(table, id, data){
+  return db.table(table).update(id, data);
 }
 
 export function deleteFromDb(table, data){

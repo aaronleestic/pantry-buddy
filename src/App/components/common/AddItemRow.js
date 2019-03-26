@@ -6,34 +6,34 @@ export default function AddItemRow({ addHandler, label }) {
 
   const [value, setValue] = useState("");
   const [hasError, setError] = useState(false);
-  const [element, setElement] = useState(null);
+  const [ref, setRef] = useState(null);
 
-  useEffect(() => {
-    if ( element )
-      element.scrollIntoView();
-  }, [value]);
+  useEffect(() => { if ( ref ) ref.scrollIntoView() }, [value]);
 
   function prepAdd(){
-    const text = value.trim();
-    if ( !text ){
-      setError(true);
-      setTimeout(() => setError(false), 1500);
+    if ( !value.trim() ){
+      showValidationError();
     } else {
-      addHandler(text);
-      setValue("")
+      addHandler(value.trim());
+      setValue("");
     }
   }
 
+  function showValidationError(){
+    setError(true);
+    setTimeout(() => setError(false), 1500);
+  }
+
   return (
-    <li className="list-group-item d-flex pl-3 mb-5" ref={(el) => {setElement(el)}}>
-      <IconBtn clickHandler={prepAdd} label="add" icon="plus"/>
+    <li className="list-group-item d-flex pl-3 mb-5" ref={ref => {setRef(ref)}}>
+      <IconBtn clickHandler={prepAdd} label="add" icon="plus" large/>
       <div className="flex-grow-1 ml-2">
         <label htmlFor={label} className="sr-only">{label}</label>
         <input
           id={label}
           className={classNames('form-control', { 'invalid-blink': hasError })}
           onChange={e => setValue(e.target.value)}
-          onKeyPress={(e) => { if ( e.key === 'Enter') prepAdd() }}
+          onKeyPress={e => { if ( e.key === 'Enter') prepAdd() }}
           value={value}
           type="text"
           autoCapitalize="none"

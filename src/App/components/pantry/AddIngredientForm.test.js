@@ -3,17 +3,17 @@ import { AddIngredientForm } from './AddIngredientForm'
 
 describe('AddIngredientForm', ()=>{
 
-  function getComponent(formProp){
+  function getComponent(formValues){
     const handleSubmitMock = jest.fn();
     const c = mount(
       <AddIngredientForm
-        formProp={formProp}
+        formValues={formValues}
         categories={[]}
         addIngredient={handleSubmitMock}
         handleCategoryChange={jest.fn()}/>
       );
     c.getTextInput = () => c.find('input#ingredient');
-    c.setTextInput = (text) => c.getTextInput().instance().value = text;
+    c.setTextInput = (text) => c.getTextInput().simulate('change', {target: {value: text}});
     c.getCheckbox = () => c.find({type: 'checkbox'});
     c.getSelect = () => c.find('select');
     c.submitForm = () => c.find('form').simulate('submit', { preventDefault() {} });
@@ -53,14 +53,14 @@ describe('AddIngredientForm', ()=>{
   });
 
   it('checks invalid input and prevents submission', ()=>{
-    let c = getComponent({categoryId: 0});
+    let c = getComponent({ categoryId: 0 });
     c.submitForm();
     expect(c.getTextInput().hasClass("invalid-blink")).toBeTruthy();
     expect(c.handleSubmitMock).not.toHaveBeenCalled();
   });
 
   it('passes validation check and submits when inputs are valid', ()=>{
-    let c = getComponent({categoryId: 0});
+    let c = getComponent({ categoryId: 0 });
     c.setTextInput('abc');
     c.submitForm();
     expect(c.getTextInput().hasClass("invalid-blink")).not.toBeTruthy();
@@ -68,7 +68,7 @@ describe('AddIngredientForm', ()=>{
   });
 
   it('clears text after submission', ()=>{
-    let c = getComponent({categoryId: 0});
+    let c = getComponent({ categoryId: 0 });
     c.setTextInput('abc');
     expect(c.getTextInput().instance().value).toEqual("abc");
     c.submitForm();

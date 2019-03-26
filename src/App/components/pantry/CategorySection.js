@@ -46,7 +46,7 @@ CategorySection.defaultProps = {
 function mapDispatchToProps(dispatch){
   return {
     toggleCategoryCollapse: group => dispatch(toggleCategoryCollapse(group)),
-    updateAddIngForm: categoryId => dispatch(updateAddIngForm({ categoryId }))
+    updateAddIngForm: form => dispatch(updateAddIngForm(form))
   }
 }
 

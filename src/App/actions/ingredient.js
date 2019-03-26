@@ -3,10 +3,10 @@ import Action from "./";
 import axios from "axios";
 import {
   INGRED_TABLE,
-  dbUpdate,
+  updateDb,
   deleteFromDb,
   fetchAllFromDb,
-  saveToDb,
+  addToDb,
 } from "../database";
 import {mapField, provideId} from "../helpers";
 
@@ -21,7 +21,7 @@ export function addIngredient(ingredient){
 }
 
 function* addIngredientSaga({ ingredient }){
-  const id = yield call(saveToDb, INGRED_TABLE, ingredient);
+  const id = yield call(addToDb, INGRED_TABLE, ingredient);
   yield put({ type: Action.INGREDIENT_ADD, ingredient: { ...ingredient, id } });
 }
 
@@ -39,7 +39,7 @@ export function toggleIngredAvail(ingredient){
 }
 
 function* toggleIngredAvailSaga({ ingredient }){
-  yield call(dbUpdate, INGRED_TABLE, ingredient.id, {isAvailable: !ingredient.isAvailable});
+  yield call(updateDb, INGRED_TABLE, ingredient.id, {isAvailable: !ingredient.isAvailable});
   yield put({ type: Action.INGRED_AVAIL_TOGGLE, ingredient })
 }
 

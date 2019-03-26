@@ -3,7 +3,7 @@ import classNames from "classnames/bind";
 
 export function ListedIngredient({ ingredient, onToggle }){
   return (
-    <div className="custom-control custom-checkbox">
+    <div className="custom-control custom-checkbox ml-1">
       <input defaultChecked={ingredient.isAvailable}
              id={`ingred-${ingredient.id}`}
              handler-id={ingredient.id}

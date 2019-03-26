@@ -11,7 +11,8 @@ import {
   faMinusCircle,
   faCaretDown,
   faCaretLeft,
-  faPencilAlt
+  faPencilAlt,
+  faChevronLeft
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -22,7 +23,8 @@ library.add(
   faMinusCircle,
   faCaretDown,
   faCaretLeft,
-  faPencilAlt
+  faPencilAlt,
+  faChevronLeft
 );
 
 export default function IconBtn({ clickHandler, handlerId, icon, label, alignRight, large }){

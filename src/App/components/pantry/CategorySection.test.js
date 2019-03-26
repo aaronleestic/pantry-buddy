@@ -1,18 +1,17 @@
 import React from 'react';
-import {CategorySection} from "./CategoryCollapse";
+import {CategorySection} from "./CategorySection";
 
-describe('CategoryCollapse', ()=>{
+describe('CategorySection', ()=>{
 
   const LIST_HEADER = '.list-header';
 
-  it('renders the category name and ingredients', ()=>{
+  it('renders the category name', ()=>{
     const props = {
       category: { name: 'grains', id: 0 },
       ingredients: [{ id: 1 }, { id: 2 }]
     };
     const c = shallow(<CategorySection {...props} />);
     expect(c.find(LIST_HEADER).text()).toContain('grains');
-    expect(c.find('Connect(IngredientList)')).toHaveLength(2);
   });
 
   it('calls the dispatches when toggling view', ()=> {

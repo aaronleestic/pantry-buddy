@@ -8,23 +8,24 @@ import {addIngredient} from "../../actions/ingredient";
 import {closeAllButCategoryId} from "../../actions/category";
 import './AddIngredientForm.scss';
 
-export function AddIngredientForm({ formProp: formValues, categories, addIngredient, updateAddIngForm, handleCategoryChange }){
+export function AddIngredientForm({ formValues, categories, addIngredient, updateAddIngForm, handleCategoryChange }){
 
   const [hasInputError, setInputError] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
   function prepSubmit(e){
     e.preventDefault();
-    const name = inputValue.trim();
-    if ( !name ){
-      //show validation error
-      setInputError(true);
-      setTimeout(() => setInputError(false), 1500);
+    if ( !inputValue.trim() ){
+      showValidationError();
     } else {
-      //update store and clears input
-      addIngredient({...formValues, name });
+      addIngredient({ ...formValues, name: inputValue.trim() });
       setInputValue("");
     }
+  }
+
+  function showValidationError() {
+    setInputError(true);
+    setTimeout(() => setInputError(false), 1500);
   }
 
   return (
@@ -72,7 +73,7 @@ export function AddIngredientForm({ formProp: formValues, categories, addIngredi
 }
 
 AddIngredientForm.propTypes = {
-  formProp: PropTypes.shape(ingredientShape).isRequired,
+  formValues: PropTypes.shape(ingredientShape).isRequired,
   categories: PropTypes.arrayOf(PropTypes.shape(categoryShape)).isRequired,
   addIngredient: PropTypes.func,
   updateAddIngForm: PropTypes.func,
@@ -80,22 +81,22 @@ AddIngredientForm.propTypes = {
 };
 
 AddIngredientForm.defaultProps = {
-  formProp: {},
+  formValues: {},
   categories: [],
 };
 
 const mapStateToProps = (state) => ({
-  formProp: state.addIngredientForm,
+  formValues: state.addIngredientForm,
   categories: state.categories
 });
 
 const mapDispatchToProps = dispatch => ({
+  addIngredient: ing => dispatch(addIngredient(ing)),
   updateAddIngForm: (e) => dispatch(updateAddIngForm({ isAvailable: e.target.checked })),
   handleCategoryChange: (categories, categoryId) => {
     dispatch(updateAddIngForm({ categoryId }));
     dispatch(closeAllButCategoryId(categories, categoryId));
-  },
-  addIngredient: ing => dispatch(addIngredient(ing))
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddIngredientForm);

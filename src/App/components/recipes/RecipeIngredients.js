@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import classNames from "classnames/bind";
+import {connect} from "react-redux";
 import IconBtn from "../common/IconBtn";
 import {by, extractHanlderIdFromEvent} from "../../helpers";
 import {ListedIngredient} from "../common/ListedIngredient";
-import {toggleIngredAvail} from "../../actions/ingredient";
-import {connect} from "react-redux";
+import {addIngredient, toggleIngredAvail} from "../../actions/ingredient";
 import AddItemRow from "../common/AddItemRow";
+import AddIngredientModal from "./AddIngredientModal";
 
-function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeIngNameHandler, toggleIngredAvail }){
+function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeIngNameHandler, toggleIngredAvail, addIngredient, categories }){
 
   const [duplicates, setDuplicates] = useState({});
+  const [showAddIngModal, setAddIngModal] = useState(false);
+  const [unlistedIng, setUnlistedIng] = useState(null);
 
   function removeIngredient(e){
     const name = extractHanlderIdFromEvent(e);
@@ -22,11 +25,15 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
     toggleIngredAvail(ingredient);
   }
 
-  function redirect(e){
+  function prepShowAddIngModal(e){
     e.preventDefault();
+    const tempId = extractHanlderIdFromEvent(e);
+    const ingredient = ingredients.find(by('tempId', tempId));
+    setUnlistedIng(ingredient);
+    setAddIngModal(true);
   }
 
-  function preAddIngredient(name){
+  function prepAddIngName(name){
     return isDuplicate(name) ? showValidationError(name) : addIngNameHandler(name);
   }
 
@@ -37,6 +44,16 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
   function showValidationError(name){
     setDuplicates({ [name]: true });
     setTimeout(() => setDuplicates({}), 1500);
+  }
+
+  function prepAddIngred(unlistedIng, categoryId){
+    const ingredient = makeIngredient(unlistedIng, categoryId);
+    addIngredient(ingredient);
+    setAddIngModal(false);
+  }
+
+  function makeIngredient({ name }, categoryId, isAvailable = false){
+    return { name, categoryId, isAvailable };
   }
 
   return (
@@ -53,7 +70,8 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
                 <>
                   <button
                     className="btn btn-secondary py-0 mr-2"
-                    onClick={redirect}>
+                    handler-id={ingredient.tempId}
+                    onClick={prepShowAddIngModal}>
                     add
                   </button>
                   <div>{ingredient.name}<span className="ml-1 text-muted">(not listed in pantry)</span></div>
@@ -69,8 +87,14 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
               alignRight/>
           </li >
         ))}
-        <AddItemRow addHandler={preAddIngredient} label="ingredients"/>
+        <AddItemRow addHandler={prepAddIngName} label="ingredients"/>
       </ul>
+      <AddIngredientModal
+        close={() => setAddIngModal(false)}
+        onAdd={prepAddIngred}
+        isOpen={showAddIngModal}
+        ingredient={unlistedIng}
+        categories={categories}/>
     </>
   )
 }
@@ -84,10 +108,13 @@ RecipeIngredients.defaultProps = {
   ingredients: []
 };
 
+function mapStateToProps(state){
+  return { categories: state.categories }
+}
 function mapDispatchToProps(dispatch){
   return {
     toggleIngredAvail: (ing) => dispatch(toggleIngredAvail(ing)),
+    addIngredient: (ing) => dispatch(addIngredient(ing))
   }
 }
-
-export default connect(null, mapDispatchToProps)(RecipeIngredients);
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeIngredients);

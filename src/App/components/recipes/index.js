@@ -7,7 +7,7 @@ import {addRecipeName} from "../../actions/recipe";
 import {extractHanlderIdFromEvent} from "../../helpers";
 import {withIngredAvailCount} from "../../selectors";
 
-function Recipes({ addRecipeName, recipes, history, match }){
+function Recipes({ recipes, addRecipeName, history, match }){
 
   const [duplicates, setDuplicates] = useState({});
 
@@ -31,7 +31,7 @@ function Recipes({ addRecipeName, recipes, history, match }){
 
   return (
     <>
-      <div className="d-flex list-header px-3 py-2 font-weight-bold">
+      <div className="d-flex list-header px-3 py-2  font-weight-bold">
         <div className="ml-2">Recipes</div>
         <div className="ml-auto">Available / Required</div>
       </div>
@@ -43,8 +43,7 @@ function Recipes({ addRecipeName, recipes, history, match }){
               { "invalid-blink border-bottom": duplicates[r.name] }
             )}>
             <IconBtn
-              icon="pencil-alt"
-              label="edit"
+              icon="pencil-alt" label="edit"
               handlerId={r.id}
               clickHandler={navToEdit}
             />
@@ -63,9 +62,7 @@ Recipes.defaultProps = { recipes: [] };
 function mapStateToProps(state){
   return { recipes: withIngredAvailCount(state) }
 }
-
 function mapDispatchToProps(dispatch){
   return { addRecipeName: (name) => dispatch(addRecipeName(name)) }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(Recipes);

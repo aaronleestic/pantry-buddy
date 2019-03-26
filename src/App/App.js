@@ -49,10 +49,16 @@ export function Container(props){
   )
 }
 
-export function Header(){
+export function Header(props){
   return (
-    <header className="text-center border-bottom border-dark p-2">
-      <h1>Pantry Buddy</h1>
+    <header className="row border-bottom border-dark p-2">
+      <div className="col-1 align-self-center">
+        {props.children}
+      </div>
+      <div className="col-10 text-center">
+        <h1 className="m-auto">Pantry Buddy</h1>
+      </div>
+      <div className="col-1"/>
     </header>
   )
 }

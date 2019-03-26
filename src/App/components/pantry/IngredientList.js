@@ -7,7 +7,7 @@ import IconBtn from "../common/IconBtn";
 import {by, extractHanlderIdFromEvent} from "../../helpers";
 import {ListedIngredient} from "../common/ListedIngredient";
 
-export function IngredientList({ingredients, toggleIngredAvail, deleteIngredient}){
+export function IngredientList({ ingredients, toggleIngredAvail, deleteIngredient }){
 
   function onToggle(e){
     toggleIngredAvail(findIngredient(e));
