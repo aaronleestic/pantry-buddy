@@ -10,14 +10,11 @@ body {
 }
 
 header {
+  background-color: rgba(255, 255, 255, 0.4);
   h1 {
     size: 2rem;
     font-family: 'Pacifico', monospace;
   }
-}
-
-header, footer {
-  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .exclude-footer {
