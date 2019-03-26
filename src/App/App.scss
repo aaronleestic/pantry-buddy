@@ -21,6 +21,7 @@ header, footer {
 }
 
 .exclude-footer {
+  height: calc(100vh - 3.5rem);
   max-height: calc(100vh - 3.5rem);
   bottom: 3.5em;
 }
