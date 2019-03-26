@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import classNames from "classnames/bind";
 import IconBtn from "./IconBtn";
 
@@ -18,6 +18,14 @@ export default function AddItemRow({ addHandler, label }) {
     }
   }
 
+  function keyPress(e){
+    if ( e.key === 'Enter' ) {
+      prepAdd();
+      ref.blur();
+      e.preventDefault();
+    }
+  }
+
   function showValidationError(){
     setError(true);
     setTimeout(() => setError(false), 1500);
@@ -33,7 +41,8 @@ export default function AddItemRow({ addHandler, label }) {
             id={label}
             className={classNames('form-control', { 'invalid-blink': hasError })}
             onChange={e => setValue(e.target.value)}
-            onKeyPress={e => { if ( e.key === 'Enter') prepAdd() }}
+            onKeyPress={keyPress}
+            ref={ref => {setRef(ref)}}
             value={value}
             type="text"
             autoCapitalize="none"
@@ -41,7 +50,6 @@ export default function AddItemRow({ addHandler, label }) {
             placeholder={label}/>
         </div>
       </li>
-      <li ref={ref => {setRef(ref)}}/>
     </>
   )
 
