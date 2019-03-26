@@ -3,7 +3,7 @@ import Dexie from 'dexie';
 export const DB_NAME = "PantryBuddy";
 export const INGRED_TABLE = "ingredients";
 export const CATEGORY_TABLE = "categories";
-export const RECIPE_TABLE = 'recipes';
+export const RECIPE_TABLE = "recipes";
 
 const db = new Dexie(DB_NAME);
 db.version(1).stores({

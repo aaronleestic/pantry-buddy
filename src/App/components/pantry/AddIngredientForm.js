@@ -31,7 +31,7 @@ export function AddIngredientForm({ formValues, categories, addIngredient, updat
   return (
     <form onSubmit={prepSubmit} autoComplete="off" className="m-3">
       <div className="d-flex">
-        <div className="flex-1">
+        <div className="flex-left">
           <div className="custom-control custom-checkbox text-center">
             <input
               type="checkbox" id="isAvailable" className="custom-control-input"
@@ -41,7 +41,7 @@ export function AddIngredientForm({ formValues, categories, addIngredient, updat
             <label className="custom-control-label mt-2" htmlFor="isAvailable"/>
           </div>
         </div>
-        <div className="flex-9">
+        <div className="flex-right">
           <input
             type="text" id="ingredient" aria-label="ingredient"
             autoComplete="off" autoCapitalize="none"
@@ -55,8 +55,8 @@ export function AddIngredientForm({ formValues, categories, addIngredient, updat
         </div>
       </div>
       <div className="d-flex text-center">
-        <label className="flex-1 col-form-label" htmlFor="categoryId">Type</label>
-        <div className="flex-9 d-inline-flex">
+        <label className="flex-left col-form-label" htmlFor="categoryId">Type</label>
+        <div className="flex-right d-inline-flex">
           <select
             onChange={e => handleCategoryChange(categories, Number(e.target.value))}
             value={formValues.categoryId}

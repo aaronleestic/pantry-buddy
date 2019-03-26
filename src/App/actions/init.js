@@ -16,7 +16,7 @@ export const initSagas = [
 ];
 
 export function fetchData() {
-  return {type: Action.INIT_DATA_FETCH}
+  return { type: Action.INIT_DATA_FETCH }
 }
 
 function* fetchDataSaga() {
@@ -42,5 +42,5 @@ function* fetchDataSaga() {
     console.warn('fetch data failed', e);
   }
 
-  yield put({type: Action.LOADING_HIDE});
+  yield put({ type: Action.LOADING_HIDE });
 }
