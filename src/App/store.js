@@ -6,13 +6,16 @@ import ingredients from "./reducers/ingredients";
 import addIngredientForm from "./reducers/addIngredientForm";
 import categories from "./reducers/categories";
 import isLoading from "./reducers/isLoading";
+import recipes from "./reducers/recipes";
 import {ingredientSagas} from "./actions/ingredient";
+import {initSagas} from "./actions/init";
 
 const reducers = combineReducers({
   ingredients,
   addIngredientForm,
   categories,
-  isLoading
+  isLoading,
+  recipes
 });
 
 const sagaMiddleware = createSagaMiddleware();
@@ -34,6 +37,7 @@ export default createStore(...args);
 function* rootSaga() {
   yield all([
     ...ingredientSagas,
+    ...initSagas
   ])
 }
 

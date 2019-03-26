@@ -9,7 +9,7 @@ export default function categories(state = [], { type, category, categories }){
       return updateElementInArray(state, category, 'isOpen', !category.isOpen);
 
     case Action.CATS_UPDATE_ALL:
-    case Action.LOAD_CATEGORIES:
+    case Action.CATS_LOAD:
       return categories;
 
     default:

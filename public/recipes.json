@@ -1,0 +1,10 @@
+[
+  {
+    "name": "spaghetti meatballs",
+    "required": ["pasta", "meatballs", "tomato sauce", "parmesan cheese"]
+  },
+  {
+    "name": "curry chicken",
+    "required": ["curry powder", "chicken breasts", "onions", "carrots", "potatoes", "rice"]
+  }
+]

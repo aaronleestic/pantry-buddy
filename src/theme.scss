@@ -7,6 +7,8 @@ $theme-colors: (
 $input-btn-focus-color: #AAA;
 $input-focus-border-color: #AAA;
 
+$list-group-border-radius: 0;
+
 //unable to override focus shadow for button
 //$btn-focus-box-shadow;
 
@@ -16,7 +18,7 @@ $input-focus-border-color: #AAA;
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
-$theme-colors: map-remove($theme-colors, "success", "info", "warning", "life", "dark");
+$theme-colors: map-remove($theme-colors, "success", "info", "warning", "dark");
 
 // Optional
 @import "~bootstrap/scss/reboot";

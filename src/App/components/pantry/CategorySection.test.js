@@ -1,18 +1,18 @@
 import React from 'react';
-import {CategoryCollapse} from "./CategoryCollapse";
+import {CategorySection} from "./CategoryCollapse";
 
 describe('CategoryCollapse', ()=>{
 
-  const CATEGORY_ROW = '.category-row';
+  const LIST_HEADER = '.list-header';
 
   it('renders the category name and ingredients', ()=>{
     const props = {
       category: { name: 'grains', id: 0 },
       ingredients: [{ id: 1 }, { id: 2 }]
     };
-    const c = shallow(<CategoryCollapse {...props} />);
-    expect(c.find(CATEGORY_ROW).text()).toContain('grains');
-    expect(c.find('Connect(IngredientRow)')).toHaveLength(2);
+    const c = shallow(<CategorySection {...props} />);
+    expect(c.find(LIST_HEADER).text()).toContain('grains');
+    expect(c.find('Connect(IngredientList)')).toHaveLength(2);
   });
 
   it('calls the dispatches when toggling view', ()=> {
@@ -24,8 +24,8 @@ describe('CategoryCollapse', ()=>{
       toggleCategoryCollapse,
       updateAddIngForm
     };
-    const c = shallow(<CategoryCollapse {...props} />);
-    c.find(CATEGORY_ROW).simulate('click');
+    const c = shallow(<CategorySection {...props} />);
+    c.find(LIST_HEADER).simulate('click');
     expect(toggleCategoryCollapse).toHaveBeenCalled();
     expect(updateAddIngForm).toHaveBeenCalled();
   })

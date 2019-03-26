@@ -1,17 +1,15 @@
 import Action from "../actions";
-import {insensitiveAlphaSortBy, updateElementInArray} from "../helpers";
-
-const sortFn = insensitiveAlphaSortBy('name');
+import {nameSortFn, updateElementInArray} from "../helpers";
 
 export default function ingredients(state = [], { type, ingredient, ingredients }){
 
   switch(type) {
 
     case Action.INGREDIENT_ADD:
-      return [...state, ingredient].sort(sortFn);
+      return [...state, ingredient].sort(nameSortFn);
 
     case Action.INGREDIENTS_LOAD:
-      return ingredients.sort(sortFn);
+      return ingredients.sort(nameSortFn);
 
     case Action.INGRED_AVAIL_TOGGLE:
       return updateElementInArray(state, ingredient, 'isAvailable', !ingredient.isAvailable);

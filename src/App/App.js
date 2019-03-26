@@ -3,7 +3,7 @@ import React from 'react';
 import { Route, NavLink, Switch, Redirect } from "react-router-dom";
 import Pantry from "./components/pantry";
 import Recipes from "./components/recipes";
-import EditRecipe from "./components/recipes/edit";
+import EditRecipe from "./components/recipes/EditRecipe";
 
 function App(){
   return (
@@ -19,9 +19,9 @@ function App(){
 function MainWithNav(){
   return (
     <Container>
-      <div className="exclude-footer">
+      <div className="exclude-footer hide-scroll">
         <Header/>
-        <main className="flex-fill pt-3">
+        <main className="flex-fill">
           <Route path="/pantry" component={Pantry}/>
           <Route path="/recipes" component={Recipes}/>
         </main>
@@ -34,9 +34,8 @@ function MainWithNav(){
 function MainWithoutNav(){
   return (
     <Container>
-      <Header/>
       <Switch>
-        <Route path="/recipes/new" component={EditRecipe}/>
+        <Route path="/recipes/:id" component={EditRecipe}/>
       </Switch>
     </Container>
   )
@@ -50,7 +49,7 @@ export function Container(props){
   )
 }
 
-function Header(){
+export function Header(){
   return (
     <header className="text-center border-bottom border-dark p-2">
       <h1>Pantry Buddy</h1>
@@ -60,7 +59,7 @@ function Header(){
 
 function FooterNav(){
   return (
-    <footer className="p-2 border-top border-dark position-sticky">
+    <footer className="p-2 border-top border-dark position-relative bottom-footer">
       <nav className="nav nav-pills nav-justified justify-content-between">
         <NavLink className="nav-link" activeClassName="active" to="/pantry">Pantry</NavLink>
         <NavLink className="nav-link" activeClassName="active" to="/recipes">Recipes</NavLink>

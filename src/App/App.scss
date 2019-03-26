@@ -20,14 +20,16 @@ header, footer {
   background-color: rgba(255, 255, 255, 0.4);
 }
 
-footer {
+.bottom-footer {
   bottom: 0;
   height: 3.5rem;
 }
 
 .exclude-footer {
   height: calc(100vh - 3.5rem);
+}
 
+.hide-scroll {
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE 10+ */
@@ -50,8 +52,12 @@ input::placeholder {
   font-weight: normal;
 }
 
+.list-header {
+  background-color: rgba(255, 255, 255, .5);
+}
 .list-group-item {
   background-color: rgba(255, 255, 255, 0);
+  border-bottom: 0;
 }
 
 @keyframes blink {
@@ -63,4 +69,8 @@ input::placeholder {
   animation-timing-function: step-end ;
   animation-iteration-count: 6 ;
   animation-direction: alternate ;
+}
+
+.fall-through-click {
+  pointer-events: none;
 }

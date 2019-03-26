@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {withRouter} from "react-router";
 import App from "./App";
-import {fetchData} from "./actions/ingredient";
+import {fetchData} from "./actions/init";
 
 function AppLoader({isLoading, dispatch}){
 

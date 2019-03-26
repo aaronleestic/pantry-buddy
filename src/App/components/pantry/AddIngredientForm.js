@@ -8,69 +8,57 @@ import {addIngredient} from "../../actions/ingredient";
 import {closeAllButCategoryId} from "../../actions/category";
 import './AddIngredientForm.scss';
 
-export function AddIngredientForm({formProp, categories, addIngredient, updateAddIngForm, handleCategoryChange}){
+export function AddIngredientForm({ formProp: formValues, categories, addIngredient, updateAddIngForm, handleCategoryChange }){
 
-  let [isBlinking, setInputWarning] = useState(false);
+  const [hasInputError, setInputError] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   function prepSubmit(e){
     e.preventDefault();
-
-    //show potential validation error
-    const els = e.target.elements;
-    const name = els['ingredient'].value.trim();
+    const name = inputValue.trim();
     if ( !name ){
-      setInputWarning(true);
-      return setTimeout(() => setInputWarning(false), 1500); //removes the css class after 1.5 second
+      //show validation error
+      setInputError(true);
+      setTimeout(() => setInputError(false), 1500);
+    } else {
+      //update store and clears input
+      addIngredient({...formValues, name });
+      setInputValue("");
     }
-
-    //update global state
-    addIngredient({
-      name,
-      categoryId: Number(els['categoryId'].value),
-      isAvailable: els['isAvailable'].checked,
-    });
-
-    //clears the text input
-    els['ingredient'].value = "";
   }
 
   return (
-    <form onSubmit={prepSubmit} autoComplete="off" className="px-3">
-      <div className="row">
+    <form onSubmit={prepSubmit} autoComplete="off" className="m-3">
+      <div className="d-flex">
         <div className="flex-1">
           <div className="custom-control custom-checkbox text-center">
             <input
-              type="checkbox"
-              id="isAvailable"
-              className="custom-control-input"
+              type="checkbox" id="isAvailable" className="custom-control-input"
               aria-label="availability of ingredient"
-              defaultChecked={formProp.isAvailable}
+              defaultChecked={formValues.isAvailable}
               onChange={updateAddIngForm}/>
             <label className="custom-control-label mt-2" htmlFor="isAvailable"/>
           </div>
         </div>
-        <div className="flex-9 px-3">
-          <div className="form-group">
-            <input
-              aria-label="ingredient"
-              autoComplete="off"
-              type="text"
-              id="ingredient"
-              placeholder={formProp.isAvailable ? 'available ingredients' : 'missing ingredients'}
-              className={classNames(
-                'form-control',
-                { 'text-danger font-weight-bold': !formProp.isAvailable},
-                { 'invalid-blink': isBlinking }
-              )}/>
-          </div>
+        <div className="flex-9">
+          <input
+            type="text" id="ingredient" aria-label="ingredient"
+            autoComplete="off" autoCapitalize="none"
+            placeholder={formValues.isAvailable ? 'available ingredients' : 'missing ingredients'}
+            onChange={e => setInputValue(e.target.value)}
+            value={inputValue}
+            className={classNames('form-control mb-3',
+              { 'text-danger font-weight-bold': !formValues.isAvailable},
+              { 'invalid-blink': hasInputError }
+            )}/>
         </div>
       </div>
-      <div className="form-group row text-center">
+      <div className="d-flex text-center">
         <label className="flex-1 col-form-label" htmlFor="categoryId">Type</label>
-        <div className="flex-9 px-3 d-inline-flex">
+        <div className="flex-9 d-inline-flex">
           <select
             onChange={e => handleCategoryChange(categories, Number(e.target.value))}
-            value={formProp.categoryId}
+            value={formValues.categoryId}
             className="form-control" id="categoryId">
             {categories.map(c => (
               <option key={c.id} value={c.id}>{c.name}</option>
@@ -89,6 +77,11 @@ AddIngredientForm.propTypes = {
   addIngredient: PropTypes.func,
   updateAddIngForm: PropTypes.func,
   handleCategoryChange: PropTypes.func
+};
+
+AddIngredientForm.defaultProps = {
+  formProp: {},
+  categories: [],
 };
 
 const mapStateToProps = (state) => ({

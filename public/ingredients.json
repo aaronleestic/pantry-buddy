@@ -60,7 +60,7 @@
     "categoryId":1
   },
   {
-    "name":"meat balls",
+    "name":"meatballs",
     "categoryId":1
   },
   {
@@ -72,7 +72,7 @@
     "categoryId":1
   },
   {
-    "name":"onion",
+    "name":"onions",
     "categoryId":2
   },
   {
@@ -116,7 +116,7 @@
     "categoryId":2
   },
   {
-    "name":"bell pepper",
+    "name":"bell peppers",
     "categoryId":2
   },
   {
@@ -258,6 +258,14 @@
   {
     "name":"hot sauce",
     "categoryId":5
+  },
+  {
+    "name": "tomato sauce",
+    "categoryId": 5
+  },
+  {
+    "name": "alfredo sauce",
+    "categoryId": 5
   },
   {
     "name":"napkins",

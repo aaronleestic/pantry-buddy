@@ -3,15 +3,15 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import AddIngredientForm from "./AddIngredientForm";
 import {categoryShape, ingredientShape} from "../../models";
-import CategoryCollapse from "./CategoryCollapse";
-import {getIngredByCat} from "../../selectors/getIngredByCat";
+import CategorySection from "./CategorySection";
+import {getIngredByCat} from "../../selectors";
 
-export function Pantry({ingredientGroups}){
+export function Pantry({ ingredientGroups }){
   return (
     <>
       <AddIngredientForm/>
       {ingredientGroups.map(group =>
-        <CategoryCollapse
+        <CategorySection
           key={group.category.id}
           category={group.category}
           ingredients={group.ingredients}
