@@ -9,7 +9,7 @@
   },
   {
     "name": "mac & cheese",
-    "required": ["macaroni pasta", "cheddar cheese", "butter", "milk"]
+    "required": ["macaroni pasta", "cheddar cheese", "butter", "milk"]R
   },
   {
     "name": "miso salmon",
@@ -21,6 +21,6 @@
   },
   {
     "name": "lentil soup",
-    "required": ["lentils", "onions", "onion", "carrots", "celery", "garlic", "oregano", "bay leaf", "basil"]
+    "required": ["lentils", "onions", "carrots", "celery", "garlic", "oregano", "bay leaf", "basil"]
   }
 ]
