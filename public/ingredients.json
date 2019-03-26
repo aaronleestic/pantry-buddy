@@ -72,6 +72,10 @@
     "categoryId":1
   },
   {
+    "name": "milk",
+    "categoryId": 1
+  },
+  {
     "name":"onions",
     "categoryId":2
   },

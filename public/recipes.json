@@ -5,6 +5,22 @@
   },
   {
     "name": "curry chicken",
-    "required": ["curry powder", "chicken breasts", "onions", "carrots", "potatoes", "rice"]
+    "required": ["curry powder", "coconut milk", "chicken breasts", "onions", "carrots", "potatoes", "rice"]
+  },
+  {
+    "name": "mac & cheese",
+    "required": ["macaroni pasta", "cheddar cheese", "butter", "milk"]
+  },
+  {
+    "name": "miso salmon",
+    "required": ["salmon", "miso paste"]
+  },
+  {
+    "name": "roasted chicken",
+    "required": ["lemon", "garlic", "butter", "onion", "carrots", "fennel", "olive oil"]
+  },
+  {
+    "name": "lentil soup",
+    "required": ["lentils", "onions", "onion", "carrots", "celery", "garlic", "oregano", "bay leaf", "basil"]
   }
 ]
