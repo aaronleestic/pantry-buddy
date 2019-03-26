@@ -9,12 +9,13 @@ Mobile optimized, Progressive Web App built for offline use
 #### React 16.8
 - stateless functional components & hooks
 
-#### Redux-Saga
+#### Redux-Saga & Reselect
 - one way data flow
 - async action dispatching
+- memoized store properties
 
 #### Indexed DB (Dexie.js)
-- offline persistence for the browser
+- offline persistence for the mobile browser
 
 #### Jest & Enzyme
 - automated test suites
@@ -28,8 +29,6 @@ Mobile optimized, Progressive Web App built for offline use
 - easy automated deployments
 
 ### Next Steps
-
-Completing the Recipes management feature, plus...
 
 #### User management
 - social login backed by a GraphQL-based API on Heroku
