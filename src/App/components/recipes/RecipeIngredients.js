@@ -8,6 +8,7 @@ import {ListedIngredient} from "../common/ListedIngredient";
 import {addIngredient, toggleIngredAvail} from "../../actions/ingredient";
 import AddItemRow from "../common/AddItemRow";
 import AddIngredientModal from "./AddIngredientModal";
+import UnlistedIngredient from "./UnlistedIngredient";
 
 function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeIngNameHandler, toggleIngredAvail, addIngredient, categories }){
 
@@ -67,24 +68,14 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
                 { "invalid-blink border-bottom": duplicates[ingredient.name] }
               )}>
             { ingredient.tempId ?
-                <>
-                  <button
-                    className="btn btn-secondary py-0 mr-2"
-                    handler-id={ingredient.tempId}
-                    onClick={prepShowAddIngModal}>
-                    add
-                  </button>
-                  <div>{ingredient.name}<span className="ml-1 text-muted">(not listed in pantry)</span></div>
-                </>
+                <UnlistedIngredient ingredient={ingredient} onAdd={prepShowAddIngModal}/>
               :
                 <ListedIngredient ingredient={ingredient} onToggle={onToggle}/>
             }
             <IconBtn
               clickHandler={removeIngredient}
               handlerId={ingredient.name}
-              label="remove"
-              icon="minus-circle"
-              alignRight/>
+              label="remove" icon="minus-circle" alignRight/>
           </li >
         ))}
         <AddItemRow addHandler={prepAddIngName} label="ingredients"/>

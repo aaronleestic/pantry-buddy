@@ -65,7 +65,7 @@ export function Header(props){
 
 function FooterNav(){
   return (
-    <footer className="p-2 border-top border-dark position-sticky bottom-footer">
+    <footer className="p-2 border-top border-dark position-sticky bottom-footer bg-light">
       <nav className="nav nav-pills nav-justified justify-content-between">
         <NavLink className="nav-link" activeClassName="active" to="/pantry">Pantry</NavLink>
         <NavLink className="nav-link" activeClassName="active" to="/recipes">Recipes</NavLink>
