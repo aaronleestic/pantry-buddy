@@ -51,7 +51,7 @@ export function Container(props){
 
 export function Header(props){
   return (
-    <header className="row border-bottom border-dark p-2">
+    <header className="row border-bottom border-dark py-2 mx-0">
       <div className="col-1 align-self-center">
         {props.children}
       </div>
@@ -65,7 +65,7 @@ export function Header(props){
 
 function FooterNav(){
   return (
-    <footer className="p-2 border-top border-dark position-relative bottom-footer">
+    <footer className="p-2 border-top border-dark position-sticky bottom-footer">
       <nav className="nav nav-pills nav-justified justify-content-between">
         <NavLink className="nav-link" activeClassName="active" to="/pantry">Pantry</NavLink>
         <NavLink className="nav-link" activeClassName="active" to="/recipes">Recipes</NavLink>
