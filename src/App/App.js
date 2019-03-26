@@ -8,10 +8,10 @@ import EditRecipe from "./components/recipes/EditRecipe";
 function App(){
   return (
     <Switch>
-      <Redirect from="/" exact to="/pantry"/>
       <Route path="/pantry" component={MainWithNav}/>
       <Route path="/recipes" component={MainWithNav} exact/>
       <Route path="/recipes/:id" component={MainWithoutNav}/>
+      <Redirect from="*" to="/pantry" />
     </Switch>
   )
 }

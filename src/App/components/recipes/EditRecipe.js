@@ -63,10 +63,19 @@ function EditRecipe({ recipe, ingredients, history, updateRecipeName, addRecipeI
   )
 }
 
+EditRecipe.defaultProps = {
+  recipe: {}
+};
+
 function mapStateToProps(state, { match, history }){
 
   //retrieve recipe based on url id param
   const recipe = state.recipes.find(by('id', Number(match.params.id)));
+
+  if ( !recipe ) {
+    history.replace("/recipes");
+    return {}
+  }
 
   //put ingredients into a map for fast lookup
   const map = getIngredientsAsMap(state);
