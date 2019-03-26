@@ -21,16 +21,13 @@ header, footer {
 }
 
 .exclude-footer {
-  height: calc(100vh - 3.5rem);
-  max-height: calc(100vh - 3.5rem);
-  bottom: 3.5em;
+  height: calc(100% - 3.5rem);
 }
 
 .hide-scroll {
   overflow-y: scroll;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE 10+ */
-
   &::-webkit-scrollbar { /* WebKit */
     width: 0;
     height: 0;

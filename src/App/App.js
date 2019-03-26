@@ -19,7 +19,7 @@ function App(){
 function MainWithNav(){
   return (
     <Container>
-      <div className="exclude-footer position-sticky hide-scroll">
+      <div className="exclude-footer hide-scroll">
         <Header/>
         <main className="flex-fill">
           <Route path="/pantry" component={Pantry}/>

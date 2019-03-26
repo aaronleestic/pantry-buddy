@@ -27,7 +27,11 @@ export function deleteFromDb(table, data){
 }
 
 export function fetchDbExistence(){
-  return Dexie.exists(DB_NAME);
+  try {
+    return Dexie.exists(DB_NAME);
+  } catch (e) {
+    return Promise.resolve(false);
+  }
 }
 
 export function fetchAllFromDb(table){
@@ -35,5 +39,10 @@ export function fetchAllFromDb(table){
 }
 
 export function dbBulkAdd(tableName, data){
-  return db.table(tableName).bulkAdd(data);
+  try {
+    return db.table(tableName).bulkAdd(data);
+  } catch (e){
+    console.warn("Indexed DB may not be available", e);
+    return Promise.resolve(data);
+  }
 }
