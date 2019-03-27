@@ -1,9 +1,10 @@
-import './App.scss';
+import styles from './App.module.scss';
 import React from 'react';
-import { Route, NavLink, Switch, Redirect } from "react-router-dom";
+import { NavLink as RouterLink, Route, Switch, Redirect } from "react-router-dom";
 import Pantry from "./components/pantry";
 import Recipes from "./components/recipes";
 import EditRecipe from "./components/recipes/EditRecipe";
+import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap';
 
 function App(){
   return (
@@ -18,10 +19,10 @@ function App(){
 
 function MainWithNav(){
   return (
-    <Container>
-      <div className="exclude-footer hide-scroll">
+    <Container className={styles.container}>
+      <div className={styles.main}>
         <Header/>
-        <main className="flex-fill">
+        <main>
           <Route path="/pantry" component={Pantry}/>
           <Route path="/recipes" component={Recipes}/>
         </main>
@@ -33,43 +34,39 @@ function MainWithNav(){
 
 function MainWithoutNav(){
   return (
-    <Container>
-      <Switch>
-        <Route path="/recipes/:id" component={EditRecipe}/>
-      </Switch>
+    <Container className={styles.container}>
+      <Route path="/recipes/:id" component={EditRecipe}/>
     </Container>
-  )
-}
-
-export function Container(props){
-  return (
-    <div className="container px-0 d-flex flex-column vh-100">
-      {props.children}
-    </div>
   )
 }
 
 export function Header(props){
   return (
-    <header className="row border-bottom border-dark py-2 mx-0">
-      <div className="col-1 align-self-center">
-        {props.children}
-      </div>
-      <div className="col-10 text-center">
-        <h1 className="m-auto">Pantry Buddy</h1>
-      </div>
-      <div className="col-1"/>
+    <header>
+      <Row className={styles.header}>
+        <Col xs={1} className={styles.headerLeftNav}>
+          {props.children}
+        </Col>
+        <Col xs={10} className={styles.headerText}>
+          <h1>Pantry Buddy</h1>
+        </Col>
+        <Col xs={1}/>
+      </Row>
     </header>
   )
 }
 
 function FooterNav(){
   return (
-    <footer className="p-2 border-top border-dark position-sticky bottom-footer bg-light">
-      <nav className="nav nav-pills nav-justified justify-content-between">
-        <NavLink className="nav-link" activeClassName="active" to="/pantry">Pantry</NavLink>
-        <NavLink className="nav-link" activeClassName="active" to="/recipes">Recipes</NavLink>
-      </nav>
+    <footer className={styles.footer}>
+      <Nav pills className={styles.footerNav}>
+        <NavItem>
+          <NavLink tag={RouterLink} activeClassName="active" to="/pantry">Pantry</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink tag={RouterLink} activeClassName="active" to="/recipes">Recipes</NavLink>
+        </NavItem>
+      </Nav>
     </footer>
   )
 }

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import classNames from "classnames/bind";
+import cx from "classnames";
+import { ListGroupItem, Label, Input } from 'reactstrap';
 import IconBtn from "./IconBtn";
 
-export default function AddItemRow({ addHandler, label }) {
+export default function AddItemRow({ addItemHandler, label }) {
 
   const [value, setValue] = useState("");
   const [hasError, setError] = useState(false);
@@ -12,7 +13,7 @@ export default function AddItemRow({ addHandler, label }) {
     if ( !value.trim() ){
       showValidationError();
     } else {
-      addHandler(value.trim());
+      addItemHandler(value.trim());
       setValue("");
       ref.scrollIntoView();
     }
@@ -33,23 +34,23 @@ export default function AddItemRow({ addHandler, label }) {
 
   return (
     <>
-      <li className="list-group-item d-flex pl-3 pb-5">
+      <ListGroupItem className="pl-3 pb-5">
         <IconBtn clickHandler={prepAdd} label="add" icon="plus" large/>
         <div className="flex-grow-1 ml-2">
-          <label htmlFor={label} className="sr-only">{label}</label>
-          <input
+          <Label for={label} className="sr-only">{label}</Label>
+          <Input
             id={label}
-            className={classNames('form-control', { 'invalid-blink': hasError })}
+            className={cx({ 'invalid-blink': hasError })}
             onChange={e => setValue(e.target.value)}
             onKeyPress={keyPress}
-            ref={ref => {setRef(ref)}}
             value={value}
             type="text"
             autoCapitalize="none"
             autoComplete="off"
             placeholder={label}/>
         </div>
-      </li>
+      </ListGroupItem>
+      <li ref={ref => {setRef(ref)}}/>
     </>
   )
 

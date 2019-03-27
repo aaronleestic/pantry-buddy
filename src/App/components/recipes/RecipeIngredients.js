@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import PropTypes from "prop-types";
-import classNames from "classnames/bind";
+import cx from "classnames";
 import {connect} from "react-redux";
+import {ListGroup, ListGroupItem} from "reactstrap";
 import IconBtn from "../common/IconBtn";
 import {by, extractHanlderIdFromEvent} from "../../helpers";
-import {ListedIngredient} from "../common/ListedIngredient";
-import {addIngredient, toggleIngredAvail} from "../../actions/ingredient";
+import {IngredientRow} from "../common/IngredientRow";
+import {toggleIngredAvail} from "../../actions/ingredient";
 import AddItemRow from "../common/AddItemRow";
 import AddIngredientModal from "./AddIngredientModal";
 import UnlistedIngredient from "./UnlistedIngredient";
+import styles from "./RecipeIngredients.module.scss";
 
-function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeIngNameHandler, toggleIngredAvail, addIngredient, categories }){
+function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeIngNameHandler, toggleIngredAvail }){
 
   const [duplicates, setDuplicates] = useState({});
   const [showAddIngModal, setAddIngModal] = useState(false);
@@ -47,65 +48,42 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
     setTimeout(() => setDuplicates({}), 1500);
   }
 
-  function prepAddIngred(unlistedIng, categoryId){
-    const ingredient = makeIngredient(unlistedIng, categoryId);
-    addIngredient(ingredient);
-    setAddIngModal(false);
-  }
-
-  function makeIngredient({ name }, categoryId, isAvailable = false){
-    return { name, categoryId, isAvailable };
-  }
-
   return (
     <>
-      <div className="px-3 py-1 border-top list-header font-weight-bold">{headerText}</div>
-      <ul className="list-group border-bottom-0">
+      <div className={styles.listHeader}>{headerText}</div>
+      <ListGroup>
         {ingredients.map(ingredient => (
-          <li key={ingredient.tempId || String(ingredient.id)}
-              className={classNames(
-                "list-group-item d-flex",
-                { "invalid-blink border-bottom": duplicates[ingredient.name] }
-              )}>
+          <ListGroupItem
+            key={ingredient.tempId || String(ingredient.id)}
+            className={cx({ "invalid-blink border-bottom": duplicates[ingredient.name] })}>
             { ingredient.tempId ?
-                <UnlistedIngredient ingredient={ingredient} onAdd={prepShowAddIngModal}/>
-              :
-                <ListedIngredient ingredient={ingredient} onToggle={onToggle}/>
+              <UnlistedIngredient ingredient={ingredient} onAdd={prepShowAddIngModal}/>
+            :
+              <IngredientRow ingredient={ingredient} onToggle={onToggle}/>
             }
             <IconBtn
               clickHandler={removeIngredient}
               handlerId={ingredient.name}
               label="remove" icon="minus-circle" alignRight/>
-          </li >
+          </ListGroupItem >
         ))}
-        <AddItemRow addHandler={prepAddIngName} label="ingredients"/>
-      </ul>
+        <AddItemRow addItemHandler={prepAddIngName} label="ingredients"/>
+      </ListGroup>
+
       <AddIngredientModal
-        close={() => setAddIngModal(false)}
-        onAdd={prepAddIngred}
         isOpen={showAddIngModal}
-        ingredient={unlistedIng}
-        categories={categories}/>
+        unlistedIng={unlistedIng}
+        close={() => setAddIngModal(false)}/>
     </>
   )
 }
 
-RecipeIngredients.propTypes = {
-  handleAddIngName: PropTypes.func
-};
 RecipeIngredients.defaultProps = {
-  handleAddIngName: () => console.warn('handleAddIngredient not provided'),
-  handleRemoveIngName: () => console.warn('handleRemoveIngName not provided'),
   ingredients: []
 };
 
-function mapStateToProps(state){
-  return { categories: state.categories }
-}
 function mapDispatchToProps(dispatch){
-  return {
-    toggleIngredAvail: (ing) => dispatch(toggleIngredAvail(ing)),
-    addIngredient: (ing) => dispatch(addIngredient(ing))
-  }
+  return { toggleIngredAvail: (ing) => dispatch(toggleIngredAvail(ing)) }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(RecipeIngredients);
+
+export default connect(null, mapDispatchToProps)(RecipeIngredients);

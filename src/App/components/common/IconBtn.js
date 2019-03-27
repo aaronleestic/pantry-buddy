@@ -1,8 +1,9 @@
 import React from 'react';
-import classNames from 'classnames/bind';
+import cx from 'classnames';
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import PropTypes from "prop-types";
+import styles from "./IconBtn.module.scss";
 import {
   faTrashAlt,
   faMinus,
@@ -34,12 +35,12 @@ export default function IconBtn({ clickHandler, handlerId, icon, label, alignRig
       handler-id={handlerId}
       aria-label={label}
       type="button"
-      className={classNames([
+      className={cx([
         "border-0 bg-transparent",
         { "ml-auto": alignRight },
         { "fa-lg": large }
       ])}>
-      <FontAwesomeIcon role="button" icon={icon} className="text-muted fall-through-click"/>
+      <FontAwesomeIcon role="button" icon={icon} className={styles.icon}/>
     </button>
   )
 }

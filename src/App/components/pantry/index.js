@@ -22,21 +22,18 @@ export function Pantry({ ingredientGroups }){
 }
 
 Pantry.propTypes = {
-  ingredientGroups: PropTypes.arrayOf(
-    PropTypes.shape({
-      category: PropTypes.shape(categoryShape),
-      ingredients: PropTypes.arrayOf(PropTypes.shape(ingredientShape))
-    })
-  ).isRequired
+  ingredientGroups: PropTypes.arrayOf(PropTypes.shape({
+    category: PropTypes.shape(categoryShape),
+    ingredients: PropTypes.arrayOf(PropTypes.shape(ingredientShape))
+  })).isRequired
 };
+
 Pantry.defaultProps = {
   ingredientGroups: []
 };
 
 function mapStateToProps(state){
-  return {
-    ingredientGroups: getIngredByCat(state)
-  }
+  return { ingredientGroups: getIngredByCat(state) }
 }
 
 export default connect(mapStateToProps)(Pantry);

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import {connect} from "react-redux";
-import classNames from "classnames/bind";
+import cx from "classnames";
+import {ListGroup, ListGroupItem} from "reactstrap";
 import AddItemRow from "../common/AddItemRow";
 import IconBtn from "../common/IconBtn";
 import {addRecipeName} from "../../actions/recipe";
 import {extractHanlderIdFromEvent} from "../../helpers";
 import {withIngredAvailCount} from "../../selectors";
-
+import styles from "./index.module.scss";
 function Recipes({ recipes, addRecipeName, history, match }){
 
   const [duplicates, setDuplicates] = useState({});
@@ -31,28 +32,26 @@ function Recipes({ recipes, addRecipeName, history, match }){
 
   return (
     <>
-      <div className="d-flex list-header px-3 py-2  font-weight-bold">
+      <div className={styles.listHeader}>
         <div className="ml-2">Recipes</div>
         <div className="ml-auto">Available / Required</div>
       </div>
-      <ul className="list-group border-bottom-0">
+      <ListGroup>
         {recipes.map((r) => (
-          <li
+          <ListGroupItem
             key={r.id}
-            className={classNames("list-group-item d-flex pl-3",
-              { "invalid-blink border-bottom": duplicates[r.name] }
-            )}>
+            className={cx("pl-3", { "invalid-blink border-bottom": duplicates[r.name] })}>
             <IconBtn
-              icon="pencil-alt" label="edit"
+              icon="pencil-alt"
+              label="edit"
               handlerId={r.id}
-              clickHandler={navToEdit}
-            />
+              clickHandler={navToEdit}/>
             <div className="ml-2">{r.name}</div>
             <div className="ml-auto">{r.available} / {r.required.length}</div>
-          </li>
+          </ListGroupItem>
         ))}
-        <AddItemRow addHandler={handleAddRecipe} label="recipe name"/>
-      </ul>
+        <AddItemRow addItemHandler={handleAddRecipe} label="recipe name"/>
+      </ListGroup>
     </>
   );
 }

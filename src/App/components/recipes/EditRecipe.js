@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
+import {Form, Input, Label} from "reactstrap";
 import debounce from 'lodash/debounce';
 import IconBtn from "../common/IconBtn";
 import RecipeIngredients from "./RecipeIngredients";
@@ -9,6 +10,7 @@ import {Header} from "../../App";
 import {addRecipeIngName, deleteRecipe, removeRecipeIngName, updateRecipeName} from "../../actions/recipe";
 import {getIngredientsAsMap} from "../../selectors";
 import DeleteRecipeModal from "./DeleteRecipeModal";
+import styles from "./EditRecipe.module.scss";
 
 function EditRecipe({ recipe, ingredients, history, updateRecipeName, addRecipeIngName, removeRecipeIngName, deleteRecipe }){
 
@@ -24,41 +26,43 @@ function EditRecipe({ recipe, ingredients, history, updateRecipeName, addRecipeI
   }
 
   return (
-    <div className="vh-100 hide-scroll">
+    <div className={styles.container}>
       <Header>
         <IconBtn icon="chevron-left" label="back" clickHandler={navBack} large/>
       </Header>
-      <form autoComplete="off" className="d-flex flex-column">
-        <div className="d-flex p-3">
+      <Form autoComplete="off">
+        <div className="d-flex flex-row p-3">
           <div className="flex-grow-1 mr-2">
-            <label htmlFor="name" className="sr-only">Recipe Name</label>
-            <input id="name" className="form-control"
-                   name="name" type="text"
-                   placeholder="Recipe name"
-                   autoComplete="off" autoCapitalize="none"
-                   defaultValue={recipe.name}
-                   onChange={e => debUpdateRecipeName(e.target.value)}/>
+            <Label for="recipeName" className="sr-only">Recipe Name</Label>
+            <Input
+              id="recipeName"
+              type="text"
+              placeholder="Recipe name"
+              autoCapitalize="none"
+              defaultValue={recipe.name}
+              onChange={e => debUpdateRecipeName(e.target.value)}/>
           </div>
           <IconBtn
             clickHandler={() => setDeleteModal(true)}
             handlerId={null} icon="trash-alt" label="delete"/>
-          <DeleteRecipeModal
-            isOpen={showDelete}
-            recipe={recipe}
-            onCancel={() => setDeleteModal(false)}
-            onDelete={() => {
-              deleteRecipe(recipe);
-              setDeleteModal(false);
-              navBack();
-            }}
-          />
         </div>
         <RecipeIngredients
           addIngNameHandler={(name) => addRecipeIngName(recipe, name)}
           removeIngNameHandler={(name) => removeRecipeIngName(recipe, name)}
           ingredients={ingredients}
           headerText="Required ingredients"/>
-      </form>
+      </Form>
+
+      <DeleteRecipeModal
+        isOpen={showDelete}
+        recipe={recipe}
+        onCancel={() => setDeleteModal(false)}
+        onDelete={() => {
+          deleteRecipe(recipe);
+          setDeleteModal(false);
+          navBack();
+        }}/>
+
     </div>
   )
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import {ListedIngredient} from "./ListedIngredient";
+import {IngredientRow} from "./ListedIngredient";
 
 describe('ListedIngredient', ()=>{
 
   function getComponent(ingredient){
-    const c = shallow(<ListedIngredient ingredient={ingredient}/>);
+    const c = shallow(<IngredientRow ingredient={ingredient}/>);
     c.getCheckbox = () => c.find({type: 'checkbox'});
     c.getLabel = () => c.find('label');
     return c;

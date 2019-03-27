@@ -1,0 +1,4 @@
+.listHeader {
+  composes: px-3 py-1 border-top font-weight-bold from global;
+  background-color: rgba(255, 255, 255, .5);
+}

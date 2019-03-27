@@ -1,11 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 import {ingredientShape} from "../../models";
 import {deleteIngredient, toggleIngredAvail} from "../../actions/ingredient";
 import IconBtn from "../common/IconBtn";
 import {by, extractHanlderIdFromEvent} from "../../helpers";
-import {ListedIngredient} from "../common/ListedIngredient";
+import {IngredientRow} from "../common/IngredientRow";
 
 export function IngredientList({ ingredients, toggleIngredAvail, deleteIngredient }){
 
@@ -22,19 +23,19 @@ export function IngredientList({ ingredients, toggleIngredAvail, deleteIngredien
   }
 
   return (
-    <ul className="list-group border-bottom-0">
+    <ListGroup>
       {ingredients.map(ingredient => (
-        <li className="list-group-item d-flex" key={ingredient.id}>
-          <ListedIngredient ingredient={ingredient} onToggle={onToggle}/>
+        <ListGroupItem key={ingredient.id}>
+          <IngredientRow ingredient={ingredient} onToggle={onToggle}/>
           <IconBtn
             clickHandler={onDelete}
             handlerId={ingredient.id}
             label="delete"
             icon="trash-alt"
             alignRight/>
-        </li>
+        </ListGroupItem>
       ))}
-    </ul>
+    </ListGroup>
   )
 }
 

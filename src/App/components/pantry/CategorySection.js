@@ -7,6 +7,7 @@ import {toggleCategoryCollapse} from "../../actions/category";
 import {updateAddIngForm} from "../../actions/addForm";
 import {categoryShape, ingredientShape} from "../../models";
 import IconBtn from "../common/IconBtn";
+import styles from "./CategorySection.module.scss";
 
 export function CategorySection({category, ingredients, toggleCategoryCollapse, updateAddIngForm}){
 
@@ -20,11 +21,13 @@ export function CategorySection({category, ingredients, toggleCategoryCollapse, 
 
   return (
     <>
-      <div onClick={() => onToggle(category)} className="d-flex list-header border-top pl-3 pr-4">
-        <div className="py-1 font-weight-bold">{category.name}</div>
+      <div onClick={() => onToggle(category)} className={styles.listHeader}>
+        <span className="py-2 font-weight-bold">{category.name}</span>
         <IconBtn
           label="toggle category display"
-          icon={category.isOpen ? "caret-down" : "caret-left"} large alignRight/>
+          icon={category.isOpen ? "caret-down" : "caret-left"}
+          large
+          alignRight/>
       </div>
       <Collapse isOpen={category.isOpen}>
         <IngredientList ingredients={ingredients}/>
@@ -39,6 +42,7 @@ CategorySection.propTypes = {
   toggleCategoryCollapse: PropTypes.func,
   updateAddIngForm: PropTypes.func
 };
+
 CategorySection.defaultProps = {
   category: { id: 0 }
 };

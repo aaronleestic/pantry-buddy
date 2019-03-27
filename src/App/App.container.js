@@ -5,11 +5,9 @@ import {withRouter} from "react-router";
 import App from "./App";
 import {fetchData} from "./actions/init";
 
-function AppLoader({isLoading, dispatch}){
+function AppContainer({isLoading, dispatch}){
 
-  useEffect(() => {
-    dispatch(fetchData());
-  }, []);
+  useEffect(() => { dispatch(fetchData()) }, []);
 
   if ( isLoading ) {
     return (
@@ -26,14 +24,10 @@ function AppLoader({isLoading, dispatch}){
   }
 }
 
-AppLoader.propTypes = {
-  isLoading: PropTypes.bool
-};
+AppContainer.propTypes = { isLoading: PropTypes.bool };
 
 function mapStateToProp(state){
-  return {
-    isLoading: state.isLoading,
-  }
+  return { isLoading: state.isLoading }
 }
 
-export default withRouter(connect(mapStateToProp)(AppLoader));
+export default withRouter(connect(mapStateToProp)(AppContainer));

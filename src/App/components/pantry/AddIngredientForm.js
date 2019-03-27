@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import classNames from 'classnames/bind';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
+import {Form, Row, Col, CustomInput, Label, Input} from "reactstrap";
 import {categoryShape, ingredientShape} from "../../models";
 import {updateAddIngForm} from "../../actions/addForm";
 import {addIngredient} from "../../actions/ingredient";
 import {closeAllButCategoryId} from "../../actions/category";
-import './AddIngredientForm.scss';
 
 export function AddIngredientForm({ formValues, categories, addIngredient, updateAddIngForm, handleCategoryChange }){
 
@@ -15,6 +15,7 @@ export function AddIngredientForm({ formValues, categories, addIngredient, updat
 
   function prepSubmit(e){
     e.preventDefault();
+
     if ( !inputValue.trim() ){
       showValidationError();
     } else {
@@ -29,46 +30,51 @@ export function AddIngredientForm({ formValues, categories, addIngredient, updat
   }
 
   return (
-    <form onSubmit={prepSubmit} autoComplete="off" className="m-3">
-      <div className="d-flex">
-        <div className="flex-left">
-          <div className="custom-control custom-checkbox text-center">
-            <input
-              type="checkbox" id="isAvailable" className="custom-control-input"
-              aria-label="availability of ingredient"
-              defaultChecked={formValues.isAvailable}
-              onChange={updateAddIngForm}/>
-            <label className="custom-control-label mt-2" htmlFor="isAvailable"/>
-          </div>
-        </div>
-        <div className="flex-right">
-          <input
-            type="text" id="ingredient" aria-label="ingredient"
-            autoComplete="off" autoCapitalize="none"
+    <Form onSubmit={prepSubmit} autoComplete="off" className="m-3">
+      <Row>
+        <Col xs={2} sm={1} className="text-center">
+          <CustomInput
+            className="mt-2"
+            type="checkbox"
+            id="isAvailable"
+            aria-label="availability of ingredient"
+            defaultChecked={formValues.isAvailable}
+            onChange={updateAddIngForm}/>
+        </Col>
+        <Col xs={10} sm={11}>
+          <Input
+            type="text"
+            id="ingredient"
+            aria-label="ingredient"
+            autoComplete="off"
+            autoCapitalize="none"
             placeholder={formValues.isAvailable ? 'available ingredients' : 'missing ingredients'}
             onChange={e => setInputValue(e.target.value)}
             value={inputValue}
-            className={classNames('form-control mb-3',
+            className={cx('mb-3',
               { 'text-danger font-weight-bold': !formValues.isAvailable},
               { 'invalid-blink': hasInputError }
             )}/>
-        </div>
-      </div>
-      <div className="d-flex text-center">
-        <label className="flex-left col-form-label" htmlFor="categoryId">Type</label>
-        <div className="flex-right d-inline-flex">
-          <select
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={2} sm={1} className="text-center">
+          <Label className="col-form-label" for="categoryId">Type</Label>
+        </Col>
+        <Col xs={10} sm={11} className="d-inline-flex">
+          <Input
+            type="select"
+            id="categoryId"
             onChange={e => handleCategoryChange(categories, Number(e.target.value))}
-            value={formValues.categoryId}
-            className="form-control" id="categoryId">
+            value={formValues.categoryId}>
             {categories.map(c => (
               <option key={c.id} value={c.id}>{c.name}</option>
             ))}
-          </select>
+          </Input>
           <button type="submit" className="btn btn-primary ml-3 px-4">Add</button>
-        </div>
-      </div>
-    </form>
+        </Col>
+      </Row>
+    </Form>
   )
 }
 

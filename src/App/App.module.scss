@@ -1,0 +1,41 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+.container {
+  composes: px-0 vh-100 from global; /*d-flex flex-column*/
+  background-color: rgba(255, 255, 255, 0.9);
+  @include media-breakpoint-between(lg, xl) {
+    max-width: 768px;
+  }
+}
+
+.main {
+  composes: hide-scroll from '../index.scss';
+  height: calc(100% - 3.5rem);
+}
+
+.header {
+  composes: border-bottom border-dark py-2 mx-0 from global;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.headerLeftNav {
+  composes: align-self-center from global;
+}
+
+.headerText {
+  composes: text-center from global;
+  size: 2rem;
+  font-family: 'Pacifico', monospace;
+}
+
+.footer {
+  composes: p-2 border-top border-dark position-sticky bg-light from global;
+  bottom: 0;
+  height: 3.5rem;
+}
+
+.footerNav {
+  composes: justify-content-between from global;
+}

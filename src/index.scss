@@ -1,18 +1,28 @@
-//overrides global theme when unable to do it via Bootstrap variables
-
-@font-face {
-  font-family: 'Pacifico';
-  src: local('Pacifico'), url(fonts/Pacifico.ttf) format('truetype');
+body {
+  background-image: url(./images/background/2.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-//$input-btn-focus-color seems to have no effect?
-button:focus {
-  outline: 5px auto #AAA;
-}
-
-//enlarges checkbox
-.custom-control-input ~  .custom-control-label {
-  &:before, &:after {
-    transform: scale(1.5);
+.hide-scroll {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+  &::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
   }
+}
+
+@keyframes blink {
+  50% { border-color: #dc3545; }
+}
+
+.invalid-blink {
+  animation-name: blink ;
+  animation-duration: .25s ;
+  animation-timing-function: step-end ;
+  animation-iteration-count: 6 ;
+  animation-direction: alternate ;
 }
