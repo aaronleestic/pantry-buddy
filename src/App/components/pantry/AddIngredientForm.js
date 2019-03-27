@@ -34,7 +34,7 @@ export function AddIngredientForm({ formValues, categories, addIngredient, updat
       <Row>
         <Col xs={2} sm={1} className="text-center">
           <CustomInput
-            className="mt-2"
+            className="m-2"
             type="checkbox"
             id="isAvailable"
             aria-label="availability of ingredient"
