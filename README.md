@@ -30,6 +30,9 @@ Mobile optimized, Progressive Web App built for offline use
 
 ### Next Steps
 
+- add Storybook visual testing
+- try react-transition library
+
 #### User management
 - social login backed by a GraphQL-based API on Heroku
 - online persistence of your pantry, for usage across devices
