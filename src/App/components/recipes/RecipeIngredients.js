@@ -64,10 +64,10 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
             <IconBtn
               clickHandler={removeIngredient}
               handlerId={ingredient.name}
-              label="remove" icon="minus-circle" alignRight/>
+              label="remove" icon="minus" large alignRight/>
           </ListGroupItem >
         ))}
-        <AddItemRow addItemHandler={prepAddIngName} label="ingredients"/>
+        <AddItemRow addItemHandler={prepAddIngName} label="ingredient"/>
       </ListGroup>
 
       <AddIngredientModal

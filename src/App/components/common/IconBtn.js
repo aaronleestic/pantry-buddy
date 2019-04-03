@@ -6,9 +6,9 @@ import PropTypes from "prop-types";
 import styles from "./IconBtn.module.scss";
 import {
   faTrashAlt,
-  faMinus,
   faPlus,
   faPlusSquare,
+  faMinus,
   faMinusCircle,
   faCaretDown,
   faCaretLeft,
@@ -18,9 +18,9 @@ import {
 
 library.add(
   faTrashAlt,
-  faMinus,
   faPlus,
   faPlusSquare,
+  faMinus,
   faMinusCircle,
   faCaretDown,
   faCaretLeft,
