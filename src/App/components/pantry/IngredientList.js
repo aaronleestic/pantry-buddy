@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { ingredientShape } from "../../models";
 import { deleteIngredient, toggleIngredAvail } from "../../actions/ingredient";
-import IconBtn from "../common/IconBtn";
+import { IconBtn } from "../common/IconBtn";
 import { by, extractHanlderIdFromEvent } from "../../helpers";
 import { IngredientRow } from "../common/IngredientRow";
 import { bindActionCreators } from "redux";

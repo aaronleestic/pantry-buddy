@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, ModalBody, Input } from "reactstrap";
 import cx from "classnames";
-import { connect } from "react-redux";
 import PropTypes from 'prop-types';
+import { connect } from "react-redux";
 import { addIngredient } from "../../actions/ingredient";
 import { categoryShape } from "../../models";
 
@@ -61,7 +61,11 @@ AddIngredientModal.propTypes = {
   close: PropTypes.func,
   addIngredient: PropTypes.func,
   categories: PropTypes.arrayOf(PropTypes.shape(categoryShape))
-}
+};
+
+AddIngredientModal.defaultProps = {
+  categories: []
+};
 
 function mapStateToProps({ categories }){
   return { categories }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Modal, ModalBody } from "reactstrap";
 import { recipeShape } from "../../models";
 
-export default function DeleteRecipeModal({ isOpen, recipe, onCancel, onDelete }){
+export function DeleteRecipeModal({ isOpen, recipe, onCancel, onDelete }){
   return (
     <Modal isOpen={isOpen}>
       <ModalBody className="text-center mt-3">
@@ -22,4 +22,8 @@ DeleteRecipeModal.propTypes = {
   recipe: PropTypes.shape(recipeShape),
   onCancel: PropTypes.func,
   onDelete: PropTypes.func,
+};
+
+DeleteRecipeModal.defaultProps = {
+  recipe: {}
 };

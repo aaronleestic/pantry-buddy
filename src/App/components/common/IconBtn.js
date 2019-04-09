@@ -24,7 +24,7 @@ library.add(
   faChevronLeft
 );
 
-export default function IconBtn({ clickHandler, handlerId, icon, label, alignRight, large, classNames }){
+export function IconBtn({ clickHandler, handlerId, icon, label, alignRight, large, classNames }){
   return (
     <button
       onClick={clickHandler}

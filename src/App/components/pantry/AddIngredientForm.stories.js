@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { StoryContainer } from "../../stories/StoryContainer";
 import { AddIngredientForm } from "./AddIngredientForm";
 
-const categories = ["meat", "carb", "veggies"].map((name, index) => ({
+export const categories = ["meat", "carb", "veggies"].map((name, index) => ({
   name,
   id: index,
 }));

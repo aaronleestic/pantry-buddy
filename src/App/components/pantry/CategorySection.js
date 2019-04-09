@@ -7,7 +7,7 @@ import IngredientList from "./IngredientList";
 import { toggleCategoryCollapse } from "../../actions/category";
 import { updateAddIngForm } from "../../actions/addForm";
 import { categoryShape, ingredientShape } from "../../models";
-import IconBtn from "../common/IconBtn";
+import { IconBtn } from "../common/IconBtn";
 import styles from "./CategorySection.module.scss";
 
 export function CategorySection({ category, ingredients, toggleCategoryCollapse, updateAddIngForm }){

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import cx from "classnames";
 import { Label, Input } from 'reactstrap';
-import IconBtn from "./IconBtn";
+import { IconBtn } from "./IconBtn";
 import PropTypes from "prop-types";
 
-export default function AddItemRow({ addItemHandler, label }) {
+export function AddItemRow({ addItemHandler, label }) {
 
   const [value, setValue] = useState("");
   const [hasError, setError] = useState(false);
