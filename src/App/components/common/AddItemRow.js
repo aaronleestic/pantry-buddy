@@ -7,7 +7,8 @@ import PropTypes from "prop-types";
 export function AddItemRow({ addItemHandler, label }) {
 
   const [value, setValue] = useState("");
-  const [hasError, setError] = useState(false);
+  const [showBlink, setBlink] = useState(false);
+  const [hadError, setError] = useState(false);
   const [ref, setRef] = useState(null);
 
   function prepAdd(){
@@ -16,6 +17,7 @@ export function AddItemRow({ addItemHandler, label }) {
     } else {
       addItemHandler(value.trim());
       setValue("");
+      setError(false);
       ref.scrollIntoView();
     }
   }
@@ -31,7 +33,8 @@ export function AddItemRow({ addItemHandler, label }) {
 
   function showValidationError(){
     setError(true);
-    setTimeout(() => setError(false), 1500);
+    setBlink(true);
+    setTimeout(() => setBlink(false), 1500);
   }
 
   return (
@@ -42,7 +45,7 @@ export function AddItemRow({ addItemHandler, label }) {
           <Label for={label} className="sr-only">{label}</Label>
           <Input
             id={label}
-            className={cx({ 'invalid-blink': hasError })}
+            className={cx({ 'invalid-blink': showBlink })}
             onChange={e => setValue(e.target.value)}
             onKeyPress={keyPress}
             value={value}
@@ -52,6 +55,9 @@ export function AddItemRow({ addItemHandler, label }) {
             placeholder={label}/>
         </div>
       </div>
+      { hadError &&
+      <div role="alert"  className="sr-only">cannot be empty</div>
+      }
       <div ref={ref => {setRef(ref)}}/>
     </>
   )

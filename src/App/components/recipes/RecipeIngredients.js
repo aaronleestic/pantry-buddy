@@ -16,6 +16,7 @@ import styles from "./RecipeIngredients.module.scss";
 export function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeIngNameHandler, toggleIngredAvail }){
 
   const [duplicates, setDuplicates] = useState({});
+  const [hadError, setError] = useState(false);
   const [showAddIngModal, setAddIngModal] = useState(false);
   const [unlistedIng, setUnlistedIng] = useState(null);
 
@@ -38,14 +39,20 @@ export function RecipeIngredients({ headerText, ingredients, addIngNameHandler, 
   }
 
   function prepAddIngName(name){
-    return isDuplicate(name) ? showValidationError(name) : addIngNameHandler(name);
+    if ( isDuplicate(name) ){
+      showDupError(name)
+    } else {
+      setError(false);
+      addIngNameHandler(name);
+    }
   }
 
   function isDuplicate(name){
     return ingredients.some(ing => ing.name === name);
   }
 
-  function showValidationError(name){
+  function showDupError(name){
+    setError(true); //activates the screen reader alert and leaves it present
     setDuplicates({ [name]: true });
     setTimeout(() => setDuplicates({}), 1500);
   }
@@ -72,6 +79,9 @@ export function RecipeIngredients({ headerText, ingredients, addIngNameHandler, 
         ))}
         <ListGroupItem className="pl-3">
           <AddItemRow addItemHandler={prepAddIngName} label="ingredient"/>
+          { hadError &&
+          <div role="alert" className="sr-only">Recipe already exists</div>
+          }
         </ListGroupItem>
       </ListGroup>
       <AddIngredientModal

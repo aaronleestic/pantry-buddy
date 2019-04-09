@@ -9,7 +9,8 @@ import { categoryShape } from "../../models";
 export function AddIngredientModal({ isOpen, unlistedIng, close, addIngredient, categories }){
 
   const [categoryId, setCategoryId] = useState("");
-  const [hasError, setError] = useState(false);
+  const [showErrorBlink, setBlink] = useState(false);
+  const [hadError, setError] = useState(false);
 
   useEffect(() => { setTimeout(() => setCategoryId(""), 500) }, [isOpen]);
 
@@ -19,13 +20,15 @@ export function AddIngredientModal({ isOpen, unlistedIng, close, addIngredient, 
     } else {
       const ingredient = makeIngredient(unlistedIng, categoryId);
       addIngredient(ingredient);
+      setError(false);
       close();
     }
   }
 
   function showValidationError(){
+    setBlink(true);
     setError(true);
-    setTimeout(() => setError(false), 1500);
+    setTimeout(() => setBlink(false), 1500);
   }
 
   function makeIngredient({ name }, categoryId, isAvailable = false){
@@ -40,12 +43,15 @@ export function AddIngredientModal({ isOpen, unlistedIng, close, addIngredient, 
           onChange={(e) => setCategoryId(Number(e.target.value))}
           value={categoryId}
           type="select"
-          className={cx("mt-3", { "invalid-blink": hasError })}>
+          className={cx("mt-3", { "invalid-blink": showErrorBlink })}>
           <option disabled value="">select type</option>
           {categories.map(c => (
             <option key={c.id} value={c.id}>{c.name}</option>
           ))}
         </Input>
+        { hadError &&
+        <div role="alert" className="sr-only">must have a food category</div>
+        }
       </ModalBody>
       <div className="d-flex justify-content-around p-3">
         <button className="btn btn-light border w-50 mr-2" onClick={close}>Cancel</button>
