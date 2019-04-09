@@ -18,7 +18,7 @@ storiesOf('pantry/CategorySection', module)
   .addDecorator(withKnobs)
   .addDecorator(story => (
     <StoryContainer>
-      <Provider store={configureMockStore()({})}>{story()}</Provider>
+      <Provider store={configureMockStore()()}>{story()}</Provider>
     </StoryContainer>
   ))
   .add('opened', () => <CategorySection {...props} category={object('category', {...category, isOpen: true})}/>)

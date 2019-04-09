@@ -34,7 +34,7 @@ export function Recipes({ recipes, addRecipeName, history, match }){
   }
 
   return (
-    <section>
+    <main>
       <div className={styles.listHeader}>
         <div className="ml-2">Recipe</div>
         <div className="ml-auto">Available of Required</div>
@@ -55,7 +55,7 @@ export function Recipes({ recipes, addRecipeName, history, match }){
           <AddItemRow addItemHandler={handleAddRecipe} label="recipe name"/>
         </ListGroupItem>
       </ListGroup>
-    </section>
+    </main>
   );
 }
 

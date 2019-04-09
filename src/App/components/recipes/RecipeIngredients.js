@@ -8,12 +8,12 @@ import { by, extractHanlderIdFromEvent } from "../../helpers";
 import { IngredientRow } from "../common/IngredientRow";
 import { toggleIngredAvail } from "../../actions/ingredient";
 import { AddItemRow } from "../common/AddItemRow";
-import AddIngredientModal from "./AddIngredientModal";
-import UnlistedIngredient from "./UnlistedIngredient";
-import styles from "./RecipeIngredients.module.scss";
+import { UnlistedIngredient } from "./UnlistedIngredient";
 import { ingredientShape } from "../../models";
+import AddIngredientModal from "./AddIngredientModal";
+import styles from "./RecipeIngredients.module.scss";
 
-function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeIngNameHandler, toggleIngredAvail }){
+export function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeIngNameHandler, toggleIngredAvail }){
 
   const [duplicates, setDuplicates] = useState({});
   const [showAddIngModal, setAddIngModal] = useState(false);
@@ -51,7 +51,7 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
   }
 
   return (
-    <>
+    <section>
       <h4 className={styles.listHeader}>{headerText}</h4>
       <ListGroup>
         {ingredients.map(ingredient => (
@@ -78,7 +78,7 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
         isOpen={showAddIngModal}
         unlistedIng={unlistedIng}
         close={() => setAddIngModal(false)}/>
-    </>
+    </section>
   )
 }
 

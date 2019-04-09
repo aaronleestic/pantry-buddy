@@ -8,7 +8,7 @@ import { getIngredByCat } from "../../selectors";
 
 export function Pantry({ ingredientGroups }){
   return (
-    <>
+    <main>
       <AddIngredientForm/>
       {ingredientGroups.map(group =>
         <CategorySection
@@ -17,7 +17,7 @@ export function Pantry({ ingredientGroups }){
           ingredients={group.ingredients}
         />
       )}
-    </>
+    </main>
   )
 }
 

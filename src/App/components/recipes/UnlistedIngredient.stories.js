@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, object } from '@storybook/addon-knobs/react';
 import { StoryContainer } from "../../stories/StoryContainer";
-import UnlistedIngredient from "./UnlistedIngredient";
+import { UnlistedIngredient } from "./UnlistedIngredient";
 import { ListGroup, ListGroupItem } from "reactstrap";
 
 storiesOf('recipes/UnlistedIngredient', module)

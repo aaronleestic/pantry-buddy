@@ -22,10 +22,8 @@ function MainWithNav(){
     <Container className={styles.container}>
       <div className={styles.main}>
         <Header/>
-        <main>
-          <Route path="/pantry" component={Pantry}/>
-          <Route path="/recipes" component={Recipes}/>
-        </main>
+        <Route path="/pantry" component={Pantry}/>
+        <Route path="/recipes" component={Recipes}/>
       </div>
       <FooterNav/>
     </Container>

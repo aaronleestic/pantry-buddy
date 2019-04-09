@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
-export default function UnlistedIngredient({ ingredient, onAdd }){
+export function UnlistedIngredient({ ingredient, onAdd }){
   return (
     <>
       <button

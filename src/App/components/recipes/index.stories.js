@@ -11,7 +11,8 @@ const recipes = ["apple pie", "banana bread", "chicken soup"].map((name, index) 
   required: new Array(index+1)
 }));
 
-storiesOf('recipes/AddIngredientModal', module)
+storiesOf('recipes/Recipes', module)
   .addDecorator(withKnobs)
   .addDecorator(story => <StoryContainer>{story()}</StoryContainer>)
-  .add('default', () => <Recipes recipes={object('recipes', recipes)}/>);
+  .add('populated list', () => <Recipes recipes={object('recipes', recipes)}/>)
+  .add('empty list', () => <Recipes/>);
