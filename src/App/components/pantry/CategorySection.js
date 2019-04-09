@@ -10,7 +10,7 @@ import { categoryShape, ingredientShape } from "../../models";
 import IconBtn from "../common/IconBtn";
 import styles from "./CategorySection.module.scss";
 
-export function CategorySection({category, ingredients, toggleCategoryCollapse, updateAddIngForm}){
+export function CategorySection({ category, ingredients, toggleCategoryCollapse, updateAddIngForm }){
 
   function onToggle(category){
     toggleCategoryCollapse(category);
@@ -21,7 +21,7 @@ export function CategorySection({category, ingredients, toggleCategoryCollapse, 
   }
 
   return (
-    <>
+    <section>
       <h4 onClick={() => onToggle(category)} className={styles.listHeader}>
         {category.name}
         <IconBtn
@@ -33,7 +33,7 @@ export function CategorySection({category, ingredients, toggleCategoryCollapse, 
       <Collapse isOpen={category.isOpen}>
         <IngredientList ingredients={ingredients}/>
       </Collapse>
-    </>
+    </section>
   )
 }
 

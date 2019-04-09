@@ -7,9 +7,7 @@ import styles from "./IconBtn.module.scss";
 import {
   faTrashAlt,
   faPlus,
-  faPlusSquare,
   faMinus,
-  faMinusCircle,
   faCaretDown,
   faCaretLeft,
   faPencilAlt,
@@ -19,9 +17,7 @@ import {
 library.add(
   faTrashAlt,
   faPlus,
-  faPlusSquare,
   faMinus,
-  faMinusCircle,
   faCaretDown,
   faCaretLeft,
   faPencilAlt,
@@ -35,11 +31,7 @@ export default function IconBtn({ clickHandler, handlerId, icon, label, alignRig
       handler-id={handlerId}
       aria-label={label}
       type="button"
-      className={cx([
-        "border-0 bg-transparent",
-        classNames,
-        { "fa-lg": large }
-      ])}>
+      className={cx(["border-0 bg-transparent", { "fa-lg": large }, classNames])}>
       <FontAwesomeIcon role="button" icon={icon} className={styles.icon}/>
     </button>
   )

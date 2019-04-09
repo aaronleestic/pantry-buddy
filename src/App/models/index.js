@@ -8,7 +8,8 @@ export const ingredientShape = {
 
 export const categoryShape = {
   name: PropTypes.string,
-  id: PropTypes.number
+  id: PropTypes.number,
+  isOpen: PropTypes.bool
 };
 
 export const recipeShape = {
