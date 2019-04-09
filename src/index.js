@@ -18,8 +18,13 @@ ReactDOM.render(
 );
 
 if ( process.env.NODE_ENV === 'production' ) {
-  console.log('registering service worker');
-  serviceWorker.register();
+  //forces https instead of configuring server-side on free hosting networks
+  if ( window.location.protocol !== 'https:' ) {
+    window.location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+  } else {
+    console.log('registering service worker');
+    serviceWorker.register();
+  }
 } else {
   console.log('service worker not registered:', process.env.NODE_ENV);
   serviceWorker.unregister();

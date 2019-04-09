@@ -1,4 +1,4 @@
-### [Pantry Buddy](https://pantrybuddy.herokuapp.com)
+### [Pantry Buddy](https://pantrybuddy.netlify.com)
 
 This app helps you manage your pantry + grocery list. You can customize which items should be in there, and see which dishes you can make based on available ingredients. An initial list of ingredients and dishes are provided as sample, but you can customize them, and they will persist on your browser's database.
 
@@ -30,7 +30,7 @@ Mobile optimized, Progressive Web App built for offline use
 - only importing used styles, component, and fonts
 - CSS Modules for locally scoped styling
 
-#### Heroku, Github, and Create-React-App
+#### Netlify, Github, and Create-React-App
 - easy automated deployments
 
 ### Next Steps
@@ -38,7 +38,7 @@ Mobile optimized, Progressive Web App built for offline use
 - add react-transition library for animation
 
 #### User management
-- social login backed by a GraphQL-based API on Heroku
+- social login backed by a GraphQL-based API
 - online persistence of your pantry, for usage across devices
 
 #### Native App
