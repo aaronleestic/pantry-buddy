@@ -3,7 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, object } from '@storybook/addon-knobs/react';
 import { StoryContainer } from "../../stories/StoryContainer";
 import { UnlistedIngredient } from "./UnlistedIngredient";
-import { ListGroup, ListGroupItem } from "reactstrap";
+import ListGroup from "reactstrap/es/ListGroup";
+import ListGroupItem from "reactstrap/es/ListGroupItem";
 
 storiesOf('recipes/UnlistedIngredient', module)
   .addDecorator(withKnobs)

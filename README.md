@@ -21,6 +21,10 @@ Mobile optimized, Progressive Web App built for offline use
 - automated test suites
 - database mocking
 
+#### [Storybook](https://pantrybuddy-storybook.netlify.com/)
+- isolated component development
+- visual regression tests (upcoming)
+
 #### Bootstrap / Reactstrap / Font Awesome
 - customized by theme variables
 - only importing used styles, component, and fonts
@@ -31,8 +35,7 @@ Mobile optimized, Progressive Web App built for offline use
 
 ### Next Steps
 
-- add Storybook automated visual testing
-- try react-transition library
+- add react-transition library for animation
 
 #### User management
 - social login backed by a GraphQL-based API on Heroku

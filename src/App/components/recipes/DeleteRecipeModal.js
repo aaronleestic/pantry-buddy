@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalBody } from "reactstrap";
 import { recipeShape } from "../../models";
+import ModalBody from "reactstrap/es/ModalBody";
+import Modal from "reactstrap/es/Modal";
 
 export function DeleteRecipeModal({ isOpen, recipe, onCancel, onDelete }){
   return (

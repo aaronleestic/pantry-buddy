@@ -5,10 +5,7 @@
   "homepage": "https://pantrybuddy.herokuapp.com",
   "devDependencies": {
     "@babel/core": "^7.4.3",
-    "@storybook/addon-actions": "^5.0.6",
     "@storybook/addon-knobs": "^5.0.6",
-    "@storybook/addon-links": "^5.0.6",
-    "@storybook/addon-notes": "^5.0.6",
     "@storybook/addons": "^5.0.6",
     "@storybook/react": "^5.0.6",
     "axios-mock-adapter": "^1.16.0",
