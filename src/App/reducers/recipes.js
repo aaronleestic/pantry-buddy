@@ -1,5 +1,5 @@
 import Action from "../actions";
-import {nameSortFn, updateElementInArray} from "../helpers";
+import { nameSortFn, updateElementInArray } from "../helpers";
 
 export default function recipes(state = [], action){
 

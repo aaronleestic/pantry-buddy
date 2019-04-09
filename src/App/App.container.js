@@ -1,9 +1,9 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {withRouter} from "react-router";
+import { connect } from 'react-redux';
+import { withRouter } from "react-router";
 import App from "./App";
-import {fetchData} from "./actions/init";
+import { fetchData } from "./actions/init";
 
 function AppContainer({isLoading, dispatch}){
 

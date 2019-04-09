@@ -1,14 +1,14 @@
-import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga'
-import {all} from 'redux-saga/effects';
+import { all } from 'redux-saga/effects';
 import ingredients from "./reducers/ingredients";
 import addIngredientForm from "./reducers/addIngredientForm";
 import categories from "./reducers/categories";
 import isLoading from "./reducers/isLoading";
 import recipes from "./reducers/recipes";
-import {ingredientSagas} from "./actions/ingredient";
-import {initSagas} from "./actions/init";
+import { ingredientSagas } from "./actions/ingredient";
+import { initSagas } from "./actions/init";
 
 const reducers = combineReducers({
   ingredients,

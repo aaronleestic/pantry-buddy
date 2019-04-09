@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {Modal, ModalBody, Input} from "reactstrap";
+import { Modal, ModalBody, Input } from "reactstrap";
 import cx from "classnames";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import {addIngredient} from "../../actions/ingredient";
-import {categoryShape} from "../../models";
+import { addIngredient } from "../../actions/ingredient";
+import { categoryShape } from "../../models";
 
 export function AddIngredientModal({ isOpen, unlistedIng, close, addIngredient, categories }){
 

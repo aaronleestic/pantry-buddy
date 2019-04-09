@@ -9,7 +9,6 @@ import {updateAddIngForm} from "../../actions/addForm";
 import {categoryShape, ingredientShape} from "../../models";
 import IconBtn from "../common/IconBtn";
 import styles from "./CategorySection.module.scss";
-import cx from "classnames";
 
 export function CategorySection({category, ingredients, toggleCategoryCollapse, updateAddIngForm}){
 

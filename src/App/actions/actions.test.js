@@ -1,9 +1,10 @@
 import Action from "./";
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import {addIngredient, deleteIngredient, toggleIngredAvail } from "./ingredient";
-import {updateAddIngForm} from "./addForm";
+import { addIngredient, deleteIngredient, toggleIngredAvail } from "./ingredient";
+import { updateAddIngForm } from "./addForm";
 import db from '../database';
+
 jest.mock('../database');
 
 describe('actions', ()=>{

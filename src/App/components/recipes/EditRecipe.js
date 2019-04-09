@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
-import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
-import {Form, Input, Label} from "reactstrap";
+import React, { useState } from 'react';
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { Form, Input, Label } from "reactstrap";
 import PropTypes from "prop-types";
 import debounce from 'lodash/debounce';
 import IconBtn from "../common/IconBtn";
 import RecipeIngredients from "./RecipeIngredients";
-import {by} from "../../helpers";
-import {Header} from "../../App";
-import {addRecipeIngName, deleteRecipe, removeRecipeIngName, updateRecipeName} from "../../actions/recipe";
-import {getIngredientsAsMap} from "../../selectors";
+import { by } from "../../helpers";
+import { Header } from "../../App";
+import { addRecipeIngName, deleteRecipe, removeRecipeIngName, updateRecipeName } from "../../actions/recipe";
+import { getIngredientsAsMap } from "../../selectors";
 import DeleteRecipeModal from "./DeleteRecipeModal";
 import styles from "./EditRecipe.module.scss";
-import {ingredientShape, recipeShape} from "../../models";
+import { ingredientShape, recipeShape } from "../../models";
 
 function EditRecipe({ recipe, ingredients, history, updateRecipeName, addRecipeIngName, removeRecipeIngName, deleteRecipe }){
 

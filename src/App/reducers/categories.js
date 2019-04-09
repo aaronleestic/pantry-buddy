@@ -1,5 +1,5 @@
 import Action from "../actions";
-import {updateElementInArray} from "../helpers";
+import { updateElementInArray } from "../helpers";
 
 export default function categories(state = [], { type, category, categories }){
 

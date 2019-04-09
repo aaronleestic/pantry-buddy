@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import cx from "classnames";
-import { ListGroupItem, Label, Input } from 'reactstrap';
+import { Label, Input } from 'reactstrap';
 import IconBtn from "./IconBtn";
 import PropTypes from "prop-types";
 
@@ -36,7 +36,7 @@ export default function AddItemRow({ addItemHandler, label }) {
 
   return (
     <>
-      <ListGroupItem className="pl-3 pb-5">
+      <div className="d-flex flex-grow-1 pb-5">
         <IconBtn clickHandler={prepAdd} label="add" icon="plus" large/>
         <div className="flex-grow-1 ml-2">
           <Label for={label} className="sr-only">{label}</Label>
@@ -51,8 +51,8 @@ export default function AddItemRow({ addItemHandler, label }) {
             autoComplete="off"
             placeholder={label}/>
         </div>
-      </ListGroupItem>
-      <li ref={ref => {setRef(ref)}}/>
+      </div>
+      <div ref={ref => {setRef(ref)}}/>
     </>
   )
 }

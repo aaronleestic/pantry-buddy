@@ -1,7 +1,7 @@
-import db, {CATEGORY_TABLE} from "../database";
+import db, { CATEGORY_TABLE } from "../database";
 import Action from "./";
 import axios from "axios";
-import {mapField, provideId} from "../helpers";
+import { mapField, provideId } from "../helpers";
 
 //TODO migrate to Redux-Saga instead of Thunk
 export function toggleCategoryCollapse(category){

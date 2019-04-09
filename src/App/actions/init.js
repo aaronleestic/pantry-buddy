@@ -1,8 +1,8 @@
-import {call, put, takeEvery, all, fork} from 'redux-saga/effects';
+import { call, put, takeEvery, all, fork } from 'redux-saga/effects';
 import Action from "./";
-import {fetchIngredients} from "./ingredient";
-import {fetchCategories} from "./category";
-import {fetchRecipes} from "./recipe";
+import { fetchIngredients } from "./ingredient";
+import { fetchCategories } from "./category";
+import { fetchRecipes } from "./recipe";
 import {
   CATEGORY_TABLE,
   INGRED_TABLE,

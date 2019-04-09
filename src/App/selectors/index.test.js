@@ -1,4 +1,4 @@
-import {divideIngredByCat} from ".";
+import { divideIngredByCat } from ".";
 
 describe('selectors', () => {
 

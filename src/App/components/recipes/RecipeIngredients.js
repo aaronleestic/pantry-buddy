@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import cx from "classnames";
-import {connect} from "react-redux";
-import {ListGroup, ListGroupItem} from "reactstrap";
+import { connect } from "react-redux";
+import { ListGroup, ListGroupItem } from "reactstrap";
 import IconBtn from "../common/IconBtn";
 import PropTypes from "prop-types";
-import {by, extractHanlderIdFromEvent} from "../../helpers";
-import {IngredientRow} from "../common/IngredientRow";
-import {toggleIngredAvail} from "../../actions/ingredient";
+import { by, extractHanlderIdFromEvent } from "../../helpers";
+import { IngredientRow } from "../common/IngredientRow";
+import { toggleIngredAvail } from "../../actions/ingredient";
 import AddItemRow from "../common/AddItemRow";
 import AddIngredientModal from "./AddIngredientModal";
 import UnlistedIngredient from "./UnlistedIngredient";
 import styles from "./RecipeIngredients.module.scss";
-import {ingredientShape} from "../../models";
+import { ingredientShape } from "../../models";
 
 function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeIngNameHandler, toggleIngredAvail }){
 
@@ -52,7 +52,7 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
 
   return (
     <>
-      <div className={styles.listHeader}>{headerText}</div>
+      <h4 className={styles.listHeader}>{headerText}</h4>
       <ListGroup>
         {ingredients.map(ingredient => (
           <ListGroupItem
@@ -69,9 +69,10 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
               label="remove" icon="minus" large alignRight/>
           </ListGroupItem >
         ))}
-        <AddItemRow addItemHandler={prepAddIngName} label="ingredient"/>
+        <ListGroupItem className="pl-3">
+          <AddItemRow addItemHandler={prepAddIngName} label="ingredient"/>
+        </ListGroupItem>
       </ListGroup>
-
       <AddIngredientModal
         isOpen={showAddIngModal}
         unlistedIng={unlistedIng}

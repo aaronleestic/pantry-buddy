@@ -1,6 +1,6 @@
-import {addToDb, updateDb, deleteFromDb, fetchAllFromDb, RECIPE_TABLE} from "../database";
+import { addToDb, updateDb, deleteFromDb, fetchAllFromDb, RECIPE_TABLE } from "../database";
 import Action from "./";
-import {provideId} from "../helpers";
+import { provideId } from "../helpers";
 import axios from "axios";
 
 export function fetchRecipes(dbExists){
