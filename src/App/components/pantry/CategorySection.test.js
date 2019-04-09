@@ -3,7 +3,7 @@ import {CategorySection} from "./CategorySection";
 
 describe('CategorySection', ()=>{
 
-  const LIST_HEADER = '.list-header';
+  const LIST_HEADER = 'h4';
 
   it('renders the category name', ()=>{
     const props = {

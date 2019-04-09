@@ -1,5 +1,5 @@
 import React from 'react';
-import {IngredientRow} from "./ListedIngredient";
+import {IngredientRow} from "./IngredientRow";
 
 describe('ListedIngredient', ()=>{
 

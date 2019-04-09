@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {connect} from "react-redux";
 import cx from "classnames";
+import PropTypes from "prop-types";
 import {ListGroup, ListGroupItem} from "reactstrap";
 import AddItemRow from "../common/AddItemRow";
 import IconBtn from "../common/IconBtn";
@@ -8,12 +9,13 @@ import {addRecipeName} from "../../actions/recipe";
 import {extractHanlderIdFromEvent} from "../../helpers";
 import {withIngredAvailCount} from "../../selectors";
 import styles from "./index.module.scss";
+import {recipeShape} from "../../models";
 function Recipes({ recipes, addRecipeName, history, match }){
 
   const [duplicates, setDuplicates] = useState({});
 
   function handleAddRecipe(name){
-    return isDuplicate(name) ? showValidationError(name) : addRecipeName(name);
+    isDuplicate(name) ? showValidationError(name) : addRecipeName(name)
   }
 
   function isDuplicate(name){
@@ -53,6 +55,13 @@ function Recipes({ recipes, addRecipeName, history, match }){
     </>
   );
 }
+
+Recipes.propTypes = {
+  recipes: PropTypes.arrayOf(PropTypes.shape(recipeShape)),
+  addRecipeName: PropTypes.func,
+  history: PropTypes.object,
+  match: PropTypes.object
+};
 
 Recipes.defaultProps = { recipes: [] };
 

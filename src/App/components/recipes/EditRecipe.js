@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {Form, Input, Label} from "reactstrap";
+import PropTypes from "prop-types";
 import debounce from 'lodash/debounce';
 import IconBtn from "../common/IconBtn";
 import RecipeIngredients from "./RecipeIngredients";
@@ -11,18 +12,24 @@ import {addRecipeIngName, deleteRecipe, removeRecipeIngName, updateRecipeName} f
 import {getIngredientsAsMap} from "../../selectors";
 import DeleteRecipeModal from "./DeleteRecipeModal";
 import styles from "./EditRecipe.module.scss";
+import {ingredientShape, recipeShape} from "../../models";
 
 function EditRecipe({ recipe, ingredients, history, updateRecipeName, addRecipeIngName, removeRecipeIngName, deleteRecipe }){
 
   const [showDelete, setDeleteModal] = useState(false);
 
+  //updates the recipe name after 1 second
   const debUpdateRecipeName = debounce(name => updateRecipeName(recipe, name), 1000);
 
+  //navigates back to "/recipes" route
   function navBack(){
-    if ( history.action === "PUSH" )
-      history.goBack();
-    else
-      history.push('/recipes');
+    history.action === "PUSH" ? history.goBack() : history.push('/recipes');
+  }
+
+  function prepOnDelete(){
+    deleteRecipe(recipe);
+    setDeleteModal(false);
+    navBack();
   }
 
   return (
@@ -51,21 +58,26 @@ function EditRecipe({ recipe, ingredients, history, updateRecipeName, addRecipeI
           removeIngNameHandler={(name) => removeRecipeIngName(recipe, name)}
           ingredients={ingredients}
           headerText="Required ingredients"/>
+        {/*<RecipeIngredients headerText="Optional ingredients"/>*/}
       </Form>
-
       <DeleteRecipeModal
         isOpen={showDelete}
         recipe={recipe}
         onCancel={() => setDeleteModal(false)}
-        onDelete={() => {
-          deleteRecipe(recipe);
-          setDeleteModal(false);
-          navBack();
-        }}/>
-
+        onDelete={prepOnDelete}/>
     </div>
   )
 }
+
+EditRecipe.propTypes = {
+  recipe: PropTypes.shape(recipeShape).isRequired,
+  ingredients: PropTypes.arrayOf(PropTypes.shape(ingredientShape)),
+  history: PropTypes.object,
+  updateRecipeName: PropTypes.func,
+  addRecipeIngName: PropTypes.func,
+  removeRecipeIngName: PropTypes.func,
+  deleteRecipe: PropTypes.func
+};
 
 EditRecipe.defaultProps = {
   recipe: {}
@@ -76,6 +88,7 @@ function mapStateToProps(state, { match, history }){
   //retrieve recipe based on url id param
   const recipe = state.recipes.find(by('id', Number(match.params.id)));
 
+  //redirects to recipe list view if url ID cannot be found, i.e. /recipes/404
   if ( !recipe ) {
     history.replace("/recipes");
     return {}
@@ -84,7 +97,7 @@ function mapStateToProps(state, { match, history }){
   //put ingredients into a map for fast lookup
   const map = getIngredientsAsMap(state);
 
-  //look up ingredients, or create a dummy one with temp ID
+  //look up ingredients, or create unlisted ones with temp ID
   const ingredients = recipe.required.map(findOrCreateIngredientFrom(map));
 
   return { recipe, ingredients, history }

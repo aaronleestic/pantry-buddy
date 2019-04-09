@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import {Modal, ModalBody, Input} from "reactstrap";
 import cx from "classnames";
 import {connect} from "react-redux";
+import PropTypes from 'prop-types';
 import {addIngredient} from "../../actions/ingredient";
+import {categoryShape} from "../../models";
 
 export function AddIngredientModal({ isOpen, unlistedIng, close, addIngredient, categories }){
 
@@ -53,11 +55,19 @@ export function AddIngredientModal({ isOpen, unlistedIng, close, addIngredient, 
   )
 }
 
-function mapStateToProps(state){
-  return { categories: state.categories }
+AddIngredientModal.propTypes = {
+  isOpen: PropTypes.bool,
+  unlistedIng: PropTypes.shape({ name: PropTypes.string }),
+  close: PropTypes.func,
+  addIngredient: PropTypes.func,
+  categories: PropTypes.arrayOf(PropTypes.shape(categoryShape))
+}
+
+function mapStateToProps({ categories }){
+  return { categories }
 }
 function mapDispatchToProps(dispatch){
-  return { addIngredient: (ing) => dispatch(addIngredient(ing)) }
+  return { addIngredient: (ing) => dispatch(addIngredient(ing)) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddIngredientModal);

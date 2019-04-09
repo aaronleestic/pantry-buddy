@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import cx from "classnames";
 import { ListGroupItem, Label, Input } from 'reactstrap';
 import IconBtn from "./IconBtn";
+import PropTypes from "prop-types";
 
 export default function AddItemRow({ addItemHandler, label }) {
 
@@ -19,6 +20,7 @@ export default function AddItemRow({ addItemHandler, label }) {
     }
   }
 
+  //prevents enter keypress from propagating
   function keyPress(e){
     if ( e.key === 'Enter' ) {
       prepAdd();
@@ -53,5 +55,9 @@ export default function AddItemRow({ addItemHandler, label }) {
       <li ref={ref => {setRef(ref)}}/>
     </>
   )
-
 }
+
+AddItemRow.propTypes = {
+  addItemHandler: PropTypes.func,
+  label: PropTypes.string
+};

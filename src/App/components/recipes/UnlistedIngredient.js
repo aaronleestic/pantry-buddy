@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 export default function UnlistedIngredient({ ingredient, onAdd }){
   return (
@@ -13,3 +14,11 @@ export default function UnlistedIngredient({ ingredient, onAdd }){
     </>
   )
 }
+
+UnlistedIngredient.propTypes = {
+  ingredient: PropTypes.shape({
+    name: PropTypes.string,
+    tempId: PropTypes.number
+  }),
+  onAdd: PropTypes.func
+};

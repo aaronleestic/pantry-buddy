@@ -18,6 +18,10 @@ export function addToDb(table, data){
   return db.table(table).add(data)
 }
 
+export function addToDbBulk(tableName, data){
+  return db.table(tableName).bulkAdd(data);
+}
+
 export function updateDb(table, id, data){
   return db.table(table).update(id, data);
 }
@@ -36,13 +40,4 @@ export function fetchDbExistence(){
 
 export function fetchAllFromDb(table){
   return db.table(table).toArray();
-}
-
-export function dbBulkAdd(tableName, data){
-  try {
-    return db.table(tableName).bulkAdd(data);
-  } catch (e){
-    console.warn("Indexed DB may not be available", e);
-    return Promise.resolve(data);
-  }
 }

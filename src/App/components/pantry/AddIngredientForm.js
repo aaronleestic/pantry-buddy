@@ -91,18 +91,22 @@ AddIngredientForm.defaultProps = {
   categories: [],
 };
 
-const mapStateToProps = (state) => ({
-  formValues: state.addIngredientForm,
-  categories: state.categories
-});
-
-const mapDispatchToProps = dispatch => ({
-  addIngredient: ing => dispatch(addIngredient(ing)),
-  updateAddIngForm: (e) => dispatch(updateAddIngForm({ isAvailable: e.target.checked })),
-  handleCategoryChange: (categories, categoryId) => {
-    dispatch(updateAddIngForm({ categoryId }));
-    dispatch(closeAllButCategoryId(categories, categoryId));
+function mapStateToProps(state){
+  return {
+    formValues: state.addIngredientForm,
+    categories: state.categories
   }
-});
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    addIngredient: ing => dispatch(addIngredient(ing)),
+    updateAddIngForm: (e) => dispatch(updateAddIngForm({isAvailable: e.target.checked})),
+    handleCategoryChange: (categories, categoryId) => {
+      dispatch(updateAddIngForm({categoryId}));
+      dispatch(closeAllButCategoryId(categories, categoryId));
+    }
+  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddIngredientForm);

@@ -13,8 +13,8 @@ describe('AddIngredientForm', ()=>{
         handleCategoryChange={jest.fn()}/>
       );
     c.getTextInput = () => c.find('input#ingredient');
-    c.setTextInput = (text) => c.getTextInput().simulate('change', {target: {value: text}});
-    c.getCheckbox = () => c.find({type: 'checkbox'});
+    c.setTextInput = (text) => c.getTextInput().simulate('change', { target: { value: text } });
+    c.getCheckbox = () => c.find('input#isAvailable');
     c.getSelect = () => c.find('select');
     c.submitForm = () => c.find('form').simulate('submit', { preventDefault() {} });
     c.handleSubmitMock = handleSubmitMock;

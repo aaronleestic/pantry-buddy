@@ -3,6 +3,7 @@ import cx from "classnames";
 import {connect} from "react-redux";
 import {ListGroup, ListGroupItem} from "reactstrap";
 import IconBtn from "../common/IconBtn";
+import PropTypes from "prop-types";
 import {by, extractHanlderIdFromEvent} from "../../helpers";
 import {IngredientRow} from "../common/IngredientRow";
 import {toggleIngredAvail} from "../../actions/ingredient";
@@ -10,6 +11,7 @@ import AddItemRow from "../common/AddItemRow";
 import AddIngredientModal from "./AddIngredientModal";
 import UnlistedIngredient from "./UnlistedIngredient";
 import styles from "./RecipeIngredients.module.scss";
+import {ingredientShape} from "../../models";
 
 function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeIngNameHandler, toggleIngredAvail }){
 
@@ -77,6 +79,14 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
     </>
   )
 }
+
+RecipeIngredients.propTypes = {
+  headerText: PropTypes.string,
+  ingredients: PropTypes.arrayOf(PropTypes.shape(ingredientShape)),
+  addIngNameHandler: PropTypes.func,
+  removeIngNameHandler: PropTypes.func,
+  toggleIngredAvail: PropTypes.func,
+};
 
 RecipeIngredients.defaultProps = {
   ingredients: []

@@ -10,3 +10,8 @@ export const categoryShape = {
   name: PropTypes.string,
   id: PropTypes.number
 };
+
+export const recipeShape = {
+  name: PropTypes.string,
+  id: PropTypes.number
+};

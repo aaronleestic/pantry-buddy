@@ -7,7 +7,7 @@ import {
   CATEGORY_TABLE,
   INGRED_TABLE,
   RECIPE_TABLE,
-  dbBulkAdd,
+  addToDbBulk,
   fetchDbExistence
 } from "../database";
 
@@ -29,9 +29,9 @@ function* fetchDataSaga() {
     ]);
 
     if (!dbExists) {
-      yield fork(dbBulkAdd, INGRED_TABLE, ingredients);
-      yield fork(dbBulkAdd, CATEGORY_TABLE, categories);
-      yield fork(dbBulkAdd, RECIPE_TABLE, recipes);
+      yield fork(addToDbBulk, INGRED_TABLE, ingredients);
+      yield fork(addToDbBulk, CATEGORY_TABLE, categories);
+      yield fork(addToDbBulk, RECIPE_TABLE, recipes);
     }
 
     yield put({type: Action.INGREDIENTS_LOAD, ingredients});

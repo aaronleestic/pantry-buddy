@@ -7,6 +7,7 @@ import {deleteIngredient, toggleIngredAvail} from "../../actions/ingredient";
 import IconBtn from "../common/IconBtn";
 import {by, extractHanlderIdFromEvent} from "../../helpers";
 import {IngredientRow} from "../common/IngredientRow";
+import {bindActionCreators} from "redux";
 
 export function IngredientList({ ingredients, toggleIngredAvail, deleteIngredient }){
 
@@ -48,10 +49,7 @@ IngredientList.propTypes = {
 };
 
 function mapDispatchToProps(dispatch){
-  return {
-    toggleIngredAvail: (ing) => dispatch(toggleIngredAvail(ing)),
-    deleteIngredient: (ing) => dispatch(deleteIngredient(ing))
-  }
+  return bindActionCreators({ toggleIngredAvail, deleteIngredient }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(IngredientList);

@@ -1,5 +1,7 @@
 import React from 'react';
 import cx from "classnames";
+import PropTypes from "prop-types";
+import {ingredientShape} from "../../models";
 
 export function IngredientRow({ ingredient, onToggle }){
   return (
@@ -21,3 +23,8 @@ export function IngredientRow({ ingredient, onToggle }){
     </div>
   )
 }
+
+IngredientRow.propTypes = {
+  ingredient: PropTypes.shape(ingredientShape),
+  onToggle: PropTypes.func
+};
