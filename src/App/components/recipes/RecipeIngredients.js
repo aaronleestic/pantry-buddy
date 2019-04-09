@@ -66,7 +66,8 @@ function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeI
             <IconBtn
               clickHandler={removeIngredient}
               handlerId={ingredient.name}
-              label="remove" icon="minus" large alignRight/>
+              classNames="ml-auto"
+              label="remove" icon="minus" large/>
           </ListGroupItem >
         ))}
         <ListGroupItem className="pl-3">

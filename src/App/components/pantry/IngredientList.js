@@ -1,13 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ListGroup, ListGroupItem } from 'reactstrap';
-import {ingredientShape} from "../../models";
-import {deleteIngredient, toggleIngredAvail} from "../../actions/ingredient";
+import { ingredientShape } from "../../models";
+import { deleteIngredient, toggleIngredAvail } from "../../actions/ingredient";
 import IconBtn from "../common/IconBtn";
-import {by, extractHanlderIdFromEvent} from "../../helpers";
-import {IngredientRow} from "../common/IngredientRow";
-import {bindActionCreators} from "redux";
+import { by, extractHanlderIdFromEvent } from "../../helpers";
+import { IngredientRow } from "../common/IngredientRow";
+import { bindActionCreators } from "redux";
 
 export function IngredientList({ ingredients, toggleIngredAvail, deleteIngredient }){
 
@@ -32,8 +32,7 @@ export function IngredientList({ ingredients, toggleIngredAvail, deleteIngredien
             clickHandler={onDelete}
             handlerId={ingredient.id}
             label="delete"
-            icon="trash-alt"
-            alignRight/>
+            icon="trash-alt"/>
         </ListGroupItem>
       ))}
     </ListGroup>

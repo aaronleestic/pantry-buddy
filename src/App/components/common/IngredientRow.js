@@ -5,7 +5,7 @@ import { ingredientShape } from "../../models";
 
 export function IngredientRow({ ingredient, onToggle }){
   return (
-    <div className="custom-control custom-checkbox ml-1">
+    <div className="custom-control custom-checkbox ml-1 flex-grow-1">
       <input
         defaultChecked={ingredient.isAvailable}
         id={`ingred-${ingredient.id}`}
@@ -16,8 +16,7 @@ export function IngredientRow({ ingredient, onToggle }){
       <label
         htmlFor={`ingred-${ingredient.id}`}
         className={cx('custom-control-label pl-2',
-          {'text-danger font-weight-bold': !ingredient.isAvailable}
-        )}>
+          { 'text-danger font-weight-bold': !ingredient.isAvailable })}>
         {ingredient.name}
       </label>
     </div>

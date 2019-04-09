@@ -1,5 +1,5 @@
 import React from 'react';
-import {CategorySection} from "./CategorySection";
+import { CategorySection } from "./CategorySection";
 
 describe('CategorySection', ()=>{
 

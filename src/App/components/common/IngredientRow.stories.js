@@ -1,11 +1,16 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, object } from '@storybook/addon-knobs/react';
-import AddItemRow from "./AddItemRow";
 import { ListGroup, ListGroupItem } from "reactstrap";
 import { StoryContainer } from "../../stories/StoryContainer";
+import { IngredientRow } from "./IngredientRow";
 
-storiesOf('common/AddItemRow', module)
+export const ingredient = {
+  id: 1,
+  name: "Test Ingredient"
+};
+
+storiesOf('common/IngredientRow', module)
   .addDecorator(withKnobs)
   .addDecorator(story => (
     <StoryContainer>
@@ -14,4 +19,5 @@ storiesOf('common/AddItemRow', module)
       </ListGroup>
     </StoryContainer>
   ))
-  .add('default', () => <AddItemRow label={object('label', "test label")}/>);
+  .add('available', () => <IngredientRow ingredient={object('ingredient', { ...ingredient, isAvailable: true })}/>)
+  .add('not available', () => <IngredientRow ingredient={object('ingredient', { ...ingredient, isAvailable: false })}/>);

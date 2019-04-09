@@ -1,10 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AddIngredientForm from "./AddIngredientForm";
-import {categoryShape, ingredientShape} from "../../models";
+import { categoryShape, ingredientShape } from "../../models";
 import CategorySection from "./CategorySection";
-import {getIngredByCat} from "../../selectors";
+import { getIngredByCat } from "../../selectors";
 
 export function Pantry({ ingredientGroups }){
   return (

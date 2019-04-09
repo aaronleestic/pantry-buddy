@@ -51,7 +51,9 @@ function Recipes({ recipes, addRecipeName, history, match }){
             </div>
           </ListGroupItem>
         ))}
-        <AddItemRow addItemHandler={handleAddRecipe} label="recipe name"/>
+        <ListGroupItem className="pl-3">
+          <AddItemRow addItemHandler={handleAddRecipe} label="recipe name"/>
+        </ListGroupItem>
       </ListGroup>
     </>
   );

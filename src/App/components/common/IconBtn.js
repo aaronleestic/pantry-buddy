@@ -28,7 +28,7 @@ library.add(
   faChevronLeft
 );
 
-export default function IconBtn({ clickHandler, handlerId, icon, label, alignRight, large }){
+export default function IconBtn({ clickHandler, handlerId, icon, label, alignRight, large, classNames }){
   return (
     <button
       onClick={clickHandler}
@@ -37,7 +37,7 @@ export default function IconBtn({ clickHandler, handlerId, icon, label, alignRig
       type="button"
       className={cx([
         "border-0 bg-transparent",
-        { "ml-auto": alignRight },
+        classNames,
         { "fa-lg": large }
       ])}>
       <FontAwesomeIcon role="button" icon={icon} className={styles.icon}/>

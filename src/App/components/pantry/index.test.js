@@ -1,5 +1,5 @@
 import React from 'react';
-import {Pantry} from ".";
+import { Pantry } from ".";
 
 describe('Pantry', ()=>{
 

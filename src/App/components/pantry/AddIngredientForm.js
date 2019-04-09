@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import {Form, Row, Col, CustomInput, Label, Input} from "reactstrap";
-import {categoryShape, ingredientShape} from "../../models";
-import {updateAddIngForm} from "../../actions/addForm";
-import {addIngredient} from "../../actions/ingredient";
-import {closeAllButCategoryId} from "../../actions/category";
+import { Form, Row, Col, CustomInput, Label, Input } from "reactstrap";
+import { categoryShape, ingredientShape } from "../../models";
+import { updateAddIngForm } from "../../actions/addForm";
+import { addIngredient } from "../../actions/ingredient";
+import { closeAllButCategoryId } from "../../actions/category";
 
 export function AddIngredientForm({ formValues, categories, addIngredient, updateAddIngForm, handleCategoryChange }){
 
