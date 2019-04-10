@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { ingredientShape } from "../../models";
 import { deleteIngredient, toggleIngredAvail } from "../../actions/ingredient";
@@ -9,7 +9,7 @@ import { by, extractHanlderIdFromEvent } from "../../helpers";
 import { IngredientRow } from "../common/IngredientRow";
 import { bindActionCreators } from "redux";
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import styles from "./IngredientList.module.scss";
+import appStyles from "../../App.module.scss";
 
 export function IngredientList({ ingredients, toggleIngredAvail, deleteIngredient }){
 
@@ -32,7 +32,7 @@ export function IngredientList({ ingredients, toggleIngredAvail, deleteIngredien
         <CSSTransition
           key={ingredient.id}
           timeout={{ enter: 200, exit: 400 }}
-          className={styles.transition}>
+          className={appStyles.rowTransitions}>
           <div>
             <ListGroupItem>
               <IngredientRow ingredient={ingredient} onToggle={onToggle}/>

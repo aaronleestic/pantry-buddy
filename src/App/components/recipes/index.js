@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { connect } from "react-redux";
 import cx from "classnames";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { ListGroup, ListGroupItem } from "reactstrap";
 import { AddItemRow } from "../common/AddItemRow";
 import { IconBtn } from "../common/IconBtn";
@@ -9,7 +9,9 @@ import { addRecipeName } from "../../actions/recipe";
 import { extractHanlderIdFromEvent } from "../../helpers";
 import { withIngredAvailCount } from "../../selectors";
 import { recipeShape } from "../../models";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import styles from "./index.module.scss";
+import appStyles from "../../App.module.scss";
 
 export function Recipes({ recipes, addRecipeName, history, match }){
 
@@ -40,20 +42,28 @@ export function Recipes({ recipes, addRecipeName, history, match }){
         <div className="ml-auto">Available of Required</div>
       </div>
       <ListGroup>
-        {recipes.map((r) => (
-          <ListGroupItem
-            key={r.id}
-            className={cx("pl-3", { "invalid-blink border-bottom": duplicates[r.name] })}>
-            <IconBtn icon="pencil-alt" label="edit" handlerId={r.id} clickHandler={navToEdit}/>
-            <div className="d-flex w-100" handler-id={r.id} onClick={navToEdit}>
-              <div className="ml-2">{r.name}</div>
-              <div className="ml-auto">{r.available} of {r.required.length}</div>
-            </div>
+        <TransitionGroup component={null}>
+          {recipes.map((r) => (
+            <CSSTransition
+              key={r.id}
+              timeout={{ enter: 200, exit: 400 }}
+              className={appStyles.rowTransitions}>
+              <div>
+                <ListGroupItem
+                  className={cx("pl-3", { "invalid-blink border-bottom": duplicates[r.name] })}>
+                  <IconBtn icon="pencil-alt" label="edit" handlerId={r.id} clickHandler={navToEdit}/>
+                  <div className="d-flex w-100" handler-id={r.id} onClick={navToEdit}>
+                    <div className="ml-2">{r.name}</div>
+                    <div className="ml-auto">{r.available} of {r.required.length}</div>
+                  </div>
+                </ListGroupItem>
+              </div>
+            </CSSTransition>
+          ))}
+          <ListGroupItem className="pl-3">
+            <AddItemRow addItemHandler={handleAddRecipe} label="recipe name"/>
           </ListGroupItem>
-        ))}
-        <ListGroupItem className="pl-3">
-          <AddItemRow addItemHandler={handleAddRecipe} label="recipe name"/>
-        </ListGroupItem>
+        </TransitionGroup>
       </ListGroup>
     </main>
   );

@@ -12,6 +12,8 @@ import { UnlistedIngredient } from "./UnlistedIngredient";
 import { ingredientShape } from "../../models";
 import AddIngredientModal from "./AddIngredientModal";
 import styles from "./RecipeIngredients.module.scss";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import appStyles from "../../App.module.scss";
 
 export function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeIngNameHandler, toggleIngredAvail }){
 
@@ -61,28 +63,36 @@ export function RecipeIngredients({ headerText, ingredients, addIngNameHandler, 
     <section>
       <h4 className={styles.listHeader}>{headerText}</h4>
       <ListGroup>
+        <TransitionGroup component={null}>
         {ingredients.map(ingredient => (
-          <ListGroupItem
+          <CSSTransition
             key={ingredient.tempId || String(ingredient.id)}
-            className={cx({ "invalid-blink border-bottom": duplicates[ingredient.name] })}>
-            { ingredient.tempId ?
-              <UnlistedIngredient ingredient={ingredient} onAdd={prepShowAddIngModal}/>
-            :
-              <IngredientRow ingredient={ingredient} onToggle={onToggle}/>
-            }
-            <IconBtn
-              clickHandler={removeIngredient}
-              handlerId={ingredient.name}
-              classNames="ml-auto"
-              label="remove" icon="minus" large/>
-          </ListGroupItem >
+            timeout={{ enter: 200, exit: 400 }}
+            className={appStyles.rowTransitions}>
+            <div>
+              <ListGroupItem
+                className={cx({ "invalid-blink border-bottom": duplicates[ingredient.name] })}>
+                { ingredient.tempId ?
+                  <UnlistedIngredient ingredient={ingredient} onAdd={prepShowAddIngModal}/>
+                :
+                  <IngredientRow ingredient={ingredient} onToggle={onToggle}/>
+                }
+                <IconBtn
+                  clickHandler={removeIngredient}
+                  handlerId={ingredient.name}
+                  classNames="ml-auto"
+                  label="remove" icon="minus" large/>
+              </ListGroupItem>
+            </div>
+          </CSSTransition>
         ))}
-        <ListGroupItem className="pl-3">
-          <AddItemRow addItemHandler={prepAddIngName} label="ingredient"/>
-          { hadError &&
-          <div role="alert" className="sr-only">Recipe already exists</div>
-          }
-        </ListGroupItem>
+          <ListGroupItem className="pl-3">
+            <AddItemRow addItemHandler={prepAddIngName} label="ingredient"/>
+            { hadError &&
+            <div role="alert" className="sr-only">Recipe already exists</div>
+            }
+          </ListGroupItem>
+        </TransitionGroup>
       </ListGroup>
       <AddIngredientModal
         isOpen={showAddIngModal}
