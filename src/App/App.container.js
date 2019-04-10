@@ -5,14 +5,14 @@ import { withRouter } from "react-router";
 import App from "./App";
 import { fetchData } from "./actions/init";
 
-function AppContainer({isLoading, dispatch}){
+function AppContainer({ isLoading, dispatch }){
 
   useEffect(() => { dispatch(fetchData()) }, []);
 
   if ( isLoading ) {
     return (
       <div className="container d-flex vh-100">
-        <div className="w-100  align-self-center text-center">
+        <div className="w-100 align-self-center text-center">
           <div className="spinner-border mt-3" role="status">
             <span className="sr-only">Loading...</span>
           </div>

@@ -6,9 +6,9 @@ import { categoryShape, ingredientShape } from "../../models";
 import CategorySection from "./CategorySection";
 import { getIngredByCat } from "../../selectors";
 
-export function Pantry({ ingredientGroups }){
+export function Pantry({ ingredientGroups, location: { state } }){
   return (
-    <main>
+    <>
       <AddIngredientForm/>
       {ingredientGroups.map(group =>
         <CategorySection
@@ -17,7 +17,7 @@ export function Pantry({ ingredientGroups }){
           ingredients={group.ingredients}
         />
       )}
-    </main>
+    </>
   )
 }
 

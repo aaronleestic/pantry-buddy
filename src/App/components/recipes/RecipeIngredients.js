@@ -86,13 +86,13 @@ export function RecipeIngredients({ headerText, ingredients, addIngNameHandler, 
             </div>
           </CSSTransition>
         ))}
-          <ListGroupItem className="pl-3">
-            <AddItemRow addItemHandler={prepAddIngName} label="ingredient"/>
-            { hadError &&
-            <div role="alert" className="sr-only">Recipe already exists</div>
-            }
-          </ListGroupItem>
         </TransitionGroup>
+        <ListGroupItem className="pl-3">
+          <AddItemRow addItemHandler={prepAddIngName} label="ingredient"/>
+          { hadError &&
+          <div role="alert" className="sr-only">Recipe already exists</div>
+          }
+        </ListGroupItem>
       </ListGroup>
       <AddIngredientModal
         isOpen={showAddIngModal}

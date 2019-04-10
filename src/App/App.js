@@ -1,10 +1,12 @@
 import styles from './App.module.scss';
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink as RouterLink, Route, Switch, Redirect } from "react-router-dom";
 import Pantry from "./components/pantry";
 import Recipes from "./components/recipes";
 import EditRecipe from "./components/recipes/EditRecipe";
 import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap';
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import cx from "classnames";
 
 function App(){
   return (
@@ -17,13 +19,36 @@ function App(){
   )
 }
 
-function MainWithNav(){
+function MainWithNav({ location }){
+
+  const { pathname } = location;
+  const [headerRef, setRef] = useState(null);
+
   return (
     <Container className={styles.container}>
       <div className={styles.main}>
-        <Header/>
-        <Route path="/pantry" component={Pantry}/>
-        <Route path="/recipes" component={Recipes}/>
+        <div ref={ref => setRef(ref)}>
+          <Header/>
+        </div>
+        <TransitionGroup className={styles.group}>
+          <CSSTransition
+            key={pathname}
+            timeout={300}
+
+            onEnter={() => headerRef.scrollIntoView()}
+            className={cx(styles.routeTransition, {
+              'from-left': pathname === '/pantry',
+              'from-right': pathname === '/recipes',
+            })}>
+            <main>
+              <Switch location={location}>
+                <Route path="/pantry" component={Pantry}/>
+                <Route path="/recipes" component={Recipes}/>
+                <Redirect from="*" to="/pantry" />
+              </Switch>
+            </main>
+          </CSSTransition>
+        </TransitionGroup>
       </div>
       <FooterNav/>
     </Container>
