@@ -11,6 +11,6 @@ export const ingredients = ["apple", "banna", "cinnamon", "daikon"].map((name, i
 }));
 
 storiesOf('pantry/IngredientList', module)
-.addDecorator(withKnobs)
-.addDecorator(story => <StoryContainer>{story()}</StoryContainer>)
-.add('default', () => <IngredientList ingredients={object('ingredients', ingredients)}/>);
+  .addDecorator(withKnobs)
+  .addDecorator(story => <StoryContainer>{story()}</StoryContainer>)
+  .add('default', () => <IngredientList ingredients={object('ingredients', ingredients)}/>);

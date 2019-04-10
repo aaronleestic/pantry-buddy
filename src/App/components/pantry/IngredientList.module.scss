@@ -1,0 +1,31 @@
+$animateTime: 200ms;
+
+.transition {
+
+  overflow: hidden;
+
+  &:global(.enter){
+    max-height: 0;
+  }
+
+  &:global(.enter-active){
+    max-height: 5rem;
+    transition: max-height $animateTime ease-out;
+  }
+
+  &:global(.exit){
+    max-height: 5rem;
+    li > * {
+      opacity: 1;
+    }
+  }
+
+  &:global(.exit-active){
+    max-height: 0;
+    transition: max-height $animateTime ease-out $animateTime;
+    li > * {
+      transition: opacity $animateTime;
+      opacity: 0;
+    }
+  }
+}

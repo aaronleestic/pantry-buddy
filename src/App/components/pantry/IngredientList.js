@@ -8,6 +8,8 @@ import { IconBtn } from "../common/IconBtn";
 import { by, extractHanlderIdFromEvent } from "../../helpers";
 import { IngredientRow } from "../common/IngredientRow";
 import { bindActionCreators } from "redux";
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import styles from "./IngredientList.module.scss";
 
 export function IngredientList({ ingredients, toggleIngredAvail, deleteIngredient }){
 
@@ -25,16 +27,25 @@ export function IngredientList({ ingredients, toggleIngredAvail, deleteIngredien
 
   return (
     <ListGroup>
+      <TransitionGroup component={null}>
       {ingredients.map(ingredient => (
-        <ListGroupItem key={ingredient.id}>
-          <IngredientRow ingredient={ingredient} onToggle={onToggle}/>
-          <IconBtn
-            clickHandler={onDelete}
-            handlerId={ingredient.id}
-            label="delete"
-            icon="trash-alt"/>
-        </ListGroupItem>
+        <CSSTransition
+          key={ingredient.id}
+          timeout={{ enter: 200, exit: 400 }}
+          className={styles.transition}>
+          <div>
+            <ListGroupItem>
+              <IngredientRow ingredient={ingredient} onToggle={onToggle}/>
+              <IconBtn
+                clickHandler={onDelete}
+                handlerId={ingredient.id}
+                label="delete"
+                icon="trash-alt"/>
+            </ListGroupItem>
+          </div>
+        </CSSTransition>
       ))}
+      </TransitionGroup>
     </ListGroup>
   )
 }
