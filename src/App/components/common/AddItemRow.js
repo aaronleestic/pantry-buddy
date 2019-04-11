@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import cx from "classnames";
 import { Label, Input } from 'reactstrap';
 import { IconBtn } from "./IconBtn";
@@ -9,7 +9,7 @@ export function AddItemRow({ addItemHandler, label }) {
   const [value, setValue] = useState("");
   const [showBlink, setBlink] = useState(false);
   const [hadError, setError] = useState(false);
-  const [ref, setRef] = useState(null);
+  const footerRef = useRef(null);
 
   function prepAdd(){
     if ( !value.trim() ){
@@ -18,7 +18,7 @@ export function AddItemRow({ addItemHandler, label }) {
       addItemHandler(value.trim());
       setValue("");
       setError(false);
-      ref.scrollIntoView();
+      footerRef.current.scrollIntoView();
     }
   }
 
@@ -26,7 +26,7 @@ export function AddItemRow({ addItemHandler, label }) {
   function keyPress(e){
     if ( e.key === 'Enter' ) {
       prepAdd();
-      ref.blur();
+      footerRef.current.blur();
       e.preventDefault();
     }
   }
@@ -58,7 +58,7 @@ export function AddItemRow({ addItemHandler, label }) {
       { hadError &&
       <div role="alert"  className="sr-only">cannot be empty</div>
       }
-      <div ref={ref => {setRef(ref)}}/>
+      <div ref={footerRef}/>
     </>
   )
 }

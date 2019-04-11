@@ -51,7 +51,7 @@ export function Recipes({ recipes, addRecipeName, history, match }){
             <div>
               <ListGroupItem className={cx("pl-3", { "invalid-blink border-bottom": duplicates[r.name] })}>
                 <IconBtn icon="pencil-alt" label="edit" handlerId={r.id} clickHandler={navToEdit}/>
-                <div className="d-flex w-100" handler-id={r.id} onClick={navToEdit}>
+                <div className="d-flex w-100" onClick={() => history.push(`${match.path}/${r.id}`)}>
                   <div className="ml-2">{r.name}</div>
                   <div className="ml-auto">{r.available} of {r.required.length}</div>
                 </div>

@@ -10,6 +10,9 @@ import Recipes from "./components/recipes";
 jest.mock('./components/pantry', () => () => <div/>);
 jest.mock('./components/recipes', () => () => <div/>);
 
+//because function is not implemented in jest
+window.HTMLElement.prototype.scrollIntoView = function() {};
+
 describe('App', ()=>{
 
   const store = configureStore()({});

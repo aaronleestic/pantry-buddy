@@ -1,5 +1,5 @@
 import styles from './App.module.scss';
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { NavLink as RouterLink, Route, Switch, Redirect } from "react-router-dom";
 import Pantry from "./components/pantry";
 import Recipes from "./components/recipes";
@@ -22,20 +22,19 @@ function App(){
 function MainWithNav({ location }){
 
   const { pathname } = location;
-  const [headerRef, setRef] = useState(null);
+  const headerRef = useRef(null);
 
   return (
     <Container className={styles.container}>
       <div className={styles.main}>
-        <div ref={ref => setRef(ref)}>
+        <div ref={headerRef}>
           <Header/>
         </div>
         <TransitionGroup className={styles.group}>
           <CSSTransition
             key={pathname}
             timeout={300}
-
-            onEnter={() => headerRef.scrollIntoView()}
+            onExit={() => headerRef.current.scrollIntoView()}
             className={cx(styles.routeTransition, {
               'from-left': pathname === '/pantry',
               'from-right': pathname === '/recipes',
