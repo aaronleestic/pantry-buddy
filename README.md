@@ -33,13 +33,9 @@ Mobile optimized, Progressive Web App built for offline use
 #### Netlify, Github, and Create-React-App
 - easy automated deployments
 
+#### CSSTransition
+- maintainable animation stylings
+
 ### Next Steps
 
-- add react-transition library for animation
-
-#### User management
-- social login backed by a GraphQL-based API
-- online persistence of your pantry, for usage across devices
-
-#### Native App
-- code sharing with React Native
+- apply virtualized scrolling to improve performance
