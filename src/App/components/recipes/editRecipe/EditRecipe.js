@@ -3,15 +3,15 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Form, Input, Label } from "reactstrap";
 import PropTypes from "prop-types";
-import debounce from 'lodash/debounce';
-import { IconBtn } from "../common/IconBtn";
-import RecipeIngredients from "./RecipeIngredients";
-import { by } from "../../helpers";
-import { Header } from "../../App";
-import { addRecipeIngName, deleteRecipe, removeRecipeIngName, updateRecipeName } from "../../actions/recipe";
-import { getIngredientsAsMap } from "../../selectors";
-import { DeleteRecipeModal } from "./DeleteRecipeModal";
-import { ingredientShape, recipeShape } from "../../models";
+import debounce from 'lodash.debounce';
+import { IconBtn } from "../../common/iconBtn/IconBtn";
+import RecipeIngredients from "../recipeIngredients/RecipeIngredients";
+import { by } from "../../../helpers";
+import { Header } from "../../../App";
+import { addRecipeIngName, deleteRecipe, removeRecipeIngName, updateRecipeName } from "../../../actions/recipe";
+import { getIngredientsAsMap } from "../../../selectors";
+import { DeleteRecipeModal } from "../deleteRecipeModal/DeleteRecipeModal";
+import { ingredientShape, recipeShape } from "../../../models";
 import styles from "./EditRecipe.module.scss";
 
 export function EditRecipe({ recipe, ingredients, history, updateRecipeName, addRecipeIngName, removeRecipeIngName, deleteRecipe }){

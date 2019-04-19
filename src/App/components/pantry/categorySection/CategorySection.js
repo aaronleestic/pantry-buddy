@@ -3,11 +3,11 @@ import Collapse from 'reactstrap/lib/Collapse';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
-import IngredientList from "./IngredientList";
-import { toggleCategoryCollapse } from "../../actions/category";
-import { updateAddIngForm } from "../../actions/addForm";
-import { categoryShape, ingredientShape } from "../../models";
-import { IconBtn } from "../common/IconBtn";
+import IngredientList from "../ingredientList/IngredientList";
+import { toggleCategoryCollapse } from "../../../actions/category";
+import { updateAddIngForm } from "../../../actions/addForm";
+import { categoryShape, ingredientShape } from "../../../models";
+import { IconBtn } from "../../common/iconBtn/IconBtn";
 import styles from "./CategorySection.module.scss";
 
 export function CategorySection({ category, ingredients, toggleCategoryCollapse, updateAddIngForm }){

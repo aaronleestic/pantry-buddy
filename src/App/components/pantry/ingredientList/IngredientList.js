@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { ListGroup, ListGroupItem } from 'reactstrap';
-import { ingredientShape } from "../../models";
-import { deleteIngredient, toggleIngredAvail } from "../../actions/ingredient";
-import { IconBtn } from "../common/IconBtn";
-import { by, extractHanlderIdFromEvent } from "../../helpers";
-import { IngredientRow } from "../common/IngredientRow";
+import { ingredientShape } from "../../../models";
+import { deleteIngredient, toggleIngredAvail } from "../../../actions/ingredient";
+import { IconBtn } from "../../common/iconBtn/IconBtn";
+import { by, extractHanlderIdFromEvent } from "../../../helpers";
+import { IngredientRow } from "../../common/ingredientRow/IngredientRow";
 import { bindActionCreators } from "redux";
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import appStyles from "../../App.module.scss";
+import appStyles from "../../../App.module.scss";
 
 export function IngredientList({ ingredients, toggleIngredAvail, deleteIngredient }){
 

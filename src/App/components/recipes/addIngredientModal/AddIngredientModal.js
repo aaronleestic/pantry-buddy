@@ -3,8 +3,8 @@ import { Modal, ModalBody, Input } from "reactstrap";
 import cx from "classnames";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import { addIngredient } from "../../actions/ingredient";
-import { categoryShape } from "../../models";
+import { addIngredient } from "../../../actions/ingredient";
+import { categoryShape } from "../../../models";
 
 export function AddIngredientModal({ isOpen, unlistedIng, close, addIngredient, categories }){
 
@@ -35,12 +35,16 @@ export function AddIngredientModal({ isOpen, unlistedIng, close, addIngredient, 
     return { name, categoryId, isAvailable };
   }
 
+  function onCategoryChange(e){
+    setCategoryId(Number(e.target.value));
+  }
+
   return (
     <Modal isOpen={isOpen}>
       <ModalBody className="text-center">
         <h3 className="p-2">Add "{unlistedIng && unlistedIng.name}" to Pantry</h3>
         <Input
-          onChange={(e) => setCategoryId(Number(e.target.value))}
+          onChange={onCategoryChange}
           value={categoryId}
           type="select"
           className={cx("mt-3", { "invalid-blink": showErrorBlink })}>

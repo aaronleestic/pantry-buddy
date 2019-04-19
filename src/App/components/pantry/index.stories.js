@@ -5,7 +5,7 @@ import { StoryContainer } from "../../stories/StoryContainer";
 import { Provider } from "react-redux";
 import configureMockStore from 'redux-mock-store';
 import { Pantry } from "./index";
-import { ingredients } from "./IngredientList.stories";
+import { ingredients } from "./ingredientList/IngredientList.stories";
 
 const ingredientGroups = [{
   category: { id: 0, name: "meat", isOpen: false },

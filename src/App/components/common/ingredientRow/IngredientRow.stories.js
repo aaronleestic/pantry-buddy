@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, object } from '@storybook/addon-knobs/react';
 import ListGroup from "reactstrap/es/ListGroup";
 import ListGroupItem from "reactstrap/es/ListGroupItem";
-import { StoryContainer } from "../../stories/StoryContainer";
+import { StoryContainer } from "../../../stories/StoryContainer";
 import { IngredientRow } from "./IngredientRow";
 
 export const ingredient = {

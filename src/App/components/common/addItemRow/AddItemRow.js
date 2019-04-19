@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import cx from "classnames";
 import { Label, Input } from 'reactstrap';
-import { IconBtn } from "./IconBtn";
+import { IconBtn } from "../iconBtn/IconBtn";
 import PropTypes from "prop-types";
 
 export function AddItemRow({ addItemHandler, label }) {

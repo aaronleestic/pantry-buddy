@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { StoryContainer } from "../../stories/StoryContainer";
+import { StoryContainer } from "../../../stories/StoryContainer";
 import { CategorySection } from "./CategorySection";
-import { ingredients} from "./IngredientList.stories";
+import { ingredients} from "../ingredientList/IngredientList.stories";
 import { Provider } from "react-redux";
 import configureMockStore from 'redux-mock-store';
 import { withKnobs, object } from '@storybook/addon-knobs/react';

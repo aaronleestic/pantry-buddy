@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import { NavLink as RouterLink, Route, Switch, Redirect } from "react-router-dom";
 import Pantry from "./components/pantry";
 import Recipes from "./components/recipes";
-import EditRecipe from "./components/recipes/EditRecipe";
+import EditRecipe from "./components/recipes/editRecipe/EditRecipe";
 import { Container, Row, Col, Nav, NavItem, NavLink } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import cx from "classnames";

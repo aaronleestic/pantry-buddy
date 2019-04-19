@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { StoryContainer } from "../../stories/StoryContainer";
+import { StoryContainer } from "../../../stories/StoryContainer";
 import { AddIngredientForm } from "./AddIngredientForm";
 
 export const categories = ["meat", "carb", "veggies"].map((name, index) => ({

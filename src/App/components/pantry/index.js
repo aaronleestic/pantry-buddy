@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import AddIngredientForm from "./AddIngredientForm";
+import AddIngredientForm from "./addIngredientForm/AddIngredientForm";
 import { categoryShape, ingredientShape } from "../../models";
-import CategorySection from "./CategorySection";
+import CategorySection from "./categorySection/CategorySection";
 import { getIngredByCat } from "../../selectors";
 
-export function Pantry({ ingredientGroups, location: { state } }){
+export function Pantry({ ingredientGroups }){
   return (
     <>
       <AddIngredientForm/>

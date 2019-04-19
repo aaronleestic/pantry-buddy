@@ -1,11 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, object } from '@storybook/addon-knobs/react';
-import { StoryContainer } from "../../stories/StoryContainer";
+import { StoryContainer } from "../../../stories/StoryContainer";
 import { Provider } from "react-redux";
 import configureMockStore from 'redux-mock-store';
 import { EditRecipe } from "./EditRecipe";
-import { ingredients } from "./RecipeIngredients.stories";
+import { ingredients } from "../recipeIngredients/RecipeIngredients.stories";
 
 storiesOf('recipes/EditRecipe', module)
   .addDecorator(withKnobs)

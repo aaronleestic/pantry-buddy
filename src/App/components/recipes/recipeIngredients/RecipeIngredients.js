@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import cx from "classnames";
 import { connect } from "react-redux";
 import { ListGroup, ListGroupItem } from "reactstrap";
-import { IconBtn } from "../common/IconBtn";
+import { IconBtn } from "../../common/iconBtn/IconBtn";
 import PropTypes from "prop-types";
-import { by, extractHanlderIdFromEvent } from "../../helpers";
-import { IngredientRow } from "../common/IngredientRow";
-import { toggleIngredAvail } from "../../actions/ingredient";
-import { AddItemRow } from "../common/AddItemRow";
-import { UnlistedIngredient } from "./UnlistedIngredient";
-import { ingredientShape } from "../../models";
-import AddIngredientModal from "./AddIngredientModal";
+import { by, extractHanlderIdFromEvent } from "../../../helpers";
+import { IngredientRow } from "../../common/ingredientRow/IngredientRow";
+import { toggleIngredAvail } from "../../../actions/ingredient";
+import { AddItemRow } from "../../common/addItemRow/AddItemRow";
+import { UnlistedIngredient } from "../unlistedIngredient/UnlistedIngredient";
+import { ingredientShape } from "../../../models";
+import AddIngredientModal from "../addIngredientModal/AddIngredientModal";
 import styles from "./RecipeIngredients.module.scss";
 
 export function RecipeIngredients({ headerText, ingredients, addIngNameHandler, removeIngNameHandler, toggleIngredAvail }){
