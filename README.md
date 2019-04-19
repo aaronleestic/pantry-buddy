@@ -23,7 +23,7 @@ Mobile optimized, Progressive Web App built for offline use
 
 #### [Storybook](https://pantrybuddy-storybook.netlify.com/)
 - isolated component development
-- visual regression tests (upcoming)
+- visual regression tests
 
 #### Bootstrap / Reactstrap / Font Awesome
 - customized by theme variables
@@ -33,9 +33,10 @@ Mobile optimized, Progressive Web App built for offline use
 #### Netlify, Github, and Create-React-App
 - easy automated deployments
 
-#### CSSTransition
+#### React Transition Group
 - maintainable animation stylings
 
 ### Next Steps
 
+- visual regression tests
 - apply virtualized scrolling to improve performance
